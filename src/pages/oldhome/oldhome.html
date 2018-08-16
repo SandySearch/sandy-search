@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      My Bills
+    </ion-title>
+    <ion-buttons end>
+      <!--
+      <button ion-button color="danger" (click)="logoutNow()">Logout
+      </button>
+      -->
+      <button ion-button icon-only (click)="createBill()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      UnPaid Bills
+    </ion-list-header>
+    <ion-item *ngFor="let bill of billList | async" (click)="moreBillOptions(bill.id)" [class.hide]="bill.paid == true">
+      <ion-icon name="timer" color="danger" item-left></ion-icon>
+      <h2>{{bill.name}}</h2>
+      <h3>Total:
+        <strong>${{bill.amount}}</strong>
+      </h3>
+      <p>Pay before:
+        <strong>{{bill.dueDate}}</strong>
+      </p>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Paid Bills
+    </ion-list-header>
+    <ion-item *ngFor="let bill of billList | async" (click)="goToPaidBill(bill.id)" [class.hide]="bill.paid == false">
+      <ion-icon name="checkmark" color="favorite" item-left></ion-icon>
+      <h2>{{bill.name}}</h2>
+      <h3>Total:
+        <strong>${{bill.amount}}</strong>
+      </h3>
+    </ion-item>
+  </ion-list>
+</ion-content>
