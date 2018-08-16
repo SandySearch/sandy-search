@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyDV-2PsvBDQI_0bwTjT9yowIhE1gv05CO8",
-  authDomain: "esrr-aoc.firebaseapp.com",
-  databaseURL: "https://esrr-aoc.firebaseio.com",
-  projectId: "esrr-aoc",
-  storageBucket: "esrr-aoc.appspot.com",
-  messagingSenderId: "975907153175"
+  apiKey: 'AIzaSyDFZL8mbJVpm5ioYGrJ1vbwu_6NC77o3O4',
+  authDomain: 'sandy-search.firebaseapp.com',
+  databaseURL: 'https://sandy-search.firebaseio.com',
+  projectId: 'sandy-search',
+  storageBucket: 'sandy-search.appspot.com',
+  messagingSenderId: '400553647913'
 };
