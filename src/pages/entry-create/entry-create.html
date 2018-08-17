@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>EntryCreate</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="newEntryForm" (submit)="createEntry()" novalidate>
+    <ion-item>
+      <ion-label stacked>Entry Name</ion-label>
+      <ion-input formControlName="name" type="text" placeholder="How do you identify this entry?" [class.invalid]="!newEntryForm.controls.name.valid && blur">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Amount</ion-label>
+      <ion-input formControlName="amount" type="number" placeholder="How much do you have to pay?" [class.invalid]="!newEntryForm.controls.amount.valid && blur">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Due Date</ion-label>
+      <ion-datetime displayFormat="D MMM, YY" pickerFormat="DD MMM YYYY" formControlName="dueDate" max="2020-10-31" [class.invalid]="!newEntryForm.controls.dueDate.valid
+        && blur">
+      </ion-datetime>
+    </ion-item>
+
+    <button ion-button block type="submit">
+      Create new entry
+    </button>
+  </form>
+</ion-content>
