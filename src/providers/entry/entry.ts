@@ -33,18 +33,28 @@ export class EntryProvider {
   }
 
   createEntry(
+    type: string = 'GS',
     name: string,
+    address: string,
+    phone: number,
+    notes: string,
     amount: number,
     dueDate: string = null,
+    verified: boolean = false,
     paid: boolean = false
   ): Promise<any> {
     const newEntryRef: firebase.database.ThenableReference = this.entryList.push(
       {}
     );
     return newEntryRef.set({
+      type,
       name,
+      address,
+      phone,
+      notes,
       amount,
       dueDate,
+      verified,
       paid,
       id: newEntryRef.key
     });
