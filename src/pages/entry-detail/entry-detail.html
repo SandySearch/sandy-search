@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> {{ entry?.name }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="showOptions(entry?.id)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<!--
+  <img [src]="bill?.picture || placeholderPicture" (click)="uploadPicture()" />
+  <span *ngIf="!bill?.picture">
+    Click the image to upload a picture of your debt/bill
+  </span>
+-->
+
+  <ion-card>
+    <ion-card-header>
+      Entry Information
+    </ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-icon color="secondary" name="information-circle" item-left>
+        </ion-icon>
+        {{ entry?.name }}
+      </ion-item>
+
+      <ion-item>
+        <ion-icon color="favorite" name="cash" item-left></ion-icon>
+        {{ entry?.amount }}
+      </ion-item>
+
+      <ion-item>
+        <ion-icon color="secondary" name="calendar" item-left></ion-icon>
+        <strong>{{ entry?.dueDate }}</strong>
+      </ion-item>
+
+      <ion-item *ngIf="entry?.paid == true">
+        <ion-icon color="favorite" name="checkmark" item-left></ion-icon>
+        This bill is paid.
+      </ion-item>
+
+      <ion-item *ngIf="entry?.paid == false">
+        <ion-icon color="danger" name="timer" item-left></ion-icon>
+        You haven't paid this bill.
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

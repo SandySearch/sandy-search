@@ -9,7 +9,7 @@ import {
 } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 //import { LandingPage } from '../landing/landing';
-import { BillProvider } from '../../providers/bill/bill';
+import { EntryProvider } from '../../providers/entry/entry';
 import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
@@ -17,52 +17,52 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'oldhome.html'
 })
 export class OldHomePage {
-  public billList: Observable<any>;
+  public entryList: Observable<any>;
   constructor(
     public navCtrl: NavController,
     public actionCtrl: ActionSheetController,
     public loadingCtrl: LoadingController,
     public platform: Platform,
-    public billProvider: BillProvider,
+    public entryProvider: EntryProvider,
     public authProvider: AuthProvider
   ) { }
 
   ionViewDidLoad() {
-    this.billList = this.billProvider.getBillList().valueChanges();
+    this.entryList = this.entryProvider.getEntryList().valueChanges();
   }
 
-  createBill(): void {
-    this.navCtrl.push('BillCreatePage');
+  createEntry(): void {
+    this.navCtrl.push('EntryCreatePage');
   }
 
-  goToPaidBill(billId: string): void {
-    this.navCtrl.push('BillDetailPage', { billId: billId });
+  goToPaidEntry(entryId: string): void {
+    this.navCtrl.push('EntryDetailPage', { entryId: entryId });
   }
 
-  moreBillOptions(billId): void {
+  moreEntryOptions(entryId): void {
     let action: ActionSheet = this.actionCtrl.create({
-      title: 'Modify your bill',
+      title: 'Modify your entry',
       buttons: [
         {
           text: 'Delete',
           role: 'destructive',
           icon: !this.platform.is('ios') ? 'trash' : null,
           handler: () => {
-            this.billProvider.removeBill(billId);
+            this.entryProvider.removeEntry(entryId);
           }
         },
         {
           text: 'More details',
           icon: !this.platform.is('ios') ? 'play' : null,
           handler: () => {
-            this.navCtrl.push('BillDetailPage', { billId: billId });
+            this.navCtrl.push('EntryDetailPage', { entryId: entryId });
           }
         },
         {
           text: 'Mark as Paid!',
           icon: !this.platform.is('ios') ? 'checkmark' : null,
           handler: () => {
-            this.billProvider.payBill(billId);
+            this.entryProvider.payEntry(entryId);
           }
         },
         {

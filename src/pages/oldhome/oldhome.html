@@ -1,14 +1,14 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      My Bills
+      My Entries
     </ion-title>
     <ion-buttons end>
       <!--
       <button ion-button color="danger" (click)="logoutNow()">Logout
       </button>
       -->
-      <button ion-button icon-only (click)="createBill()">
+      <button ion-button icon-only (click)="createEntry()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -18,29 +18,29 @@
 <ion-content padding>
   <ion-list>
     <ion-list-header>
-      UnPaid Bills
+      UnPaid Entries
     </ion-list-header>
-    <ion-item *ngFor="let bill of billList | async" (click)="moreBillOptions(bill.id)" [class.hide]="bill.paid == true">
+    <ion-item *ngFor="let entry of entryList | async" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.paid == true">
       <ion-icon name="timer" color="danger" item-left></ion-icon>
-      <h2>{{bill.name}}</h2>
+      <h2>{{entry.name}}</h2>
       <h3>Total:
-        <strong>${{bill.amount}}</strong>
+        <strong>${{entry.amount}}</strong>
       </h3>
       <p>Pay before:
-        <strong>{{bill.dueDate}}</strong>
+        <strong>{{entry.dueDate}}</strong>
       </p>
     </ion-item>
   </ion-list>
 
   <ion-list>
     <ion-list-header>
-      Paid Bills
+      Paid Entries
     </ion-list-header>
-    <ion-item *ngFor="let bill of billList | async" (click)="goToPaidBill(bill.id)" [class.hide]="bill.paid == false">
+    <ion-item *ngFor="let entry of entryList | async" (click)="goToPaidEntry(entry.id)" [class.hide]="entry.paid == false">
       <ion-icon name="checkmark" color="favorite" item-left></ion-icon>
-      <h2>{{bill.name}}</h2>
+      <h2>{{entry.name}}</h2>
       <h3>Total:
-        <strong>${{bill.amount}}</strong>
+        <strong>${{entry.amount}}</strong>
       </h3>
     </ion-item>
   </ion-list>
