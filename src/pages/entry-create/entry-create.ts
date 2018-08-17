@@ -18,6 +18,9 @@ export class EntryCreatePage {
   ) {
     this.newEntryForm = formBuilder.group({
       name: ['', Validators.required],
+      address: ['', Validators.required],
+      phone: ['', Validators.required],
+      notes: ['', Validators.required],
       amount: ['', Validators.required],
       dueDate: ['', Validators.required]
     });
@@ -29,7 +32,12 @@ export class EntryCreatePage {
     } else {
       this.entryProvider
         .createEntry(
+          this.newEntryForm.value.type,
           this.newEntryForm.value.name,
+          this.newEntryForm.value.address,
+          this.newEntryForm.value.phone,
+          this.newEntryForm.value.notes,
+	  //this.newEntryForm.value.verified = false,
           this.newEntryForm.value.amount,
           this.newEntryForm.value.dueDate
         )
