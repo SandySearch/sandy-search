@@ -3,7 +3,7 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { OldHomePage } from '../pages/oldhome/oldhome';
+//import { OldHomePage } from '../pages/oldhome/oldhome';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
@@ -20,10 +20,11 @@ export class MyApp {
   ) {
     const authListener = afAuth.authState.subscribe(user => {
       if (user) {
-        this.rootPage = OldHomePage;
+        //this.rootPage = OldHomePage;
+        this.rootPage = 'LandingPage';
         authListener.unsubscribe();
       } else {
-        this.rootPage = OldHomePage;
+        this.rootPage = 'LandingPage';
         authListener.unsubscribe();
       }
     });
