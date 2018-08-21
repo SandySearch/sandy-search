@@ -3,12 +3,12 @@ import {
   NavController,
   ActionSheet,
   ActionSheetController,
-  //Loading,
+  Loading,
   LoadingController,
   Platform
 } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-//import { LandingPage } from '../landing/landing';
+import { LandingPage } from '../landing/landing';
 import { EntryProvider } from '../../providers/entry/entry';
 import { AuthProvider } from '../../providers/auth/auth';
 
@@ -18,6 +18,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 })
 export class OldHomePage {
   public entryList: Observable<any>;
+
   constructor(
     public navCtrl: NavController,
     public actionCtrl: ActionSheetController,
@@ -28,7 +29,9 @@ export class OldHomePage {
   ) { }
 
   ionViewDidLoad() {
-    this.entryList = this.entryProvider.getEntryList().valueChanges();
+    //if (user) {
+      this.entryList = this.entryProvider.getEntryList().valueChanges();
+    //}
   }
 
   createEntry(): void {
@@ -43,6 +46,7 @@ export class OldHomePage {
     let action: ActionSheet = this.actionCtrl.create({
       title: 'Modify your entry',
       buttons: [
+      /*** no delete/edit by users
         {
           text: 'Delete',
           role: 'destructive',
@@ -50,7 +54,8 @@ export class OldHomePage {
           handler: () => {
             this.entryProvider.removeEntry(entryId);
           }
-        },
+	},
+	***/
         {
           text: 'More details',
           icon: !this.platform.is('ios') ? 'play' : null,
@@ -59,10 +64,17 @@ export class OldHomePage {
           }
         },
         {
-          text: 'Mark as Paid!',
+          text: 'This service is still available?',
           icon: !this.platform.is('ios') ? 'checkmark' : null,
           handler: () => {
-            this.entryProvider.payEntry(entryId);
+            this.entryProvider.updateEntry(entryId);
+          }
+        },
+        {
+          text: 'Dispute this listing?',
+          icon: !this.platform.is('ios') ? 'checkmark' : null,
+          handler: () => {
+            this.entryProvider.disputeEntry(entryId);
           }
         },
         {
@@ -79,8 +91,11 @@ export class OldHomePage {
   }
 
   logoutNow(): void {
-    /*** breaks flow of app - after logout cannot use anon
-    this.authProvider.logoutUser().then(newUser => {
+    /*** breaks flow of app - after logout cannot use anon ***/
+    //this.authProvider.logoutUser().then(newUser => {
+    this.authProvider.logoutUser().then(() => {
+    //this.authProvider.logoutUser().then({
+    //this.authProvider.logoutUser().then( user => {
       loading.dismiss().then(() => {
         this.navCtrl.setRoot(LandingPage);
       });
@@ -92,9 +107,9 @@ export class OldHomePage {
 
     const loading: Loading = this.loadingCtrl.create();
     loading.present();
-    ***/
+    /*** ***/
 
-    this.navCtrl.push('LandingPage');
+    //this.navCtrl.push('LandingPage'); // cannot push as shows back arrow
   }
 
 }

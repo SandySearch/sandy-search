@@ -1,13 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      My Entries
+      Available Services
     </ion-title>
     <ion-buttons end>
-      <!--
+      <!-- -->
       <button ion-button color="danger" (click)="logoutNow()">Logout
       </button>
-      -->
+      <!-- -->
       <button ion-button icon-only (click)="createEntry()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -17,17 +17,18 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-list-header>
-      UnPaid Entries
-    </ion-list-header>
-    <ion-item *ngFor="let entry of entryList | async" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.paid == true">
-      <ion-icon name="timer" color="danger" item-left></ion-icon>
+    <ion-item *ngFor="let entry of entryList | async" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
+      <ion-icon name="home" color="danger" item-left></ion-icon>
       <h2>{{entry.name}}</h2>
+      <h3>{{entry.address}}</h3>
+      <h3>{{entry.phone}}</h3>
+      <h3>{{entry.verified}}</h3>
+      <h3>{{entry.notes}}</h3>
       <h3>Total:
         <strong>${{entry.amount}}</strong>
       </h3>
-      <p>Pay before:
-        <strong>{{entry.dueDate}}</strong>
+      <p>Last verified:
+        <strong>{{entry.updatedDate}}</strong>
       </p>
     </ion-item>
   </ion-list>
