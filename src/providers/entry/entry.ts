@@ -12,13 +12,22 @@ import firebase from 'firebase/app';
 export class EntryProvider {
   public entryList: AngularFireList<any>;
   public userId: string;
+
   constructor(
     public afAuth: AngularFireAuth,
     public afDatabase: AngularFireDatabase
   ) {
+
+    //const dbUrl = `/userProfile/${user.uid}/billList`;
+    const dbUrl = `/serviceList`;
+
     this.afAuth.authState.subscribe(user => {
-      this.userId = user.uid;
-      this.entryList = this.afDatabase.list(`/userProfile/${user.uid}/billList`);
+      if (user) {
+        this.userId = user.uid;
+      } else {
+        this.userId = 'anon';
+      }
+      this.entryList = this.afDatabase.list(dbUrl);
     });
   }
 
@@ -27,8 +36,9 @@ export class EntryProvider {
   }
 
   getEntry(entryId: string): AngularFireObject<any> {
+    const dbUrl = `/serviceList`;
     return this.afDatabase.object(
-      `/userProfile/${this.userId}/billList/${entryId}`
+      dbUrl +`/${entryId}`
     );
   }
 
@@ -38,9 +48,11 @@ export class EntryProvider {
     address: string,
     phone: number,
     notes: string,
+    updatedDate: string = null,
+    disputed: number = 0,
+    verified: boolean = false,
     amount: number,
     dueDate: string = null,
-    verified: boolean = false,
     paid: boolean = false
   ): Promise<any> {
     const newEntryRef: firebase.database.ThenableReference = this.entryList.push(
@@ -52,9 +64,11 @@ export class EntryProvider {
       address,
       phone,
       notes,
+      updatedDate,
+      disputed,
+      verified,
       amount,
       dueDate,
-      verified,
       paid,
       id: newEntryRef.key
     });
@@ -62,6 +76,28 @@ export class EntryProvider {
 
   removeEntry(entryId: string): Promise<any> {
     return this.entryList.remove(entryId);
+  }
+
+  updateEntry(entryId: string): Promise<any> {
+	  // need to add transactions
+	  // and vote display
+    //now = Date();
+    const nowTime: string = 'just now time';
+    return this.entryList.update(entryId, { updatedDate: nowTime });
+  }
+
+  disputeEntry(entryId: string): Promise<any> {
+    // need to add transactions
+    // entry = getEntry(entryId)
+    const dis: integer = 4;	  
+    return this.entryList.update(entryId, { disputed: dis });
+  }
+
+  resetDisputeEntry(entryId: string): Promise<any> {
+    // need to add transactions
+    // entry = getEntry(entryId)
+    const dis: integer = 0;	  
+    return this.entryList.update(entryId, { disputed: dis });
   }
 
   payEntry(entryId: string): Promise<any> {
