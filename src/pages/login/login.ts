@@ -10,6 +10,7 @@ import {
 import { OldHomePage } from '../oldhome/oldhome';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
+//import { EmailValidator } from '../../validators/email';
 
 @IonicPage()
 @Component({
@@ -19,6 +20,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 export class LoginPage {
   public loginForm: FormGroup;
   public loading: Loading;
+
   constructor(
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
@@ -33,10 +35,6 @@ export class LoginPage {
         Validators.compose([Validators.minLength(6), Validators.required])
       ]
     });
-  }
-
-  goToResetPassword(): void {
-    this.navCtrl.push('ResetPasswordPage');
   }
 
   loginUser(): void {
@@ -73,4 +71,12 @@ export class LoginPage {
     }
   }
 
+  goToResetPassword(){
+    this.navCtrl.push('ResetPasswordPage');
+  }
+
+  createAccount(){
+    this.navCtrl.push('SignupPage');
+  }
+  
 }

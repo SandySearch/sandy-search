@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
+//import firebase from 'firebase/app';
 
 @Injectable()
 export class AuthProvider {
@@ -47,4 +48,23 @@ export class AuthProvider {
   logoutUser(): Promise<void> {
     return this.afAuth.auth.signOut();
   }
+
+  signupUser(newEmail: string, newPassword: string, name: string, phone: string): Promise<any> {
+    console.log("name", name);
+    return this.afAuth.auth.createUserWithEmailAndPassword(newEmail, newPassword).then(
+      user => {
+        // TODO add signup date and did
+        this.afDatabase.object(`/userProfile/${user.uid}`).update({
+          email: newEmail,
+          name: name,
+	  phone: phone,
+	  validated: false
+        });
+      },
+      error => {
+        console.log('There was an error adding this account', error);
+      }
+    );
+  }
+  
 }
