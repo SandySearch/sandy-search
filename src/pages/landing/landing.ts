@@ -29,6 +29,12 @@ export class LandingPage {
 
   goToSearch(): void { this.navCtrl.push('SearchPage'); }
 
+  goToAbout(): void { this.navCtrl.push('AboutPage'); }
+
+  goToCreateEntry(): void {
+    this.navCtrl.push('EntryCreatePage');
+  }
+
   goToEntryList(): void {
     this.authProvider.anonymousLogin().then(newUser => {
       loading.dismiss().then(() => {
