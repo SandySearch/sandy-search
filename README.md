@@ -33,26 +33,30 @@ Nothing fancy but it could work, much like the way Zello was used after Hurrican
 
 ### How It Was Built
 
-This mobile application was built with the sweet [Ionic Framework](http://ionicframework.com/) (Angular.js/JavaScript/CSS/HTML5) and uses the Google [FireBase](https://www.firebase.com/) service for authentication and cloud data storage.
+This mobile application was built with the sweet [Ionic Framework](http://ionicframework.com/) (Angular5/TypeScript/CSS/HTML5) and uses the Google [FireBase](https://firebase.google.com/) service for authentication, realtime database and cloud hosting (currently on a free spark plan).
 
 With a Vim editor and a cmd window.
 
 ### Live Demos
 
-Live web app version of SNB can be found here:  https://esrr-aoc.firebaseapp.com/#/home
+Live web app version of SNB can be found here:  https://sandy-search.firebaseapp.com/#/landing
 
 And the Android APK is available on GitHub here:
   https://github.com/mkobar/essr-aoc/releases/tag/0.0.1
 
-The GitHub repository for the web app is here: https://github.com/mkobar/essr-aot
+The original GitHub repository for the web app is here: https://github.com/mkobar/essr-aot
 
 ## Things left to do:
 
-- iOS build - just need my Mac.
-- complete the backend debugging with Google Firebase (currently on a free spark plan).
+- iOS build and App Store upload - just need my Mac.
+- Google Play Store upload
+- store service location data in firebase
 - add in the real distance calculations (from stree address).  There are seveal free services for this but they may be rate limited.
 - add a map view (with Google Maps or OpenStreetMaps)
 - add the account request function (and screen) - something like Google Forms would work well.
+- add an admin interface for entry and user management.
+- add more logging
+- add more firebase services - pictures to storage, analytics, crash monitoring, etc.
 
 Please do contact me directly if you can use or add to this project.
 
