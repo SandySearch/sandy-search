@@ -83,8 +83,9 @@ export class EntryProvider {
   updateEntry(entryId: string): Promise<any> {
 	  // need to add transactions
 	  // and vote display
-    //now = Date();
-    const nowTime: string = 'just now time';
+    //let now = Date.now();
+    var nowTime = new Date().toLocaleString();
+    //const nowTime: string = 'just now time';
     const newVotes: number = 3;
 
     return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
