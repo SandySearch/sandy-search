@@ -28,9 +28,9 @@ export class SearchPage {
 
   listESNY(): void { this.navCtrl.setRoot(OldHomePage); }
 
-  listEFW(): void { this.navCtrl.push('LandingPage'); }
+  listEFW(): void { this.navCtrl.setRoot(OldHomePage); }
 
-  listGS(): void { this.navCtrl.push('OldHomePage'); }
+  listGS(): void { this.navCtrl.setRoot(OldHomePage); }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
