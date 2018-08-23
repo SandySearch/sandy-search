@@ -22,17 +22,21 @@
       <h2>{{entry.name}}</h2>
       <h3>{{entry.address}}</h3>
       <h3>{{entry.phone}}</h3>
-      <h3>{{entry.verified}}</h3>
+      
+      <h3 *ngIf="entry.verified">verified</h3>
+      <h3 *ngIf="!entry.verified">unverified</h3> 
       <h3>{{entry.notes}}</h3>
-      <h3>Total:
-        <strong>${{entry.amount}}</strong>
-      </h3>
       <p>Last verified:
         <strong>{{entry.updatedDate}}</strong>
+      </p>
+      <p>
+        <ion-icon name="checkmark"></ion-icon>
+        <strong> {{entry.votes}}</strong>
       </p>
     </ion-item>
   </ion-list>
 
+<!--
   <ion-list>
     <ion-list-header>
       Paid Entries
@@ -45,4 +49,5 @@
       </h3>
     </ion-item>
   </ion-list>
+  -->
 </ion-content>
