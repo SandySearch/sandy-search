@@ -51,6 +51,7 @@ export class EntryProvider {
     updatedDate: string = null,
     disputed: number = 0,
     verified: boolean = false,
+    votes: number = 0,
     amount: number,
     dueDate: string = null,
     paid: boolean = false
@@ -67,6 +68,7 @@ export class EntryProvider {
       updatedDate,
       disputed,
       verified,
+      votes,
       amount,
       dueDate,
       paid,
@@ -83,20 +85,22 @@ export class EntryProvider {
 	  // and vote display
     //now = Date();
     const nowTime: string = 'just now time';
-    return this.entryList.update(entryId, { updatedDate: nowTime });
+    const newVotes: number = 3;
+
+    return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
   }
 
   disputeEntry(entryId: string): Promise<any> {
     // need to add transactions
     // entry = getEntry(entryId)
-    const dis: integer = 4;	  
+    const dis: number = 4;	  
     return this.entryList.update(entryId, { disputed: dis });
   }
 
   resetDisputeEntry(entryId: string): Promise<any> {
     // need to add transactions
     // entry = getEntry(entryId)
-    const dis: integer = 0;	  
+    const dis: number = 0;	  
     return this.entryList.update(entryId, { disputed: dis });
   }
 
