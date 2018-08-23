@@ -37,9 +37,13 @@ export class EntryCreatePage {
           this.newEntryForm.value.address,
           this.newEntryForm.value.phone,
           this.newEntryForm.value.notes,
-	  //this.newEntryForm.value.verified = false,
+          this.newEntryForm.value.updatedDate,
+          this.newEntryForm.value.disputed,
+          this.newEntryForm.value.verified,
+          this.newEntryForm.value.votes,
           this.newEntryForm.value.amount,
           this.newEntryForm.value.dueDate
+          // paid: boolean = false
         )
         .then(
           () => {
