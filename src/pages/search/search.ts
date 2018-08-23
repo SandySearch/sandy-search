@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {
   IonicPage,
   NavController,
-  Loading,
+  //Loading,
   LoadingController
 } from 'ionic-angular';
 import { OldHomePage } from '../oldhome/oldhome';
