@@ -44,7 +44,7 @@ export class OldHomePage {
 
   moreEntryOptions(entryId): void {
     let action: ActionSheet = this.actionCtrl.create({
-      title: 'Modify your entry',
+      title: 'Update Service Listing',
       buttons: [
       /*** no delete/edit by users
         {
@@ -64,15 +64,22 @@ export class OldHomePage {
           }
         },
         {
-          text: 'This service is still available?',
+          text: 'Call this Service',
+          icon: !this.platform.is('ios') ? 'call' : null,
+          handler: () => {
+            this.entryProvider.updateEntry(entryId);
+          }
+        },
+        {
+          text: 'Confirm this Service is Still Available',
           icon: !this.platform.is('ios') ? 'checkmark' : null,
           handler: () => {
             this.entryProvider.updateEntry(entryId);
           }
         },
         {
-          text: 'Dispute this listing?',
-          icon: !this.platform.is('ios') ? 'checkmark' : null,
+          text: 'Dispute this Listing!',
+          icon: !this.platform.is('ios') ? 'alert' : null,
           handler: () => {
             this.entryProvider.disputeEntry(entryId);
           }
