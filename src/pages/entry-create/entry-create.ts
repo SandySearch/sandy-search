@@ -18,11 +18,17 @@ export class EntryCreatePage {
   ) {
     this.newEntryForm = formBuilder.group({
       name: ['', Validators.required],
-      address: ['', Validators.required],
-      phone: ['', Validators.required],
-      notes: ['', Validators.required],
-      amount: ['', Validators.required],
-      dueDate: ['', Validators.required]
+      address: ['', Validators.required]
+      //phone: [''],
+      //notes: [''],
+      //updatedDate: [''],
+      //disputed: [''],
+      //verified: [''],
+      //votes: [''],
+      //createDate: [''],
+      //archive: ['']
+      //amount: ['', Validators.required],
+      //dueDate: ['', Validators.required]
     });
   }
 
@@ -32,7 +38,7 @@ export class EntryCreatePage {
     } else {
       this.entryProvider
         .createEntry(
-          this.newEntryForm.value.type,
+          this.newEntryForm.value.serviceType,
           this.newEntryForm.value.name,
           this.newEntryForm.value.address,
           this.newEntryForm.value.phone,
@@ -41,8 +47,8 @@ export class EntryCreatePage {
           this.newEntryForm.value.disputed,
           this.newEntryForm.value.verified,
           this.newEntryForm.value.votes,
-          this.newEntryForm.value.amount,
-          this.newEntryForm.value.dueDate
+          this.newEntryForm.value.createDate,
+          this.newEntryForm.value.archive
           // paid: boolean = false
         )
         .then(

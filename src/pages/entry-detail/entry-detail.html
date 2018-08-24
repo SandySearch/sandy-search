@@ -19,33 +19,43 @@
 
   <ion-card>
     <ion-card-header>
-      Entry Information
+      Service Details
     </ion-card-header>
     <ion-list>
       <ion-item>
-        <ion-icon color="secondary" name="information-circle" item-left>
+        <ion-icon color="secondary" name="home" item-left>
         </ion-icon>
         {{ entry?.name }}
       </ion-item>
 
       <ion-item>
         <ion-icon color="favorite" name="cash" item-left></ion-icon>
-        {{ entry?.amount }}
+        {{ entry?.address }}
+      </ion-item>
+      
+      <ion-item>
+        <ion-icon color="favorite" name="call" item-left></ion-icon>
+        {{ entry?.phone }}
+      </ion-item>
+
+      <ion-item>
+        <ion-icon color="favorite" name="information-circle" item-left></ion-icon>
+        {{ entry?.notes }}
       </ion-item>
 
       <ion-item>
         <ion-icon color="secondary" name="calendar" item-left></ion-icon>
-        <strong>{{ entry?.dueDate }}</strong>
+        <strong>{{ entry?.createDate }}</strong>
       </ion-item>
 
-      <ion-item *ngIf="entry?.paid == true">
+      <ion-item *ngIf="entry?.verified == true">
         <ion-icon color="favorite" name="checkmark" item-left></ion-icon>
-        This bill is paid.
+        This service is validated
       </ion-item>
 
-      <ion-item *ngIf="entry?.paid == false">
-        <ion-icon color="danger" name="timer" item-left></ion-icon>
-        You haven't paid this bill.
+      <ion-item *ngIf="entry?.verified == false">
+        <ion-icon color="danger" name="warning" item-left></ion-icon>
+        unvalidated.
       </ion-item>
     </ion-list>
   </ion-card>

@@ -12,7 +12,7 @@
     <ion-item>
       <ion-label>Service Type</ion-label>
       <!--
-      <ion-select formControlName="type">
+      <ion-select formControlName="serviceType">
       -->
       <ion-select >
         <ion-option>Emergency Shelter</ion-option>
@@ -33,22 +33,23 @@
 
     <ion-item>
       <ion-label stacked>Service Address</ion-label>
-      <ion-input formControlName="address" type="text" placeholder="123 Main stree, Stamford, CT" [class.invalid]="!newEntryForm.controls.address.valid && blur">
+      <ion-input formControlName="address" type="text" placeholder="123 Main street, Stamford, CT" [class.invalid]="!newEntryForm.controls.address.valid && blur">
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Service Phone Number</ion-label>
-      <ion-input formControlName="phone" type="number" placeholder="203 555-1212" >
+      <ion-input formControlName="phone" type="number" placeholder="(optional) 2035551212" >
       </ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Notes on Service</ion-label>
-      <ion-input formControlName="notes" type="text" placeholder="hours M-F 9am to 9pm" >
+      <ion-input formControlName="notes" type="text" placeholder="(optional) hours M-F 9am to 9pm" >
       </ion-input>
     </ion-item>
 
+<!--
     <ion-item>
       <ion-label stacked>Amount</ion-label>
       <ion-input formControlName="amount" type="number" placeholder="How much do you have to pay?" [class.invalid]="!newEntryForm.controls.amount.valid && blur">
@@ -61,6 +62,7 @@
         && blur">
       </ion-datetime>
     </ion-item>
+-->
 
     <button ion-button block type="submit">
       Create new entry
