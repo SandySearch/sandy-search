@@ -31,6 +31,14 @@ export class SearchPage {
   listEFW(): void { this.navCtrl.setRoot(OldHomePage); }
 
   listGS(): void { this.navCtrl.setRoot(OldHomePage); }
+  
+  listCS(): void { this.navCtrl.setRoot(OldHomePage); }
+  
+  listOFS(): void { this.navCtrl.setRoot(OldHomePage); }
+  
+  listWATM(): void { this.navCtrl.setRoot(OldHomePage); }
+  
+  listOther(): void { this.navCtrl.setRoot(OldHomePage); }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
