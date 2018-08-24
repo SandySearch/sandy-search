@@ -43,7 +43,7 @@ export class EntryProvider {
   }
 
   createEntry(
-    type: string = 'GS',
+    serviceType: string = 'GS',
     name: string,
     address: string,
     phone: number,
@@ -52,15 +52,17 @@ export class EntryProvider {
     disputed: number = 0,
     verified: boolean = false,
     votes: number = 0,
-    amount: number,
-    dueDate: string = null,
-    paid: boolean = false
+    createDate: string = new Date().toLocaleString(),
+    archive: boolean = false
+    //amount: number,
+    //dueDate: string = null,
+    //paid: boolean = false
   ): Promise<any> {
     const newEntryRef: firebase.database.ThenableReference = this.entryList.push(
       {}
     );
     return newEntryRef.set({
-      type,
+      serviceType,
       name,
       address,
       phone,
@@ -69,9 +71,11 @@ export class EntryProvider {
       disputed,
       verified,
       votes,
-      amount,
-      dueDate,
-      paid,
+      createDate,
+      archive,
+      //amount,
+      //dueDate,
+      //paid,
       id: newEntryRef.key
     });
   }
@@ -103,6 +107,11 @@ export class EntryProvider {
     // entry = getEntry(entryId)
     const dis: number = 0;	  
     return this.entryList.update(entryId, { disputed: dis });
+  }
+  
+  archiveEntry(entryId: string): Promise<any> {
+    // need to add transactions? 
+    return this.entryList.update(entryId, { archive: true });
   }
 
   payEntry(entryId: string): Promise<any> {
