@@ -17,18 +17,17 @@ export class EntryCreatePage {
     public entryProvider: EntryProvider
   ) {
     this.newEntryForm = formBuilder.group({
+      serviceType: ['', Validators.required],
       name: ['', Validators.required],
-      address: ['', Validators.required]
-      //phone: [''],
-      //notes: [''],
+      address: ['', Validators.required],
+      phone: [''],
+      notes: ['']
       //updatedDate: [''],
       //disputed: [''],
       //verified: [''],
       //votes: [''],
       //createDate: [''],
       //archive: ['']
-      //amount: ['', Validators.required],
-      //dueDate: ['', Validators.required]
     });
   }
 
