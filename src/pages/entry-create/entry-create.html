@@ -11,17 +11,19 @@
 
     <ion-item>
       <ion-label>Service Type</ion-label>
-      <!--
+      <!-- -->
       <ion-select formControlName="serviceType">
-      -->
+      <!-- -->
+      <!--
       <ion-select >
-        <ion-option>Emergency Shelter</ion-option>
-        <ion-option>Emergency Food/Water</ion-option>
-        <ion-option selected>Open Gas Stations</ion-option>
-        <ion-option>Charging Stations</ion-option>
-        <ion-option>Open Food Stores</ion-option>
-        <ion-option>Open ATMs</ion-option>
-        <ion-option>Other</ion-option>
+      -->
+        <ion-option value="ESNY">Emergency Shelter</ion-option>
+        <ion-option value="EFW">Emergency Food/Water</ion-option>
+        <ion-option value="GS" selected>Open Gas Stations</ion-option>
+        <ion-option value="CS">Charging Stations</ion-option>
+        <ion-option value="OFS">Open Food Stores</ion-option>
+        <ion-option value="WATM">Working ATMs</ion-option>
+        <ion-option value="other">Other</ion-option>
       </ion-select>
     </ion-item>
 
@@ -50,11 +52,6 @@
     </ion-item>
 
 <!--
-    <ion-item>
-      <ion-label stacked>Amount</ion-label>
-      <ion-input formControlName="amount" type="number" placeholder="How much do you have to pay?" [class.invalid]="!newEntryForm.controls.amount.valid && blur">
-      </ion-input>
-    </ion-item>
 
     <ion-item>
       <ion-label>Due Date</ion-label>
