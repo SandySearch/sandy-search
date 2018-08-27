@@ -51,20 +51,24 @@ export class EntryDetailPage {
       title: 'Modify your entry',
       buttons: [
         {
-          text: 'Delete',
-          role: 'destructive',
-          icon: !this.platform.is('ios') ? 'trash' : null,
+          text: 'Call this Service',
+          icon: !this.platform.is('ios') ? 'call' : null,
           handler: () => {
-            this.entryProvider.removeEntry(entryId).then(() => {
-              this.navCtrl.pop()
-            })
+            this.entryProvider.updateEntry(entryId)
           }
         },
         {
-          text: 'Mark as Paid!',
+          text: 'Confirm this Service is Still Available',
           icon: !this.platform.is('ios') ? 'checkmark' : null,
           handler: () => {
-            this.entryProvider.payEntry(entryId)
+            this.entryProvider.updateEntry(entryId)
+          }
+        },
+        {
+          text: 'Dispute this Listing!',
+          icon: !this.platform.is('ios') ? 'alert' : null,
+          handler: () => {
+            this.entryProvider.disputeEntry(entryId)
           }
         },
         {
