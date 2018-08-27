@@ -3,8 +3,26 @@
   "version": "0.0.3",
   "description": "An Ionic project",
   "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "homepage": "https://github.com/mkobar/sandy-search#readme",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mkobar/sandy-search.git"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "keywords": [
+    "angular2",
+    "karma",
+    "jasmine",
+    "istanbul",
+    "unit-testing",
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/mkobar/sandy-search/issues"
+  },
   "scripts": {
     "clean2": "ionic-app-scripts clean",
     "build": "firebase use sandy-search && ng build --env=dev",
@@ -78,7 +96,6 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.9",
-    "babel-eslint": "^8.2.6",
     "codelyzer": "^4.4.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
     "eslint-plugin-typescript": "^0.3.0",
