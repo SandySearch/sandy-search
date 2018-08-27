@@ -6,6 +6,7 @@
 ![Platform](https://img.shields.io/badge/platform-Android-brightgreen.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Web-orange.svg)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Entry for The Agents of Change Hackathon, 12 August 2018 in NYC
 
@@ -48,15 +49,15 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 
 ## Things left to do:
 
-- iOS build and App Store upload - just need my Mac.
-- Google Play Store upload
-- store service location data in firebase
-- add in the real distance calculations (from stree address).  There are seveal free services for this but they may be rate limited.
-- add a map view (with Google Maps or OpenStreetMaps)
-- add the account request function (and screen) - something like Google Forms would work well.
-- add an admin interface for entry and user management.
-- add more logging
-- add more firebase services - pictures to storage, analytics, crash monitoring, etc.
+- [ ] iOS build and App Store upload - just need my Mac.
+- [ ] Google Play Store upload
+- [ ] store service location data in firebase
+- [ ] add in the real distance calculations (from stree address).  There are seveal free services for this but they may be rate limited.
+- [ ] add a map view (with Google Maps or OpenStreetMaps)
+- [ ] add the account request function (and screen) - and force to validate with email?
+- [ ] add an admin interface for entry and user management.
+- [ ] add more logging
+- [ ] add more firebase services - pictures to storage, analytics, crash monitoring, etc.
 
 Please do contact me directly if you can use or add to this project.
 
