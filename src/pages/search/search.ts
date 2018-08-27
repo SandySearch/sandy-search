@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
 import {
-  IonicPage,
-  NavController,
+  IonicPage,      // eslint-disable-line no-unused-vars
+  NavController,  // eslint-disable-line no-unused-vars
   //Loading,
-  LoadingController
-} from 'ionic-angular';
-import { OldHomePage } from '../oldhome/oldhome';
+  LoadingController  // eslint-disable-line no-unused-vars
+} from 'ionic-angular'
+import { OldHomePage } from '../oldhome/oldhome'
 
 /**
  * Generated class for the SearchPage page.
@@ -20,28 +20,26 @@ import { OldHomePage } from '../oldhome/oldhome';
   templateUrl: 'search.html',
 })
 export class SearchPage {
-
-  constructor(
+  constructor (  // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
     public loadingCtrl: LoadingController
   ) { }
 
-  listESNY(): void { this.navCtrl.setRoot(OldHomePage); }
+  listESNY (): void { this.navCtrl.setRoot(OldHomePage) }
 
-  listEFW(): void { this.navCtrl.setRoot(OldHomePage); }
+  listEFW (): void { this.navCtrl.setRoot(OldHomePage) }
 
-  listGS(): void { this.navCtrl.setRoot(OldHomePage); }
-  
-  listCS(): void { this.navCtrl.setRoot(OldHomePage); }
-  
-  listOFS(): void { this.navCtrl.setRoot(OldHomePage); }
-  
-  listWATM(): void { this.navCtrl.setRoot(OldHomePage); }
-  
-  listOther(): void { this.navCtrl.setRoot(OldHomePage); }
+  listGS (): void { this.navCtrl.setRoot(OldHomePage) }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SearchPage');
+  listCS (): void { this.navCtrl.setRoot(OldHomePage) }
+
+  listOFS (): void { this.navCtrl.setRoot(OldHomePage) }
+
+  listWATM (): void { this.navCtrl.setRoot(OldHomePage) }
+
+  listOther (): void { this.navCtrl.setRoot(OldHomePage) }
+
+  ionViewDidLoad () {
+    console.log('ionViewDidLoad SearchPage')
   }
-
 }

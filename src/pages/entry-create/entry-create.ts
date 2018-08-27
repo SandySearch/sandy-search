@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EntryProvider } from '../../providers/entry/entry';
+import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { IonicPage, NavController } from 'ionic-angular'  // eslint-disable-line no-unused-vars
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'  // eslint-disable-line no-unused-vars
+import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
 
 @IonicPage()
 @Component({
@@ -9,9 +9,9 @@ import { EntryProvider } from '../../providers/entry/entry';
   templateUrl: 'entry-create.html'
 })
 export class EntryCreatePage {
-  public newEntryForm: FormGroup;
+  public newEntryForm: FormGroup;  // eslint-disable-line no-undef
 
-  constructor(
+  constructor (
     public navCtrl: NavController,
     formBuilder: FormBuilder,
     public entryProvider: EntryProvider
@@ -28,12 +28,12 @@ export class EntryCreatePage {
       //votes: [''],
       //createDate: [''],
       //archive: ['']
-    });
+    })
   }
 
-  createEntry() {
+  createEntry () {
     if (!this.newEntryForm.valid) {
-      console.log(this.newEntryForm.value);
+      console.log(this.newEntryForm.value)
     } else {
       this.entryProvider
         .createEntry(
@@ -52,12 +52,12 @@ export class EntryCreatePage {
         )
         .then(
           () => {
-            this.navCtrl.pop();
+            this.navCtrl.pop()
           },
           error => {
-            console.log(error);
+            console.log(error)
           }
-        );
+        )
     }
   }
 }

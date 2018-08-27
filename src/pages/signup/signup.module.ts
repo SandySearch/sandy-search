@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { SignupPage } from './signup';
+import { NgModule } from '@angular/core'         // eslint-disable-line no-unused-vars
+import { IonicPageModule } from 'ionic-angular'  // eslint-disable-line no-unused-vars
+import { SignupPage } from './signup'            // eslint-disable-line no-unused-vars
 
 @NgModule({
   declarations: [

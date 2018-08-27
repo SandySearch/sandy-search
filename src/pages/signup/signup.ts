@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
 import {
-  IonicPage,
-  NavController,
-  Loading,
-  LoadingController,
-  Alert,
-  AlertController
-} from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthProvider } from '../../providers/auth/auth';
-import { EmailValidator } from '../../validators/email';
+  IonicPage,          // eslint-disable-line no-unused-vars
+  NavController,      // eslint-disable-line no-unused-vars
+  Loading,            // eslint-disable-line no-unused-vars
+  LoadingController,  // eslint-disable-line no-unused-vars
+  Alert,              // eslint-disable-line no-unused-vars
+  AlertController     // eslint-disable-line no-unused-vars
+} from 'ionic-angular'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'  // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../../providers/auth/auth'             // eslint-disable-line no-unused-vars
+import { EmailValidator } from '../../validators/email'
 
 @IonicPage()
 @Component({
@@ -17,10 +17,10 @@ import { EmailValidator } from '../../validators/email';
   templateUrl: 'signup.html'
 })
 export class SignupPage {
-  public signupForm: FormGroup;
-  public loading: Loading;
+  public signupForm: FormGroup;  // eslint-disable-line no-undef
+  public loading: Loading;       // eslint-disable-line no-undef
 
-  constructor(
+  constructor (
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
@@ -31,21 +31,21 @@ export class SignupPage {
     //email: ['', Validators.required],
       email: [
         '',
-	Validators.compose([Validators.required, EmailValidator.isValid])
-	],
+        Validators.compose([Validators.required, EmailValidator.isValid])
+      ],
       password: [
         '',
         Validators.compose([Validators.minLength(6), Validators.required])
-        ],
+      ],
       fullName: [
         '',
         Validators.compose([Validators.minLength(6), Validators.required])
-        ],
+      ],
       phone: [
         '',
         Validators.compose([Validators.minLength(12), Validators.required])
-        ]
-    });
+      ]
+    })
   }
 
   /**
@@ -55,28 +55,28 @@ export class SignupPage {
    * If the form is invalid it will just log the form value,
    *  feel free to handle that as you like.
    */
-  
-  signupUser(): void {
+
+  signupUser (): void {
     if (!this.signupForm.valid) {
-      console.log(this.signupForm.value);
+      console.log(this.signupForm.value)
     } else {
-      const email: string = this.signupForm.value.email;
-      const password: string = this.signupForm.value.password;
-      const name: string = this.signupForm.value.fullName;
-      const phone: string = this.signupForm.value.phone;
+      const email: string = this.signupForm.value.email
+      const password: string = this.signupForm.value.password
+      const name: string = this.signupForm.value.fullName
+      const phone: string = this.signupForm.value.phone
 
       //this.authProvider.linkAccount(email, password).then(
       this.authProvider.signupUser(email, password, name, phone).then(
         () => {
-	   this.loading.dismiss().then(() => {
-	    //this.navCtrl.pop();
-	    //this.nav.setRoot(LandingPage);
-	    this.navCtrl.popToRoot();
-          });
+          this.loading.dismiss().then(() => {
+            //this.navCtrl.pop();
+            //this.nav.setRoot(LandingPage);
+            this.navCtrl.popToRoot()
+          })
         },
         error => {
           this.loading.dismiss().then(() => {
-            var errorMessage: string = error.message;
+            var errorMessage: string = error.message
             const alert: Alert = this.alertCtrl.create({
               message: errorMessage,
               buttons: [
@@ -85,17 +85,17 @@ export class SignupPage {
                   role: 'cancel'
                 }
               ]
-            });
-            alert.present();
-          });
+            })
+            alert.present()
+          })
         }
-      );
+      )
 
       //this.loading = this.loadingCtrl.create();
       this.loading = this.loadingCtrl.create({
-        dismissOnPageChange: true,
-      });
-      this.loading.present();
+        dismissOnPageChange: true
+      })
+      this.loading.present()
     }
   }
 }
