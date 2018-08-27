@@ -18,7 +18,7 @@ export class EntryProvider {
     public afDatabase: AngularFireDatabase
   ) {
 
-    //const dbUrl = `/userProfile/${user.uid}/billList`;
+    //const dbUrl = `/userProfile/${user.uid}`;
     const dbUrl = `/serviceList`;
 
     this.afAuth.authState.subscribe(user => {
@@ -48,15 +48,12 @@ export class EntryProvider {
     address: string,
     phone: number,
     notes: string,
-    updatedDate: string = null,
+    updatedDate: string = new Date().toLocaleString(),
     disputed: number = 0,
     verified: boolean = false,
     votes: number = 0,
     createDate: string = new Date().toLocaleString(),
     archive: boolean = false
-    //amount: number,
-    //dueDate: string = null,
-    //paid: boolean = false
   ): Promise<any> {
     const newEntryRef: firebase.database.ThenableReference = this.entryList.push(
       {}
@@ -73,9 +70,6 @@ export class EntryProvider {
       votes,
       createDate,
       archive,
-      //amount,
-      //dueDate,
-      //paid,
       id: newEntryRef.key
     });
   }
@@ -84,27 +78,41 @@ export class EntryProvider {
     return this.entryList.remove(entryId);
   }
 
+  incrementVote(entryId: string) {
+    /**
+    this.afDatabase.object('serviceList/${entryId}/votes').query.ref.transaction(votes => {
+      //if ( (votes === null) || (votes === 0 ) ) {
+      if (votes === null) {
+        return votes = 1;
+      } else {
+        return votes + 1;
+      }
+    });
+    **/
+    //this.afDatabase.object('serviceList/'+entryId+'/votes').query.ref.transaction(votes => { votes ? ++votes : 1; return votes });
+    this.afDatabase.object('serviceList/'+entryId+'/votes').query.ref.transaction(votes => votes ? ++votes : 1);
+  };
+  
   updateEntry(entryId: string): Promise<any> {
 	  // need to add transactions
 	  // and vote display
-    //let now = Date.now();
-    var nowTime = new Date().toLocaleString();
-    //const nowTime: string = 'just now time';
-    const newVotes: number = 3;
-
-    return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
+    let nowTime = new Date().toLocaleString();
+    //const newVotes: number = this.incrementVote(entryId);
+    this.incrementVote(entryId);
+    //return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
+    return this.entryList.update(entryId, { updatedDate: nowTime });
   }
+
 
   disputeEntry(entryId: string): Promise<any> {
     // need to add transactions
-    // entry = getEntry(entryId)
-    const dis: number = 4;	  
-    return this.entryList.update(entryId, { disputed: dis });
+    //const dis: number = 4;	  
+    //return this.entryList.update(entryId, { disputed: dis });
+    return this.afDatabase.object('serviceList/'+entryId+'/disputed').query.ref.transaction(disputed => disputed ? ++disputed : 1);
   }
 
   resetDisputeEntry(entryId: string): Promise<any> {
     // need to add transactions
-    // entry = getEntry(entryId)
     const dis: number = 0;	  
     return this.entryList.update(entryId, { disputed: dis });
   }
@@ -112,10 +120,6 @@ export class EntryProvider {
   archiveEntry(entryId: string): Promise<any> {
     // need to add transactions? 
     return this.entryList.update(entryId, { archive: true });
-  }
-
-  payEntry(entryId: string): Promise<any> {
-    return this.entryList.update(entryId, { paid: true });
   }
 
 /***
