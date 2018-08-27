@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
 import {
-  IonicPage,
-  NavController,
-  Alert,
-  AlertController
-} from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthProvider } from '../../providers/auth/auth';
+  IonicPage,         // eslint-disable-line no-unused-vars
+  NavController,     // eslint-disable-line no-unused-vars
+  Alert,             // eslint-disable-line no-unused-vars
+  AlertController    // eslint-disable-line no-unused-vars
+} from 'ionic-angular'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'  // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../../providers/auth/auth'             // eslint-disable-line no-unused-vars
 
 @IonicPage()
 @Component({
@@ -14,9 +14,9 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'reset-password.html'
 })
 export class ResetPasswordPage {
-  public resetPasswordForm: FormGroup;
+  public resetPasswordForm: FormGroup;  // eslint-disable-line no-undef
 
-  constructor(
+  constructor (
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public authProvider: AuthProvider,
@@ -24,14 +24,14 @@ export class ResetPasswordPage {
   ) {
     this.resetPasswordForm = formBuilder.group({
       email: ['', Validators.required]
-    });
+    })
   }
 
-  resetPassword(): void {
+  resetPassword (): void {
     if (!this.resetPasswordForm.valid) {
-      console.log(this.resetPasswordForm.value);
+      console.log(this.resetPasswordForm.value)
     } else {
-      const email: string = this.resetPasswordForm.value.email;
+      const email: string = this.resetPasswordForm.value.email
 
       this.authProvider.resetPassword(email).then(
         user => {
@@ -42,15 +42,15 @@ export class ResetPasswordPage {
                 text: 'Ok',
                 role: 'cancel',
                 handler: () => {
-                  this.navCtrl.pop();
+                  this.navCtrl.pop()
                 }
               }
             ]
-          });
-          alert.present();
+          })
+          alert.present()
         },
         error => {
-          var errorMessage: string = error.message;
+          var errorMessage: string = error.message
           const errorAlert: Alert = this.alertCtrl.create({
             message: errorMessage,
             buttons: [
@@ -59,11 +59,11 @@ export class ResetPasswordPage {
                 role: 'cancel'
               }
             ]
-          });
+          })
 
-          errorAlert.present();
+          errorAlert.present()
         }
-      );
+      )
     }
   }
 }

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { SearchPage } from './search';
+import { NgModule } from '@angular/core'         // eslint-disable-line no-unused-vars
+import { IonicPageModule } from 'ionic-angular'  // eslint-disable-line no-unused-vars
+import { SearchPage } from './search'            // eslint-disable-line no-unused-vars
 
 @NgModule({
   declarations: [

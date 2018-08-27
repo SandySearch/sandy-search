@@ -1,18 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
+import { BrowserModule } from '@angular/platform-browser'                 // eslint-disable-line no-unused-vars
+import { ErrorHandler, NgModule } from '@angular/core'                    // eslint-disable-line no-unused-vars
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular'  // eslint-disable-line no-unused-vars
+import { SplashScreen } from '@ionic-native/splash-screen'                // eslint-disable-line no-unused-vars
+import { StatusBar } from '@ionic-native/status-bar'                      // eslint-disable-line no-unused-vars
 
-import { MyApp } from './app.component';
-import { OldHomePage } from '../pages/oldhome/oldhome';
-import { AuthProvider } from '../providers/auth/auth';
-import { EntryProvider } from '../providers/entry/entry';
+import { MyApp } from './app.component'                                   // eslint-disable-line no-unused-vars
+import { OldHomePage } from '../pages/oldhome/oldhome'                    // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../providers/auth/auth'                     // eslint-disable-line no-unused-vars
+import { EntryProvider } from '../providers/entry/entry'                  // eslint-disable-line no-unused-vars
 
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { firebaseConfig } from './credentials';
+import { AngularFireModule } from 'angularfire2'                          // eslint-disable-line no-unused-vars
+import { AngularFireDatabaseModule } from 'angularfire2/database'         // eslint-disable-line no-unused-vars
+import { AngularFireAuthModule } from 'angularfire2/auth'                 // eslint-disable-line no-unused-vars
+import { firebaseConfig } from './credentials'                            // eslint-disable-line no-unused-vars
 
 @NgModule({
   declarations: [

@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
 import {
-  IonicPage,
-  NavController,
-  NavParams,
-  ActionSheet,
-  ActionSheetController,
-  Platform,
+  IonicPage,             // eslint-disable-line no-unused-vars
+  NavController,         // eslint-disable-line no-unused-vars
+  NavParams,             // eslint-disable-line no-unused-vars
+  ActionSheet,           // eslint-disable-line no-unused-vars
+  ActionSheetController, // eslint-disable-line no-unused-vars
+  Platform,              // eslint-disable-line no-unused-vars
   //Alert,
-  AlertController
-} from 'ionic-angular';
-import { EntryProvider } from '../../providers/entry/entry';
-import { AuthProvider } from '../../providers/auth/auth';
+  AlertController        // eslint-disable-line no-unused-vars
+} from 'ionic-angular'
+import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../../providers/auth/auth'     // eslint-disable-line no-unused-vars
 //import { Camera } from '@ionic-native/camera'
 
 @IonicPage({
@@ -21,11 +21,11 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'entry-detail.html'
 })
 export class EntryDetailPage {
-  public entry: {};
-  public entryId: string;
-  public placeholderPicture = "assets/img/collect.jpg";
+  public entry: {};       // eslint-disable-line no-undef
+  public entryId: string; // eslint-disable-line no-undef
+  //public placeholderPicture = 'assets/img/collect.jpg';
 
-  constructor(
+  constructor (  // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
     public navParams: NavParams,
     public actionCtrl: ActionSheetController,
@@ -36,17 +36,17 @@ export class EntryDetailPage {
     //public cameraPlugin: Camera
   ) { }
 
-  ionViewDidEnter() {
-    this.entryId = this.navParams.get('entryId');
+  ionViewDidEnter () {
+    this.entryId = this.navParams.get('entryId')
     this.entryProvider
       .getEntry(this.entryId)
       .valueChanges()
       .subscribe(entry => {
-        this.entry = entry;
-      });
+        this.entry = entry
+      })
   }
 
-  showOptions(entryId): void {
+  showOptions (entryId): void {
     const action: ActionSheet = this.actionCtrl.create({
       title: 'Modify your entry',
       buttons: [
@@ -56,15 +56,15 @@ export class EntryDetailPage {
           icon: !this.platform.is('ios') ? 'trash' : null,
           handler: () => {
             this.entryProvider.removeEntry(entryId).then(() => {
-              this.navCtrl.pop();
-            });
+              this.navCtrl.pop()
+            })
           }
         },
         {
           text: 'Mark as Paid!',
           icon: !this.platform.is('ios') ? 'checkmark' : null,
           handler: () => {
-            this.entryProvider.payEntry(entryId);
+            this.entryProvider.payEntry(entryId)
           }
         },
         {
@@ -72,55 +72,11 @@ export class EntryDetailPage {
           role: 'cancel',
           icon: !this.platform.is('ios') ? 'close' : null,
           handler: () => {
-            console.log('Cancel clicked');
+            console.log('Cancel clicked')
           }
         }
       ]
-    });
-    action.present();
+    })
+    action.present()
   }
-
-/***
-  uploadPicture(billId): void {
-    if (this.authProvider.getUser().isAnonymous == true) {
-      const alert: Alert = this.alertCtrl.create({
-        message: "If you want to continue you will need to provide an email and create a password",
-        buttons: [
-          { text: 'Cancel' },
-          {
-            text: 'OK',
-            handler: data => {
-              this.navCtrl.push('SignupPage');
-            }
-          }
-        ]
-      });
-      alert.present();
-    } else {
-      this.cameraPlugin
-        .getPicture({
-          quality: 95,
-          destinationType: this.cameraPlugin.DestinationType.DATA_URL,
-          sourceType: this.cameraPlugin.PictureSourceType.CAMERA,
-          allowEdit: true,
-          encodingType: this.cameraPlugin.EncodingType.PNG,
-          saveToPhotoAlbum: true
-        })
-        .then(
-          imageData => {
-            this.billProvider
-              .takeBillPhoto(this.billId, imageData)
-              .then(res => {
-                console.log(this.billId, res.downloadURL);
-                this.billProvider.storeDownloadUrl(this.billId, res.downloadURL)
-              });
-          },
-          error => {
-            console.log('ERROR -> ' + JSON.stringify(error));
-          }
-        );
-    }
- }
-***/
-
 }

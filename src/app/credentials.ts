@@ -5,4 +5,4 @@ export const firebaseConfig = {
   projectId: 'sandy-search',
   storageBucket: 'sandy-search.appspot.com',
   messagingSenderId: '400553647913'
-};
+}
