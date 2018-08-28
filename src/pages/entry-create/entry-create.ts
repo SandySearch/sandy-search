@@ -9,17 +9,28 @@ import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-l
   templateUrl: 'entry-create.html'
 })
 export class EntryCreatePage {
-  public newEntryForm: FormGroup;  // eslint-disable-line no-undef
-
+  public newEntryForm: FormGroup  // eslint-disable-line no-undef
+  //isToggled: boolean = false
+  lat: number = 999
+  lon: number = 999
   constructor (
     public navCtrl: NavController,
     formBuilder: FormBuilder,
     public entryProvider: EntryProvider
   ) {
+    /***
+    form = new FormGroup(
+    { 
+      first: new FormControl(
+      {value: 'Nancy', disabled: true},
+            Validators.required), 
+        last: new FormControl('Drew', Validators.required) });
+     ***/
     this.newEntryForm = formBuilder.group({
-      serviceType: ['', Validators.required],
+      serviceType: ['GS', Validators.required],
       name: ['', Validators.required],
       address: ['', Validators.required],
+      here: [false],
       phone: [''],
       notes: ['']
       //updatedDate: [''],
@@ -29,6 +40,23 @@ export class EntryCreatePage {
       //createDate: [''],
       //archive: ['']
     })
+  }
+
+  // https://stackoverflow.com/questions/40729335/ionic2-ion-toggle-get-value-on-ionchange
+  atLocation() {
+    console.log("toggled: "+ this.newEntryForm.value.here)
+    if (this.newEntryForm.value.here) {
+      // then get lat lon for this location
+      //and store in lat,lon in entry
+      this.lat = 123
+      this.lon = 456
+    } else {
+      // don't know yet as address needs to be looked up
+      this.lat = 999
+      this.lon = 999
+    }
+    console.log("lat: "+ this.lat)
+    console.log("lon: "+ this.lon)
   }
 
   createEntry () {
@@ -42,12 +70,15 @@ export class EntryCreatePage {
           this.newEntryForm.value.address,
           this.newEntryForm.value.phone,
           this.newEntryForm.value.notes,
-          this.newEntryForm.value.updatedDate,
-          this.newEntryForm.value.disputed,
-          this.newEntryForm.value.verified,
-          this.newEntryForm.value.votes,
-          this.newEntryForm.value.createDate,
-          this.newEntryForm.value.archive
+          this.lat,
+          this.lon
+          //this.newEntryForm.value.updatedDate,
+          //this.newEntryForm.value.disputed,
+          //this.newEntryForm.value.verified,
+          //this.newEntryForm.value.votes,
+          //this.newEntryForm.value.createDate,
+          //this.newEntryForm.value.archive
+
           // paid: boolean = false
         )
         .then(

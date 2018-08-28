@@ -11,15 +11,10 @@
 
     <ion-item>
       <ion-label>Service Type</ion-label>
-      <!-- -->
       <ion-select formControlName="serviceType">
-      <!-- -->
-      <!--
-      <ion-select >
-      -->
         <ion-option value="ESNY">Emergency Shelter</ion-option>
         <ion-option value="EFW">Emergency Food/Water</ion-option>
-        <ion-option value="GS" selected>Open Gas Stations</ion-option>
+        <ion-option value="GS">Open Gas Stations</ion-option>
         <ion-option value="CS">Charging Stations</ion-option>
         <ion-option value="OFS">Open Food Stores</ion-option>
         <ion-option value="WATM">Working ATMs</ion-option>
@@ -37,6 +32,16 @@
       <ion-label stacked>Service Address</ion-label>
       <ion-input formControlName="address" type="text" placeholder="123 Main street, Stamford, CT" [class.invalid]="!newEntryForm.controls.address.valid && blur">
       </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label >Are you at Service Address now?</ion-label>
+      <!--
+      <ion-toggle formControlName="here" color="secondary" (ionChange)="atLocation()" checked="false" [checked]="isToggled"></ion-toggle>
+      <ion-toggle formControlName="here" color="secondary" (ionChange)="atLocation()"></ion-toggle>
+      -->
+      <ion-toggle formControlName="here" color="secondary" (ionChange)="atLocation()">no yes</ion-toggle>
+      
     </ion-item>
 
     <ion-item>
