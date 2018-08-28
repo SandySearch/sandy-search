@@ -25,19 +25,10 @@ export class SearchPage {
     public loadingCtrl: LoadingController
   ) { }
 
-  listESNY (): void { this.navCtrl.setRoot(OldHomePage) }
-
-  listEFW (): void { this.navCtrl.setRoot(OldHomePage) }
-
-  listGS (): void { this.navCtrl.setRoot(OldHomePage) }
-
-  listCS (): void { this.navCtrl.setRoot(OldHomePage) }
-
-  listOFS (): void { this.navCtrl.setRoot(OldHomePage) }
-
-  listWATM (): void { this.navCtrl.setRoot(OldHomePage) }
-
-  listOther (): void { this.navCtrl.setRoot(OldHomePage) }
+  searchList (search: string): void { 
+    console.log("search = ", search)
+    this.navCtrl.setRoot(OldHomePage) 
+  }
 
   ionViewDidLoad () {
     console.log('ionViewDidLoad SearchPage')
