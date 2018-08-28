@@ -77,6 +77,9 @@ export class EntryProvider {
     return this.entryList.remove(entryId)
   }
 
+  // from https://stackoverflow.com/questions/50215622/firebase-database-transaction-with-angularfire2
+  // and
+  // https://stackoverflow.com/questions/42596866/angularfire2-best-way-to-increment-a-value
   incrementVote (entryId: string) {
         /**
         this.afDatabase.object('serviceList/${entryId}/votes').query.ref.transaction(votes => {
