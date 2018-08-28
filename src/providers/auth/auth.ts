@@ -53,7 +53,7 @@ export class AuthProvider {
     console.log('name', name)
     return this.afAuth.auth.createUserWithEmailAndPassword(newEmail, newPassword).then(
       user => {
-        // TODO add signup date and did
+        // TODO add did
         this.afDatabase.object(`/userProfile/${user.uid}`).update({
           email: newEmail,
           name: name,
@@ -61,6 +61,21 @@ export class AuthProvider {
           signupDate: new Date().toLocaleString(),
           confirmed: false
         })
+        // then send email verification here
+        // https://github.com/angular/angularfire2/issues/904
+        //
+        //let user:any = firebase.auth().currentUser
+        user.sendEmailVerification().then(
+          (success) => {
+            console.log('please verify your email')
+            // FIXME need an alert here to the user
+          }
+        ).catch(
+          error => {
+            //this.error = err;
+            console.log('There was an error sending verification email to this account', error)
+          }
+        )
       },
       error => {
         console.log('There was an error adding this account', error)
