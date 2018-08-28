@@ -43,7 +43,7 @@ export class SignupPage {
       ],
       phone: [
         '',
-        Validators.compose([Validators.minLength(12), Validators.required])
+        Validators.compose([Validators.minLength(10), Validators.required])
       ]
     })
   }
