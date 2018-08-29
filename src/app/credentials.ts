@@ -6,3 +6,5 @@ export const firebaseConfig = {
   storageBucket: 'sandy-search.appspot.com',
   messagingSenderId: '400553647913'
 }
+
+export const googleMapsKey = 'AIzaSyD8HNt2Du1RFCgbT3eUXUU0jzflA-qK0Ak'

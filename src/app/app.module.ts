@@ -12,7 +12,9 @@ import { EntryProvider } from '../providers/entry/entry'                  // esl
 import { AngularFireModule } from 'angularfire2'                          // eslint-disable-line no-unused-vars
 import { AngularFireDatabaseModule } from 'angularfire2/database'         // eslint-disable-line no-unused-vars
 import { AngularFireAuthModule } from 'angularfire2/auth'                 // eslint-disable-line no-unused-vars
-import { firebaseConfig } from './credentials'                            // eslint-disable-line no-unused-vars
+import { firebaseConfig, googleMapsKey } from './credentials'
+import { GeoProvider } from '../providers/geo/geo'                        // eslint-disable-line no-unused-vars
+import { AgmCoreModule } from '@agm/core'                                 // eslint-disable-line no-unused-vars
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { firebaseConfig } from './credentials'                            // esl
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AgmCoreModule.forRoot({
+      apiKey: googleMapsKey
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +41,8 @@ import { firebaseConfig } from './credentials'                            // esl
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
-    EntryProvider
+    EntryProvider,
+    GeoProvider
   ]
 })
 export class AppModule { }
