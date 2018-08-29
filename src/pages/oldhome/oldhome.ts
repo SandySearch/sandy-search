@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component, OnInit } from '@angular/core'  // eslint-disable-line no-unused-vars
 import {
   NavController,          // eslint-disable-line no-unused-vars
   ActionSheet,            // eslint-disable-line no-unused-vars
@@ -11,13 +11,20 @@ import { Observable } from 'rxjs/Observable'
 import { LandingPage } from '../landing/landing'
 import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
 import { AuthProvider } from '../../providers/auth/auth'     // eslint-disable-line no-unused-vars
+import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
 
 @Component({
   selector: 'page-oldhome',
-  templateUrl: 'oldhome.html'
+  templateUrl: 'oldhome.html',
+    styles: [`
+    .ion-list { margin-bottom: 64px !important; }
+  `],
 })
+//export class OldHomePage implements OnInit {
 export class OldHomePage {
   public entryList: Observable<any>;  // eslint-disable-line no-undef
+  lat: number
+  lng: number
 
   constructor (  // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
@@ -25,10 +32,45 @@ export class OldHomePage {
     public loadingCtrl: LoadingController,
     public platform: Platform,
     public entryProvider: EntryProvider,
-    public authProvider: AuthProvider
+    public authProvider: AuthProvider,
+    public geo: GeoProvider
   ) { }
 
+  ngOnInit() {
+    //this.seedDatabase()  // only need to do this once
+
+  }
+  
+  private seedDatabase() {
+  let dummyPoints = [
+    [37.9, -73.1],
+    [38.7, -73.2],
+    [38.1, -73.3],
+    [38.3, -73.0],
+    [38.7, -73.1]
+  ]
+
+  dummyPoints.forEach((val, idx) => {
+    let name = `dummy-location-${idx}`
+    console.log(idx)
+    this.geo.setLocation(name, val)
+  })
+}
+  
   ionViewDidLoad () {
+    // geolocation first
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+       this.lat = position.coords.latitude;
+       this.lng = position.coords.longitude;
+     });
+   } else {
+     /// default coords
+    this.lat = 40.73;
+    this.lng = -73.93;
+   }
+   console.log('lat/lon = '+this.lat+' '+this.lng)
+    
     //if (user) {
     this.entryList = this.entryProvider.getEntryList().valueChanges()
     //}
@@ -42,6 +84,10 @@ export class OldHomePage {
     this.navCtrl.push('EntryDetailPage', { entryId: entryId })
   }
 
+  showMap (): void {
+    this.navCtrl.push('MapPage')
+  }
+  
   moreEntryOptions (entryId): void {
     let action: ActionSheet = this.actionCtrl.create({
       title: 'Update Service Listing',
