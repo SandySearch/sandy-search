@@ -7,6 +7,7 @@ import {
 } from 'angularfire2/database'
 
 import firebase from 'firebase/app'  // eslint-disable-line no-unused-vars
+import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
 
 @Injectable()
 export class EntryProvider {
@@ -15,9 +16,10 @@ export class EntryProvider {
 
   constructor (
     public afAuth: AngularFireAuth,
-    public afDatabase: AngularFireDatabase
+    public afDatabase: AngularFireDatabase,
+    private geo: GeoProvider
   ) {
-        //const dbUrl = `/userProfile/${user.uid}`;
+    //const dbUrl = `/userProfile/${user.uid}`;
     const dbUrl = `/serviceList`
 
     this.afAuth.authState.subscribe(user => {
@@ -49,6 +51,7 @@ export class EntryProvider {
         notes: string,
         lat: number = 999,
         lon: number = 999,
+        here: false,
         updatedDate: string = new Date().toLocaleString(),
         disputed: number = 0,
         verified: boolean = false,
@@ -59,6 +62,8 @@ export class EntryProvider {
     const newEntryRef: firebase.database.ThenableReference = this.entryList.push(
           {}
         )
+    // set geohash here?
+    this.geo.setLocation(newEntryRef.key, [lat, lon])
     return newEntryRef.set({
       serviceType,
       name,
@@ -67,6 +72,7 @@ export class EntryProvider {
       notes,
       lat,
       lon,
+      here,
       updatedDate,
       disputed,
       verified,
@@ -78,6 +84,7 @@ export class EntryProvider {
   }
 
   removeEntry (entryId: string): Promise<any> {
+    // need to remove matching geohash
     return this.entryList.remove(entryId)
   }
 
