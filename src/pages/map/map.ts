@@ -44,7 +44,7 @@ export class MapPage {
        });
      } else {
        this.lat = 51.678418;
-       this.lng = 7.809007;
+       this.lng = -73.809007;
      }
    }
  }
