@@ -11,8 +11,8 @@ import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-l
 export class EntryCreatePage {
   public newEntryForm: FormGroup  // eslint-disable-line no-undef
   //isToggled: boolean = false
-  lat: number = 999
-  lon: number = 999
+  lat: number = 0
+  lng: number = 0
   constructor (
     public navCtrl: NavController,
     formBuilder: FormBuilder,
@@ -45,24 +45,33 @@ export class EntryCreatePage {
   // https://stackoverflow.com/questions/40729335/ionic2-ion-toggle-get-value-on-ionchange
   atLocation() {
     console.log("toggled: "+ this.newEntryForm.value.here)
-    if (this.newEntryForm.value.here) {
-      // then get lat lon for this location
-      //and store in lat,lon in entry
-      this.lat = 123
-      this.lon = 456
-    } else {
-      // don't know yet as address needs to be looked up
-      this.lat = 999
-      this.lon = 999
+    if (this.newEntryForm.value.here) { // only needed if toggled back and forth more than once
+      // then get lat lon for this location via GPS  (user is at location)
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+         this.lat = position.coords.latitude
+         this.lng = position.coords.longitude
+         console.log("EntryCreate this.lat/this.lng 1= "+this.lat+'/'+this.lng)
+       });
+     } else {  // if GPS failed or is disabled
+        // should we set here = false to trigger geocoding?
+       this.lat = 41.678418
+       this.lng = -73.809007
+       console.log("EntryCreate this.lat/this.lng 2= "+this.lat+'/'+this.lng)
+      }
     }
-    console.log("lat: "+ this.lat)
-    console.log("lon: "+ this.lon)
   }
 
   createEntry () {
     if (!this.newEntryForm.valid) {
       console.log(this.newEntryForm.value)
     } else {
+      if (this.newEntryForm.value.here === false) {
+        // FIXME do geoCoding here, if needed (if here === false)
+        this.lat = 41.67
+        this.lng = -73.80
+        console.log("createEntry this.lat/this.lng = "+this.lat+'/'+this.lng)
+      }
       this.entryProvider
         .createEntry(
           this.newEntryForm.value.serviceType,
@@ -71,7 +80,8 @@ export class EntryCreatePage {
           this.newEntryForm.value.phone,
           this.newEntryForm.value.notes,
           this.lat,
-          this.lon
+          this.lng,
+          this.newEntryForm.value.here
           //this.newEntryForm.value.updatedDate,
           //this.newEntryForm.value.disputed,
           //this.newEntryForm.value.verified,

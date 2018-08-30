@@ -71,7 +71,6 @@ export class OldHomePage {
     console.log('home lat/lon = '+this.lat+' '+this.lng)
    }
    
-    
     //if (user) {
     this.entryList = this.entryProvider.getEntryList().valueChanges()
     //}
