@@ -33,25 +33,24 @@ export class OldHomePage {
     public platform: Platform,
     public entryProvider: EntryProvider,
     public authProvider: AuthProvider,
-    public geo: GeoProvider
+    private geo: GeoProvider
   ) { }
 
   ngOnInit() {
     //this.seedDatabase()  // only need to do this once
-
   }
   
   private seedDatabase() {
   let dummyPoints = [
-    [37.9, -73.1],
-    [38.7, -73.2],
-    [38.1, -73.3],
-    [38.3, -73.0],
-    [38.7, -73.1]
+    [41.9, -73.1],
+    [41.7, -73.2],
+    [41.1, -73.3],
+    [41.3, -73.0],
+    [40.7, -73.1]
   ]
 
   dummyPoints.forEach((val, idx) => {
-    let name = `dummy-location-${idx}`
+    let name = `dummy-location2-${idx}`
     console.log(idx)
     this.geo.setLocation(name, val)
   })
@@ -61,15 +60,17 @@ export class OldHomePage {
     // geolocation first
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-       this.lat = position.coords.latitude;
-       this.lng = position.coords.longitude;
+       this.lat = position.coords.latitude
+       this.lng = position.coords.longitude
+       console.log('home lat/lon = '+this.lat+' '+this.lng)
      });
    } else {
      /// default coords
-    this.lat = 40.73;
-    this.lng = -73.93;
+    this.lat = 40.73
+    this.lng = -73.93
+    console.log('home lat/lon = '+this.lat+' '+this.lng)
    }
-   console.log('lat/lon = '+this.lat+' '+this.lng)
+   
     
     //if (user) {
     this.entryList = this.entryProvider.getEntryList().valueChanges()
