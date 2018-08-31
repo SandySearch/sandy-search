@@ -1,7 +1,9 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component, ChangeDetectorRef } from '@angular/core'  // eslint-disable-line no-unused-vars
 import { IonicPage, NavController } from 'ionic-angular'  // eslint-disable-line no-unused-vars
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'  // eslint-disable-line no-unused-vars
 import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
+import { GeocodingProvider } from '../../providers/geocoding/geocoding'  // eslint-disable-line no-unused-vars
+
 
 @IonicPage()
 @Component({
@@ -13,10 +15,17 @@ export class EntryCreatePage {
   //isToggled: boolean = false
   lat: number = 0
   lng: number = 0
+  mapsClient: any
+  location: {lat: number, lng: number}
+  loading: boolean
+  
   constructor (
     public navCtrl: NavController,
     formBuilder: FormBuilder,
-    public entryProvider: EntryProvider
+    public entryProvider: EntryProvider,
+    private geocodingProvider: GeocodingProvider,
+    private ref: ChangeDetectorRef,
+    //private __zone: NgZone 
   ) {
     /***
     form = new FormGroup(
@@ -52,7 +61,7 @@ export class EntryCreatePage {
          this.lat = position.coords.latitude
          this.lng = position.coords.longitude
          console.log("EntryCreate this.lat/this.lng 1= "+this.lat+'/'+this.lng)
-       });
+       })
      } else {  // if GPS failed or is disabled
         // should we set here = false to trigger geocoding?
        this.lat = 41.678418
@@ -62,16 +71,96 @@ export class EntryCreatePage {
     }
   }
 
+  /***
+  googleMapsClient.geocode({address: '1600 Amphitheatre Parkway, Mountain View, CA'})
+    .asPromise()
+    .then((response) => {
+      console.log("geocode= ",response.json.results);
+    })
+    .catch((err) => {
+      console.log(err);
+  });
+  ***/
+  
+  getAddress(address: string): any {
+    /***
+    this.geocodingProvider.getLatLon('Andorra')
+      .subscribe(
+        result => {
+            this.__zone.run(() => {
+                this.lat = result.lat();
+                this.lng = result.lng();
+            })
+        },
+        error => console.log(error),
+        () => console.log('Geocoding completed!')
+      );
+     ***/
+    this.loading = true;
+    this.geocodingProvider.getLatLon(address)
+    .subscribe(
+      location => {
+        this.location = location
+        this.lat = location.lat
+        this.lng = location.lng
+        this.loading = false
+        this.ref.detectChanges()
+        console.log("address ["+address+"] has lat/lon ="+this.lat+"/"+this.lng)
+        this.addEntry()
+      },
+      error => console.log(error),
+      () =>  { 
+        console.log('Geocoding completed!')
+      }
+    )      
+  }
+  
   createEntry () {
     if (!this.newEntryForm.valid) {
       console.log(this.newEntryForm.value)
     } else {
       if (this.newEntryForm.value.here === false) {
         // FIXME do geoCoding here, if needed (if here === false)
-        this.lat = 41.67
-        this.lng = -73.80
+        /***
+        this.mapsClient.geocode({address: '1600 Amphitheatre Parkway, Mountain View, CA'})
+          .asPromise().then((response) => {
+            console.log("geocode= ",response.json.results);
+          })
+          .catch((err) => {
+            console.log(err);
+        })
+        ***/
+        
+        //this.getAddress('1148 New Britain Ave, West Hartford, CT')
+        /***
+        this.getAddress('West Haven, CT').then(() => {
+            console.log("after address lat/lon ="+this.lat+"/"+this.lng)
+          })
+        ***/
+            
+        //this.getAddress('West Haven, CT')
+        this.getAddress(this.newEntryForm.value.address)
+        //console.log("after address lat/lon ="+this.lat+"/"+this.lng)
+
+        } else {
+          // no geocoding
+          this.addEntry()
+        }
+
         console.log("createEntry this.lat/this.lng = "+this.lat+'/'+this.lng)
+    }
+  }
+  
+    addEntry () {
+      // validate lat lon first
+      if ( (this.lat < -89) || (this.lat > 89) ) {
+        this.lat = 41.67
       }
+      if ( (this.lng < -179) || (this.lng > 179) ) {
+        this.lng = -73.80
+      }
+      console.log("addEntry this.lat/this.lng = "+this.lat+'/'+this.lng)
+    
       this.entryProvider
         .createEntry(
           this.newEntryForm.value.serviceType,
@@ -99,6 +188,6 @@ export class EntryCreatePage {
             console.log(error)
           }
         )
-    }
   }
+  
 }

@@ -14,7 +14,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database'         // esl
 import { AngularFireAuthModule } from 'angularfire2/auth'                 // eslint-disable-line no-unused-vars
 import { firebaseConfig, googleMapsKey } from './credentials'
 import { GeoProvider } from '../providers/geo/geo'                        // eslint-disable-line no-unused-vars
-import { AgmCoreModule } from '@agm/core'                                 // eslint-disable-line no-unused-vars
+import { AgmCoreModule } from '@agm/core'
+import { GeocodingProvider } from '../providers/geocoding/geocoding';                                 // eslint-disable-line no-unused-vars
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AgmCoreModule } from '@agm/core'                                 // esl
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     AuthProvider,
     EntryProvider,
-    GeoProvider
+    GeoProvider,
+    GeocodingProvider
   ]
 })
 export class AppModule { }
