@@ -4,11 +4,11 @@
       Available Services
     </ion-title>
     <ion-buttons end>
-      <!-- -->
+      <!-- 
       <button ion-button color="danger" (click)="logoutNow()">Logout
       </button>
-      <!-- -->
-      <button ion-button color="secondary" (click)="showMap()">Map
+      -->
+      <button ion-button color="secondary" (click)="showMap()">Map&nbsp;&nbsp;
         <ion-icon name="map"></ion-icon>
       </button>
       <button ion-button icon-only (click)="createEntry()">
@@ -21,21 +21,49 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let entry of entryList | async" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
+<div class="item ">
+      <div class="row">
+	<div class="col col-70 balanced" *ngIf="entry.verified">
+	   <button ion-button outline small color="secondary">verified</button>
+	</div>
+	<div class="col col-70 " *ngIf="!entry.verified">
+	   <button ion-button outline small color="danger">un-verified</button>
+	</div>
+        <div class="col col-30 ">2.1 miles away</div>
+      </div>
+      <div class="row">
+	<div class="col item item-icon-left col-15">
+	<!--
+	<div class="col ">
+	-->
+<!--
+          <ion-icon name="car" color="danger" item-left></ion-icon>
+-->
+          <ion-icon name="home" color="danger"></ion-icon>
+          <strong>&nbsp;&nbsp;&nbsp;{{entry.name}}</strong>
+       </div>
+  <!--
+        <div class="col col-85">
+          <strong>{{entry.name}}</strong>
+  </div>
+  -->
+      </div>
+      <div class="row">
+	<div class="col ">
+          <p>{{entry.address}}</p>
+          <p>{{entry.notes}}</p>
+          <p>Last confirmed:
+            <strong>{{entry.updatedDate}}&nbsp;&nbsp;&nbsp; </strong>
+	      <ion-icon name="checkmark"></ion-icon>
+              <strong> {{entry.votes}}</strong>
+	    </p>
+        </div>
+      </div>
+  </div>
+      <!--
       <ion-icon name="home" color="danger" item-left></ion-icon>
-      <h2>{{entry.name}}</h2>
-      <h3>{{entry.address}}</h3>
-      <h3>{{entry.phone}}</h3>
+      -->
       
-      <h3 *ngIf="entry.verified">verified</h3>
-      <h3 *ngIf="!entry.verified">unverified</h3> 
-      <h3>{{entry.notes}}</h3>
-      <p>Last confirmed:
-        <strong>{{entry.updatedDate}}</strong>
-      </p>
-      <p>
-        <ion-icon name="checkmark"></ion-icon>
-        <strong> {{entry.votes}}</strong>
-      </p>
     </ion-item>
   </ion-list>
 
