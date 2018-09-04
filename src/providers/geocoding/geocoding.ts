@@ -1,4 +1,5 @@
-import { Injectable, NgZone } from '@angular/core'
+//import { Injectable, NgZone } from '@angular/core'
+import { Injectable } from '@angular/core'
 //import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core'
 import { MapsAPILoader } from '@agm/core'
 //import { Observable, Observer } from 'rxjs'
