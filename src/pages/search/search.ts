@@ -27,7 +27,7 @@ export class SearchPage {
 
   searchList (search: string): void { 
     console.log("search = ", search)
-    this.navCtrl.setRoot(OldHomePage) 
+    this.navCtrl.setRoot(OldHomePage, { serviceType: search } ) 
   }
 
   ionViewDidLoad () {
