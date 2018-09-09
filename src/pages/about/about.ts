@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
 import { IonicPage, NavController, NavParams } from 'ionic-angular'  // eslint-disable-line no-unused-vars
-
+import { appVersion } from '../../app/credentials'
 /**
  * Generated class for the AboutPage page.
  *
@@ -14,6 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular'  // eslint-d
   templateUrl: 'about.html',
 })
 export class AboutPage {
+  //version = "0.0.4"
+  version = appVersion
+  
   constructor (public navCtrl: NavController, public navParams: NavParams) {  // eslint-disable-line no-useless-constructor
   }
 
