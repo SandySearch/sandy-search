@@ -2,12 +2,12 @@ import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
 import {
   IonicPage,          // eslint-disable-line no-unused-vars
   NavController,      // eslint-disable-line no-unused-vars
-  Loading,            // eslint-disable-line no-unused-vars
+  //Loading,            // eslint-disable-line no-unused-vars
   LoadingController,  // eslint-disable-line no-unused-vars
-  Alert,              // eslint-disable-line no-unused-vars
+  //Alert,              // eslint-disable-line no-unused-vars
   AlertController     // eslint-disable-line no-unused-vars
 } from 'ionic-angular'
-import { OldHomePage } from '../oldhome/oldhome'
+//import { OldHomePage } from '../oldhome/oldhome'
 import { AuthProvider } from '../../providers/auth/auth'  // eslint-disable-line no-unused-vars
 
 @IonicPage()
@@ -35,6 +35,7 @@ export class LandingPage {
     this.navCtrl.push('EntryCreatePage')
   }
 
+  /***
   goToEntryList (): void {
     this.authProvider.anonymousLogin().then(newUser => {
       loading.dismiss().then(() => {
@@ -62,4 +63,5 @@ export class LandingPage {
     const loading: Loading = this.loadingCtrl.create()
     loading.present()
   }
+  ***/
 }
