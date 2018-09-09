@@ -26,7 +26,8 @@ import 'rxjs/add/operator/filter'
 //export class OldHomePage implements OnInit {
 export class OldHomePage {
   public entryList$: Observable<any>;  // eslint-disable-line no-undef
-  public filteredEntryList$: Observable<entry[]>;  // eslint-disable-line no-undef
+  //public filteredEntryList$: Observable<entry[]>;  // eslint-disable-line no-undef
+  public filteredEntryList$: Observable<any>;  // eslint-disable-line no-undef
   lat: number
   lng: number
   serviceType: string
@@ -79,13 +80,15 @@ export class OldHomePage {
    }
 
    this.serviceType = this.navParams.get('serviceType')
-   console.log("found serviceType = "+this.serviceType);
+   console.log("found serviceType = "+this.serviceType)
+
+    // now load title with serviceType
    if (this.serviceType === "ESNY") {
      this.title = "Emergency Shelters"
    } else if (this.serviceType === "EFW") {
      this.title = "Emergency Food and Water"
    } else if (this.serviceType === "GS") {
-     this.title = "Gas Stations (gas & power)"
+     this.title = "Gas Stations (with Gas & Power)"
    } else if (this.serviceType === "CS") {
      this.title = "Charging Locations"
    } else if (this.serviceType === "OFS") {
@@ -119,7 +122,7 @@ export class OldHomePage {
        ***/
        //})
    this.entryList$.subscribe(x => {
-     console.log(x)
+     //console.log(x)  // debug
    });
    //this.filteredEntryList.subscribe(x => console.log(x));
    //this.filteredEntryList = this.entryList.filter(it => it['serviceType'] == this.serviceType)
