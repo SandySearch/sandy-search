@@ -30,6 +30,7 @@ export class OldHomePage {
   lat: number
   lng: number
   serviceType: string
+  title: string
 
   constructor (  // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
@@ -79,6 +80,21 @@ export class OldHomePage {
 
    this.serviceType = this.navParams.get('serviceType')
    console.log("found serviceType = "+this.serviceType);
+   if (this.serviceType === "ESNY") {
+     this.title = "Emergency Shelters"
+   } else if (this.serviceType === "EFW") {
+     this.title = "Emergency Food and Water"
+   } else if (this.serviceType === "GS") {
+     this.title = "Gas Stations (gas & power)"
+   } else if (this.serviceType === "CS") {
+     this.title = "Charging Locations"
+   } else if (this.serviceType === "OFS") {
+     this.title = "Open Food Stores"
+   } else if (this.serviceType === "WATM") {
+     this.title = "Working ATMs"
+   } else if (this.serviceType === "Other") {
+     this.title = "Other Services"
+   }
    //if (user) {
    this.entryList$ = this.entryProvider.getEntryList().valueChanges()
 
@@ -112,13 +128,16 @@ export class OldHomePage {
    //}
   }
 
+  /**
   transform(items: any[], field: string, value: string): any[] {
     if(!items) return [];
     if(!field) return items;
 
     return items.filter(it => it[field] === value)
   }
-
+  **/
+  
+  /**
   filter(entry : <any>) : boolean{
     // Return true if don't want this job in the results.
     // e.g. lets filter jobs with price < 25;
@@ -127,6 +146,7 @@ export class OldHomePage {
     }
     return false
   }
+  **/
   
   createEntry (): void {
     this.navCtrl.push('EntryCreatePage')
