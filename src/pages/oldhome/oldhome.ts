@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'  // eslint-disable-line no-unused-vars
 import {
   NavController,          // eslint-disable-line no-unused-vars
+  NavParams,              // eslint-disable-line no-unused-vars
   ActionSheet,            // eslint-disable-line no-unused-vars
   ActionSheetController,  // eslint-disable-line no-unused-vars
   Loading,                // eslint-disable-line no-unused-vars
@@ -12,9 +13,11 @@ import { LandingPage } from '../landing/landing'
 import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
 import { AuthProvider } from '../../providers/auth/auth'     // eslint-disable-line no-unused-vars
 import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/filter'
 
 @Component({
-  selector: 'page-oldhome',
+  selector: 'page-oldhome/:serviceType',
   templateUrl: 'oldhome.html',
     styles: [`
     .ion-list { margin-bottom: 64px !important; }
@@ -22,12 +25,15 @@ import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-l
 })
 //export class OldHomePage implements OnInit {
 export class OldHomePage {
-  public entryList: Observable<any>;  // eslint-disable-line no-undef
+  public entryList$: Observable<any>;  // eslint-disable-line no-undef
+  public filteredEntryList$: Observable<entry[]>;  // eslint-disable-line no-undef
   lat: number
   lng: number
+  serviceType: string
 
   constructor (  // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
+    public navParams: NavParams,
     public actionCtrl: ActionSheetController,
     public loadingCtrl: LoadingController,
     public platform: Platform,
@@ -65,17 +71,63 @@ export class OldHomePage {
        console.log('home lat/lon = '+this.lat+' '+this.lng)
      });
    } else {
-     /// default coords
+     // default coords
     this.lat = 40.73
     this.lng = -73.93
     console.log('home lat/lon = '+this.lat+' '+this.lng)
    }
-   
-    //if (user) {
-    this.entryList = this.entryProvider.getEntryList().valueChanges()
-    //}
+
+   this.serviceType = this.navParams.get('serviceType')
+   console.log("found serviceType = "+this.serviceType);
+   //if (user) {
+   this.entryList$ = this.entryProvider.getEntryList().valueChanges()
+
+   //this.filteredEntryList$ = this.entryList$.filter(entry => {
+   this.filteredEntryList$ = this.entryList$
+     .do(x => console.log(x))
+     .do(x => console.log("serviceType1 =",x.serviceType))
+     //.do(x => console.log("serviceType2 =",x[serviceType]))
+     .do(x => console.log("serviceType3 =",x['serviceType']))
+     .do(x => console.log("serviceType3 =",x[5].serviceType))
+     //.filter(entry[] => 
+     //entry.serviceType == "GS")
+   /***
+     console.log("it.serviceType ="+entry.serviceType);
+     if (entry.serviceType === "GS"){
+       console.log("true");
+       return true;
+     } else {
+       console.log("false");
+       return false;
+       }
+       ***/
+       //})
+   this.entryList$.subscribe(x => {
+     console.log(x)
+   });
+   //this.filteredEntryList.subscribe(x => console.log(x));
+   //this.filteredEntryList = this.entryList.filter(it => it['serviceType'] == this.serviceType)
+   //this.filteredEntryList = this.entryList.filter(it => it.serviceType === "GS")
+
+   //}
   }
 
+  transform(items: any[], field: string, value: string): any[] {
+    if(!items) return [];
+    if(!field) return items;
+
+    return items.filter(it => it[field] === value)
+  }
+
+  filter(entry : <any>) : boolean{
+    // Return true if don't want this job in the results.
+    // e.g. lets filter jobs with price < 25;
+    if (entry.price === this.servicetype){
+      return true;
+    }
+    return false
+  }
+  
   createEntry (): void {
     this.navCtrl.push('EntryCreatePage')
   }

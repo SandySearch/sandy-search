@@ -8,10 +8,13 @@ import {
 
 import firebase from 'firebase/app'  // eslint-disable-line no-unused-vars
 import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class EntryProvider {
   public entryList: AngularFireList<any>;  // eslint-disable-line
+  public entryList$: Observable<any>;  // eslint-disable-line
   public userId: string;  // eslint-disable-line
 
   constructor (
@@ -33,7 +36,11 @@ export class EntryProvider {
   }
 
   getEntryList (): AngularFireList<any> {
+    //getEntryList (): Observable<any> {
     return this.entryList
+    //return this.entryList.filter(it => it.serviceType === "GS")
+    //this.entryList$ = this.entryList
+    //return this.entryList$.map(it => it.serviceType === "GS")
   }
 
   getEntry (entryId: string): AngularFireObject<any> {
