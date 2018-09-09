@@ -51,10 +51,10 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 
 ## Things left to do:
 
-- [x] store service location data in firebase
-- [x] add a map view (with Google Maps or OpenStreetMaps)
-- [x] add the account request function (and screen) - and force to validate with email?
-- [x] add more logging
+- [x] ~~store service location data in firebase~~
+- [x] ~~add a map view (with Google Maps or OpenStreetMaps)~~
+- [x] ~~add the account request function (and screen) - and force to validate with email?~~
+- [x] ~~add more logging~~
 - [ ] iOS build and App Store upload - just need my Mac.
 - [ ] Google Play Store upload
 - [ ] add in the real distance calculations (from stree address).  There are seveal free services for this but they may be rate limited.
