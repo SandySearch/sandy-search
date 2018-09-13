@@ -15,6 +15,7 @@ import { AuthProvider } from '../../providers/auth/auth'     // eslint-disable-l
 import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/filter'
+import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 
 @Component({
   selector: 'page-oldhome/:serviceType',
@@ -70,12 +71,23 @@ export class OldHomePage {
 }
   
   ionViewDidLoad () {
+      this.serviceType = this.navParams.get('serviceType')
+      console.log("found serviceType = "+this.serviceType)
+    
+      this.markers = []  // empty this
+      this.geo.hits = new BehaviorSubject([])  // force to empty - every time we enter
+      console.log("this.markers=", this.markers)
+      console.log("this.geo.hits=", this.geo.hits)
+
       this.getUserLocation()
       this.subscription = this.geo.hits
-        .subscribe(hits => this.markers = hits)
+        .subscribe(hits => {
+          this.markers = hits
+            .filter(x => {
+              return (x.serviceType === this.serviceType) && (x.disputed < 3)
+            })
+        })
 
-   this.serviceType = this.navParams.get('serviceType')
-   console.log("found serviceType = "+this.serviceType)
 
     // now load title with serviceType
    if (this.serviceType === "ESNY") {
@@ -119,6 +131,8 @@ export class OldHomePage {
   }
 
   ngOnDestroy() {
+      console.log("do we get to here?")
+      //console.log(this.subscription.lenth)
       if (this.subscription) {
         this.subscription.unsubscribe()
       }
@@ -174,7 +188,7 @@ export class OldHomePage {
   }
 
   showMap (): void {
-    this.navCtrl.push('MapPage')
+    this.navCtrl.push('MapPage', { serviceType: this.serviceType })
   }
   
   moreEntryOptions (entryId): void {
