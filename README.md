@@ -36,7 +36,7 @@ Nothing fancy but it will work, much like the way Zello was used after Hurricane
 
 This mobile application was built with the sweet [Ionic Framework](http://ionicframework.com/) (Angular5/TypeScript/CSS/HTML5) and uses the Google [FireBase](https://firebase.google.com/) service for authentication, realtime database and cloud hosting (currently on a free spark plan).
 
-Maps and geocoding is pulled from Google APIs.
+Maps and geocoding is pulled from Google APIs.  I plan to do reverse geocoding from Google too.
 
 With a Vim editor and a cmd window.
 
@@ -45,7 +45,7 @@ With a Vim editor and a cmd window.
 Live web app version of SandyService can be found here:  https://sandy-search.firebaseapp.com/#/landing
 
 And the Android APK is available on GitHub here:
-  https://github.com/mkobar/sandysearch/releases/tag/0.0.2
+  https://github.com/mkobar/sandysearch/releases/tag/0.0.5
 
 The original GitHub repository for the web app is here: https://github.com/mkobar/essr-aot
 
@@ -57,8 +57,16 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 - [x] ~~add more logging~~
 - [ ] iOS build and App Store upload - just need my Mac.
 - [ ] Google Play Store upload
-- [ ] add in the real distance calculations (from stree address).  There are seveal free services for this but they may be rate limited.
+- [x] ~~add in the real distance calculations (from stree address).  There are seveal free services for this but they may be rate limited.~~
 - [ ] add an admin interface for entry and user management.
+- [ ] add dupe reporting option
+- [ ] rate limit votes and disputed to 1 an hour with local storage
+- [ ] add initial tutorial slides
+- [ ] add spinner for list and map
+- [ ] fix km to miles
+- [ ] change markers by serviceType
+- [ ] better logo - animated?
+
 
 Please do contact me directly if you can use or add to this project.
 
