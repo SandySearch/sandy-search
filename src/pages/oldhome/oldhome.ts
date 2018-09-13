@@ -32,6 +32,10 @@ export class OldHomePage {
   lng: number
   serviceType: string
   title: string
+  rangeKm: number = 25
+
+  markers: any;
+  subscription: any;
 
   constructor (  // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
@@ -46,6 +50,7 @@ export class OldHomePage {
 
   ngOnInit() {
     //this.seedDatabase()  // only need to do this once
+    
   }
   
   private seedDatabase() {
@@ -65,19 +70,9 @@ export class OldHomePage {
 }
   
   ionViewDidLoad () {
-    // geolocation first
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-       this.lat = position.coords.latitude
-       this.lng = position.coords.longitude
-       console.log('home lat/lon = '+this.lat+' '+this.lng)
-     });
-   } else {
-     // default coords
-    this.lat = 40.73
-    this.lng = -73.93
-    console.log('home lat/lon = '+this.lat+' '+this.lng)
-   }
+      this.getUserLocation()
+      this.subscription = this.geo.hits
+        .subscribe(hits => this.markers = hits)
 
    this.serviceType = this.navParams.get('serviceType')
    console.log("found serviceType = "+this.serviceType)
@@ -98,6 +93,7 @@ export class OldHomePage {
    } else if (this.serviceType === "Other") {
      this.title = "Other Services"
    }
+/***  Read entire list without location/distance
    //if (user) {
    this.entryList$ = this.entryProvider.getEntryList().valueChanges()
 
@@ -110,16 +106,6 @@ export class OldHomePage {
      .do(x => console.log("serviceType3 =",x[5].serviceType))
      //.filter(entry[] => 
      //entry.serviceType == "GS")
-   /***
-     console.log("it.serviceType ="+entry.serviceType);
-     if (entry.serviceType === "GS"){
-       console.log("true");
-       return true;
-     } else {
-       console.log("false");
-       return false;
-       }
-       ***/
        //})
    this.entryList$.subscribe(x => {
      //console.log(x)  // debug
@@ -129,7 +115,35 @@ export class OldHomePage {
    //this.filteredEntryList = this.entryList.filter(it => it.serviceType === "GS")
 
    //}
+***/
   }
+
+  ngOnDestroy() {
+      if (this.subscription) {
+        this.subscription.unsubscribe()
+      }
+    }
+  
+    private getUserLocation() {
+     // locate the user
+     if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+         this.lat = position.coords.latitude
+         this.lng = position.coords.longitude
+         console.log("this.lat/this.lng 1= "+this.lat+'/'+this.lng)
+         // get service locations
+         this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
+       });
+     } else {
+       this.lat = 51.678418
+       this.lng = -73.809007
+       console.log("this.lat/this.lng 2= "+this.lat+'/'+this.lng)
+       // get service locations
+       this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
+     }
+     //console.log("this.lat/this.lng = "+this.lat+'/'+this.lng)
+     //this.geo.getLocations(100, [this.lat, this.lng])
+   }
 
   /**
   transform(items: any[], field: string, value: string): any[] {

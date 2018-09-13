@@ -25,7 +25,11 @@
     <ion-item *ngFor="let entry of filteredEntryList$ | async" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
     <ion-item *ngFor="let entry of filteredEntryList$ | async" [hidden]="filter(entry)" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
     -->
+    <!--
     <ion-item *ngFor="let entry of entryList$ | async" [hidden]="entry.serviceType != serviceType" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
+    -->
+    <ion-item *ngFor="let entry of markers" [hidden]="entry.serviceType != serviceType" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
+    
 <div class="item ">
       <div class="row">
 	<div class="col col-70 balanced" *ngIf="entry.verified">
@@ -34,7 +38,7 @@
 	<div class="col col-70 " *ngIf="!entry.verified">
 	   <button ion-button outline small color="danger">un-verified</button>
 	</div>
-        <div class="col col-30 ">2.1 miles away</div>
+        <div class="col col-30 ">{{entry.distance}} miles away</div>
       </div>
       <div class="row">
 	<div class="col item item-icon-left col-15">
