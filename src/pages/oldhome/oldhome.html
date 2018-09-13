@@ -28,7 +28,15 @@
     <!--
     <ion-item *ngFor="let entry of entryList$ | async" [hidden]="entry.serviceType != serviceType" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
     -->
-    <ion-item *ngFor="let entry of markers" [hidden]="entry.serviceType != serviceType" (click)="moreEntryOptions(entry.id)" [class.hide]="entry.disputed >= 3">
+
+    <!-- 
+    [hidden]="entry.serviceType != serviceType" 
+    -->
+    <ion-item *ngFor="let entry of markers" 
+    (click)="moreEntryOptions(entry.id)" >
+    <!--
+    [class.hide]="entry.disputed >= 3">
+    -->
     
 <div class="item ">
       <div class="row">
@@ -74,8 +82,12 @@
       -->
       
     </ion-item>
+
+    <ion-item *ngIf='markers?.length === 0' >No Results</ion-item >
+
   </ion-list>
 
+  
 <!--
   <ion-list>
     <ion-list-header>
