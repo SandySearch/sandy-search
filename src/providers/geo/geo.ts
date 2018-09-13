@@ -5,7 +5,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 
 //import * as GeoFire from "geofire"
 import {GeoFire} from 'geofire'
-//import {Observable} from 'rxjs/Observable'
+import {Observable} from 'rxjs/Observable'
 import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 
 /*
