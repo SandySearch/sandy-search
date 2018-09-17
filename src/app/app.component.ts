@@ -5,34 +5,65 @@ import { SplashScreen } from '@ionic-native/splash-screen'  // eslint-disable-li
 
 //import { OldHomePage } from '../pages/oldhome/oldhome';
 import { AngularFireAuth } from 'angularfire2/auth'  // eslint-disable-line no-unused-vars
+import { LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any;  // eslint-disable-line no-undef
+  rootPage: any = 'LandingPage';  // eslint-disable-line no-undef
+  loader: any
 
   constructor (
-    platform: Platform,
+    public platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    afAuth: AngularFireAuth
-  ) {
-    const authListener = afAuth.authState.subscribe(user => {
-      if (user) {
-        //this.rootPage = OldHomePage;
-        this.rootPage = 'LandingPage'
-        authListener.unsubscribe()
-      } else {
-        this.rootPage = 'LandingPage'
-        authListener.unsubscribe()
-      }
-    })
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      statusBar.styleDefault()
-      splashScreen.hide()
-    })
-  }
+    afAuth: AngularFireAuth,
+    public loadingCtrl: LoadingController, 
+    public storage: Storage) {
+
+      const authListener = afAuth.authState.subscribe(user => {
+        if (user) {
+          //this.rootPage = OldHomePage;
+	  //this.rootPage = 'LandingPage'
+          authListener.unsubscribe()
+        } else {
+          //this.rootPage = 'LandingPage'
+          authListener.unsubscribe()
+        }
+      })
+
+      this.presentLoading();
+ 
+      this.platform.ready().then(() => {
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        statusBar.styleDefault()
+        splashScreen.hide()
+
+        this.storage.get('introShown').then((result) => {
+          if(result){
+            this.rootPage = 'LandingPage';
+          } else {
+            this.rootPage = 'IntroPage';
+            this.storage.set('introShown', true);
+          }
+          this.loader.dismiss();
+        });
+ 
+      });
+ 
+    }
+ 
+    presentLoading() {
+      this.loader = this.loadingCtrl.create({
+        content: "Authenticating..."
+      });
+ 
+      this.loader.present();
+    }
+ 
 }
+

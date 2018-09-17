@@ -15,7 +15,8 @@ import { AngularFireAuthModule } from 'angularfire2/auth'                 // esl
 import { firebaseConfig, googleMapsKey } from './credentials'
 import { GeoProvider } from '../providers/geo/geo'                        // eslint-disable-line no-unused-vars
 import { AgmCoreModule } from '@agm/core'
-import { GeocodingProvider } from '../providers/geocoding/geocoding';                                 // eslint-disable-line no-unused-vars
+import { GeocodingProvider } from '../providers/geocoding/geocoding'      // eslint-disable-line no-unused-vars
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { GeocodingProvider } from '../providers/geocoding/geocoding';           
     AngularFireDatabaseModule,
     AgmCoreModule.forRoot({
       apiKey: googleMapsKey
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
