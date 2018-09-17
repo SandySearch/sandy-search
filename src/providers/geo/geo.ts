@@ -70,7 +70,8 @@ export class GeoProvider {
           verified: false,
           votes: 0,
           createDate: '',
-          archive: false,
+	  archive: false,
+	  dupe: 0,
           id: ''
         }
 
@@ -78,10 +79,10 @@ export class GeoProvider {
          console.log("key = ", key)
         this.getEntryData(key).subscribe(
           (entry) => {
-            //newName = location.name;
-            hit.name = entry.name;
-            hit.serviceType = entry.serviceType;
-            hit.address = entry.address;
+            //newName = location.name
+            hit.name = entry.name
+            hit.serviceType = entry.serviceType
+            hit.address = entry.address
             hit.phone = entry.phone
             hit.notes = entry.notes
             hit.lat = entry.lat
@@ -93,6 +94,7 @@ export class GeoProvider {
             hit.votes = entry.votes
             hit.createDate = entry.createDate
             hit.archive = entry.archive
+            hit.dupe = entry.dupe
             hit.id = entry.id
 
             console.log("key2 = ", key)
