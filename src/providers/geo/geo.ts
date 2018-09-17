@@ -53,10 +53,11 @@ export class GeoProvider {
       radius: radius
     })
       .on('key_entered', (key, location, distance) => {
-      
+	let miles = Math.round(((distance * 0.62137) + 0.00001) * 100) / 100
         let hit = {
           location: location,
-          distance: distance,
+	  //distance: distance * 0.62137, // https://www.metric-conversions.org/length/kilometers-to-miles.htm
+	  distance: miles,
           serviceType: '',
           name: '',
           address: '',
