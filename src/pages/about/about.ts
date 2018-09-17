@@ -23,4 +23,13 @@ export class AboutPage {
   ionViewDidLoad () {
     console.log('ionViewDidLoad AboutPage')
   }
+
+  goToIntro () {
+    console.log('goToIntro AboutPage')
+    this.navCtrl.setRoot('IntroPage')
+  }
+
+  sendFeedback () {
+    console.log('sendFeedback AboutPage')
+  }
 }

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>About: Sandy Search version {{version}}</ion-title>
+    <ion-title>About: Sandy Search</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,15 +15,34 @@
 <ion-content padding class="landing">
   <img src="assets/img/logo.jpg" class="auth-img">
 
-  <h3>This is the Sandy Search application</h3>
+  <h3>Sandy Search version {{version}}</h3>
   
   <p>More information can be found here:</p>
   
-  <a href="https://devpost.com/software/essr-aoc" target="blank" >https://devpost.com/software/essr-aoc</a>
+  <a href="https://devpost.com/software/sandy-search" target="blank" >https://devpost.com/software/sandy-search</a>
   
-  <h3>Feedback</h3>
-  Send us feedback about this app
+  <button ion-button round block large (click)="goToIntro()">
+    SandySearch Introduction
+  </button>
+
+  <button ion-button round block large (click)="sendFeedback()">
+    Send us feedback about SandySearch
+  </button>
+
+  <h3>Support</h3>
+  This service is supported with contributions from
+
+  someone (soon we hope)
+
+  You too can contribute if you found it at all useful
+
+  <h3>Contributions</h3>
+
+  PayPal:
   
-  
+  Bitcoin: 
+  Dogecoin:
+  Monero:
+
 
 </ion-content>
