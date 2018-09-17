@@ -64,7 +64,8 @@ export class EntryProvider {
         verified: boolean = false,
         votes: number = 0,
         createDate: string = new Date().toLocaleString(),
-        archive: boolean = false
+	archive: boolean = false,
+	dupe: number = 0
       ): Promise<any> {
     const newEntryRef: firebase.database.ThenableReference = this.entryList.push(
           {}
@@ -86,6 +87,7 @@ export class EntryProvider {
       votes,
       createDate,
       archive,
+      dupe,
       id: newEntryRef.key
     })
   }
@@ -109,29 +111,30 @@ export class EntryProvider {
           }
         });
         **/
-        //this.afDatabase.object('serviceList/'+entryId+'/votes').query.ref.transaction(votes => { votes ? ++votes : 1; return votes });
+    //this.afDatabase.object('serviceList/'+entryId+'/votes').query.ref.transaction(votes => { votes ? ++votes : 1; return votes });
     this.afDatabase.object('serviceList/' + entryId + '/votes').query.ref.transaction(votes => votes ? ++votes : 1)
   }
 
   updateEntry (entryId: string): Promise<any> {
-        // need to add transactions
-        // and vote display
     let nowTime = new Date().toLocaleString()
-        //const newVotes: number = this.incrementVote(entryId);
+    //const newVotes: number = this.incrementVote(entryId);
     this.incrementVote(entryId)
-        //return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
+    //return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
     return this.entryList.update(entryId, {updatedDate: nowTime})
   }
 
+  duplicateEntry (entryId: string): Promise<any> {
+    return this.afDatabase.object('serviceList/' + entryId + '/dupe').query.ref.transaction(dupe => dupe ? ++dupe : 1)
+  }
+
   disputeEntry (entryId: string): Promise<any> {
-        // need to add transactions
-        //const dis: number = 4;
-        //return this.entryList.update(entryId, { disputed: dis });
+    //const dis: number = 4;
+    //return this.entryList.update(entryId, { disputed: dis });
     return this.afDatabase.object('serviceList/' + entryId + '/disputed').query.ref.transaction(disputed => disputed ? ++disputed : 1)
   }
 
   resetDisputeEntry (entryId: string): Promise<any> {
-        // need to add transactions
+    // TODO need to add transactions
     const dis: number = 0
     return this.entryList.update(entryId, {disputed: dis})
   }
@@ -140,18 +143,6 @@ export class EntryProvider {
         // need to add transactions?
     return this.entryList.update(entryId, {archive: true})
   }
-
-      /***
-        takeBillPhoto(billId: string, imageURL: string): AngularFireUploadTask {
-          const storageRef: AngularFireStorageReference = this.afStorage.ref(
-            `${this.userId}/${entryId}/billPicture/`
-          );
-
-          return storageRef.putString(imageURL, 'base64', {
-            contentType: 'image/png'
-          });
-        }
-        ***/
 
   storeDownloadUrl (entryId: string, downloadUrl: string): Promise<any> {
     console.log(entryId, downloadUrl)

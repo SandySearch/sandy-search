@@ -84,7 +84,8 @@ export class OldHomePage {
         .subscribe(hits => {
           this.markers = hits
             .filter(x => {
-              return (x.serviceType === this.serviceType) && (x.disputed < 3)
+	    return (x.serviceType === this.serviceType) &&
+	    (x.disputed < 3) && (x.dupe < 5)
             })
         })
 
@@ -231,6 +232,13 @@ export class OldHomePage {
           icon: !this.platform.is('ios') ? 'alert' : null,
           handler: () => {
             this.entryProvider.disputeEntry(entryId)
+          }
+        },
+        {
+          text: 'This Listing is a Duplicate!',
+          icon: !this.platform.is('ios') ? 'alert' : null,
+          handler: () => {
+            this.entryProvider.duplicateEntry(entryId)
           }
         },
         {
