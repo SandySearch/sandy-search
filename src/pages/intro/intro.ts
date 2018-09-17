@@ -4,8 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 /**
  * Generated class for the IntroPage page.
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * https://alligator.io/ionic/intro-slider/
  */
 
 @IonicPage()
