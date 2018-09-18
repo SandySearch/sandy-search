@@ -3,14 +3,20 @@
   page-intro {
  
     ion-slide {
-      background-color: #32db64;
+      /* background-color: #32db64; GREEN */
+      background-color: #3498db;
     }
  
     ion-slide img {
-      height: 70vh !important;
-      width: auto !important;
+      /* height: 70vh !important; */
+      /* width: auto !important; */
     }
- 
+
+    .swiper-pagination .swiper-pagination-bullet-active {
+      background: #ffffff;
+      opacity: 1;
+    }
+    
   }
  
 }
