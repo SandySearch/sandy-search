@@ -45,7 +45,7 @@ With a Vim editor and a cmd window.
 Live web app version of SandyService can be found here:  https://sandy-search.firebaseapp.com/#/landing
 
 And the Android APK is available on GitHub here:
-  https://github.com/mkobar/sandysearch/releases/tag/0.0.5
+  https://github.com/mkobar/sandysearch/releases/tag/0.0.6
 
 The original GitHub repository for the web app is here: https://github.com/mkobar/essr-aot
 
@@ -55,17 +55,20 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 - [x] ~~add a map view (with Google Maps or OpenStreetMaps)~~
 - [x] ~~add the account request function (and screen) - and force to validate with email?~~
 - [x] ~~add more logging~~
-- [ ] iOS build and App Store upload - just need my Mac.
-- [ ] Google Play Store upload
 - [x] ~~add in the real distance calculations (from stree address).  There are seveal free services for this but they may be rate limited.~~
-- [ ] add an admin interface for entry and user management.
-- [ ] add dupe reporting option
+- [x] ~~add dupe reporting option~~
+- [x] ~~add initial tutorial slides~~
+- [x] ~~fix km to miles~~
 - [ ] rate limit votes and disputed to 1 an hour with local storage
-- [ ] add initial tutorial slides
 - [ ] add spinner for list and map
-- [ ] fix km to miles
 - [ ] change markers by serviceType
 - [ ] better logo - animated?
+- [ ] iOS build and App Store upload - just need my Mac.
+- [ ] Google Play Store upload
+- [ ] add an admin interface for entry and user management
+- [ ] add reports (timeline maps by createDate, updateDate and votes)
+- [ ] export usage data in csv format
+- [ ] process usage with Watson to predict optimal locations for future services
 
 
 Please do contact me directly if you can use or add to this project.
