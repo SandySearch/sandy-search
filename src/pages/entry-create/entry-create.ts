@@ -165,6 +165,7 @@ export class EntryCreatePage {
         .createEntry(
           this.newEntryForm.value.serviceType,
           this.newEntryForm.value.name,
+	  'anon',  // for owner
           this.newEntryForm.value.address,
           this.newEntryForm.value.phone,
           this.newEntryForm.value.notes,
