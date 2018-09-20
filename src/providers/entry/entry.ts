@@ -52,7 +52,9 @@ export class EntryProvider {
 
   createEntry (
         serviceType: string = 'GS',
-        name: string,
+	name: string,
+	//owner: string = this.userId,
+	owner: string = 'anon',
         address: string,
         phone: number,
         notes: string,
@@ -75,6 +77,7 @@ export class EntryProvider {
     return newEntryRef.set({
       serviceType,
       name,
+      owner,
       address,
       phone,
       notes,
