@@ -27,18 +27,25 @@ I think the service could be used as a branding expense for emergency services. 
 
 ### How It Works
 
-So this service uses geolocation and a standard crowdsourcing format to collect information from people in the field.
-And share it with anyone who needs it.
+So this service uses geolocation and a standard crowdsourcing format to collect information from people in the field.  And share it with anyone who needs it.
+One of the driving forces in the design was simplicity.  "2 clicks to get to the answer", exactly like the Palo Alto Police Chief said in [this video](https://youtu.be/oojRzM55i08)
 
 Nothing fancy but it will work, much like the way Zello was used after Hurricane Harvey in Houston:  https://wgntv.com/2017/08/29/civilians-and-cajun-navy-bring-their-own-boats-to-rescue-harvey-victims/
 
 ### How It Was Built
 
-This mobile application was built with the sweet [Ionic Framework](http://ionicframework.com/) (Angular5/TypeScript/CSS/HTML5) and uses the Google [FireBase](https://firebase.google.com/) service for authentication, realtime database and cloud hosting (currently on a free spark plan).
+This mobile application was built with the **sweet** [Ionic 3 Framework](http://ionicframework.com/) (Angular5/TypeScript/CSS/HTML5) and uses the Google [FireBase](https://firebase.google.com/) services for authentication, realtime database and cloud hosting of the web app (currently on a free spark plan).
+
+Currently generating Android app and will provide iOS app from same code base.
 
 Maps and geocoding is pulled from Google APIs.  I plan to do reverse geocoding from Google too.
 
-With a Vim editor and a cmd window.
+Admin user interface is all Node and Angular.  Need to add reports and maps to admin interface.  And host on container on IBM cloud.
+
+Want to use Watson services to post-process all user request data and create heatmaps for the optimal locations for services and food distribution.
+
+All built with a Vim editor and a cmd window (and git).
+
 
 ### Live Demos
 
@@ -46,6 +53,8 @@ Live web app version of SandyService can be found here:  https://sandy-search.fi
 
 And the Android APK is available on GitHub here:
   https://github.com/mkobar/sandysearch/releases/tag/0.0.6
+
+Live web app version of SandyServiceAdmin can be found here:  https://mkobar.github.io/sandy-search-admin/reports
 
 The original GitHub repository for the web app is here: https://github.com/mkobar/essr-aot
 
@@ -59,16 +68,20 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 - [x] ~~add dupe reporting option~~
 - [x] ~~add initial tutorial slides~~
 - [x] ~~fix km to miles~~
+- [x] ~~add an admin interface for entry and user management~~
 - [ ] rate limit votes and disputed to 1 an hour with local storage
 - [ ] add spinner for list and map
 - [ ] change markers by serviceType
-- [ ] better logo - animated?
 - [ ] iOS build and App Store upload - just need my Mac.
 - [ ] Google Play Store upload
-- [ ] add an admin interface for entry and user management
+- [x] ~~host admin interface on GitHub~~
 - [ ] add reports (timeline maps by createDate, updateDate and votes)
+- [ ] host admin user interface on IBM (docker?)
 - [ ] export usage data in csv format
+- [ ] add Watson ML for heatmap generation
 - [ ] process usage with Watson to predict optimal locations for future services
+- [ ] need a video of both app usage and reporting
+- [ ] need better logo  ;^}
 
 
 Please do contact me directly if you can use or add to this project.
@@ -76,5 +89,4 @@ Please do contact me directly if you can use or add to this project.
 ## License
 
 Copyright @ 2018 [RKOSecurity](http://www.rkosecurity.com)
-
 
