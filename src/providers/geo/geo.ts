@@ -79,7 +79,7 @@ export class GeoProvider {
 
         let currentHits = this.hits.value
          console.log("key = ", key)
-        this.getEntryData(key).subscribe(
+        const listingsSubscription = this.getEntryData(key).subscribe(
           (entry) => {
             //newName = location.name
             hit.name = entry.name
@@ -102,8 +102,13 @@ export class GeoProvider {
             console.log("key2 = ", key)
             currentHits.push(hit);
             this.hits.next(currentHits);
-          }
+	  },
+	  err => console.log('Error Getting Service: ', err),
+	  () => console.log('Getting Locations complete')
         );
+
+	// Stop listening for listings after 10 seconds
+	setTimeout(() => { listingsSubscription.unsubscribe(); }, 10000);
 
 	/***
         this.entryProvider
