@@ -107,8 +107,8 @@ export class GeoProvider {
 	  () => console.log('Getting Locations complete')
         );
 
-	// Stop listening for listings after 10 seconds
-	setTimeout(() => { listingsSubscription.unsubscribe(); }, 10000);
+	// Stop listening for listings after 5 seconds
+	setTimeout(() => { listingsSubscription.unsubscribe(); }, 5000);
 
 	/***
         this.entryProvider
