@@ -27,10 +27,13 @@
 
     </agm-marker>
     
+    <!--
+    [iconUrl]="'https://cdn1.iconfinder.com/data/icons/designer-s-tools-1/512/Coffee-64.png'">
+    -->
     <agm-marker *ngFor="let marker of markers"
     [latitude]="marker.location[0]"
     [longitude]="marker.location[1]"
-    [iconUrl]="'https://cdn1.iconfinder.com/data/icons/designer-s-tools-1/512/Coffee-64.png'">
+    [iconUrl]="'https://openclipart.org/image/30px/svg_to_png/192592/map-marker-blue.png'">
 
     <agm-info-window>
       <h3><strong>Location Details</strong></h3>
