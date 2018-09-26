@@ -86,6 +86,7 @@ export class GeoProvider {
 	    if (entry) {
               hit.name = entry.name
               hit.serviceType = entry.serviceType
+              hit.owner = entry.owner
               hit.address = entry.address
               hit.phone = entry.phone
               hit.notes = entry.notes
