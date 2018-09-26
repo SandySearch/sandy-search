@@ -104,11 +104,11 @@ export class EntryCreatePage {
         this.lat = location.lat
         this.lng = location.lng
         this.loading = false
-        this.ref.detectChanges()
+	//this.ref.detectChanges()
         console.log("address ["+address+"] has lat/lon ="+this.lat+"/"+this.lng)
         this.addEntry()
       },
-      error => console.log(error),
+      error => console.log("Geocoding error: ",error),
       () =>  { 
         console.log('Geocoding completed!')
       }
@@ -153,10 +153,10 @@ export class EntryCreatePage {
   
     addEntry () {
       // validate lat lon first
-      if ( (this.lat < -89) || (this.lat > 89) ) {
+      if ( (this.lat < -89) || (this.lat > 89) || (this.lat === 0) ) {
         this.lat = 41.67
       }
-      if ( (this.lng < -179) || (this.lng > 179) ) {
+      if ( (this.lng < -179) || (this.lng > 179) || (this.lng === 0) ) {
         this.lng = -73.80
       }
       console.log("addEntry this.lat/this.lng = "+this.lat+'/'+this.lng)
@@ -178,15 +178,13 @@ export class EntryCreatePage {
           //this.newEntryForm.value.votes,
           //this.newEntryForm.value.createDate,
           //this.newEntryForm.value.archive
-
-          // paid: boolean = false
         )
         .then(
           () => {
-            this.navCtrl.pop()
+	    this.navCtrl.pop()  // back to homePage
           },
           error => {
-            console.log(error)
+            console.log("error building entry", error)
           }
         )
   }

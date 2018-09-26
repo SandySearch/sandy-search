@@ -81,27 +81,31 @@ export class GeoProvider {
          console.log("key = ", key)
         const listingsSubscription = this.getEntryData(key).subscribe(
           (entry) => {
-            //newName = location.name
-            hit.name = entry.name
-            hit.serviceType = entry.serviceType
-            hit.address = entry.address
-            hit.phone = entry.phone
-            hit.notes = entry.notes
-            hit.lat = entry.lat
-            hit.lon = entry.lon
-            hit.here = entry.here
-            hit.updatedDate = entry.updatedDate
-            hit.disputed = entry.disputed
-            hit.verified = entry.verified
-            hit.votes = entry.votes
-            hit.createDate = entry.createDate
-            hit.archive = entry.archive
-            hit.dupe = entry.dupe
-            hit.id = entry.id
+	    //newName = location.name
+	    console.log("entry = ", JSON.stringify(entry, null, 4) )
+	    if (entry) {
+              hit.name = entry.name
+              hit.serviceType = entry.serviceType
+              hit.address = entry.address
+              hit.phone = entry.phone
+              hit.notes = entry.notes
+              hit.lat = entry.lat
+              hit.lon = entry.lon
+              hit.here = entry.here
+              hit.updatedDate = entry.updatedDate
+              hit.disputed = entry.disputed
+              hit.verified = entry.verified
+              hit.votes = entry.votes
+              hit.createDate = entry.createDate
+              hit.archive = entry.archive
+              hit.dupe = entry.dupe
+              hit.id = entry.id
 
-            console.log("key2 = ", key)
-            currentHits.push(hit);
-            this.hits.next(currentHits);
+              console.log("key2 = ", key)
+              currentHits.push(hit);
+	      this.hits.next(currentHits);
+	    }
+	    // else just skip null
 	  },
 	  err => console.log('Error Getting Service: ', err),
 	  () => console.log('Getting Locations complete')
