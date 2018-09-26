@@ -40,7 +40,7 @@ Currently generating Android app and will provide iOS app from same code base.
 
 Maps and geocoding is pulled from Google APIs.  I plan to do reverse geocoding from Google too.
 
-Admin user interface is all Node and Angular.  And hosted in containser on Kubernetes on the IBM cloud.  Need to add reports and maps to admin interface.
+Admin user interface is all Node and Angular.  And hosted in a Docker container in Kubernetes cluster on the IBM cloud.  Need to add reports and maps to admin interface.
 
 Want to use Watson services to post-process all user request data and create heatmaps for the optimal locations for services and food distribution.
 
@@ -76,12 +76,12 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 - [ ] Google Play Store upload
 - [x] ~~host admin interface on GitHub~~
 - [ ] add reports (timeline maps by createDate, updateDate and votes)
-- [x] ~~host admin user interface on IBM (docker?)~~
+- [x] ~~host admin user interface on IBM (Docker and Kubernetes )~~
 - [ ] export usage data in csv format
 - [ ] add Watson ML for heatmap generation
 - [ ] process usage with Watson to predict optimal locations for future services
 - [ ] need a video of both app usage and reporting
-- [x] ~~need better logo  ;^}~~
+- [x] ~~need better logo  ;^} ~~
 
 
 Please do contact me directly if you can use or add to this project.
