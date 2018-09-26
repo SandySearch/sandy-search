@@ -1,9 +1,9 @@
 {
   "name": "SandySearch",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Waze for services after a disaster - use the power of crowdsourcing for good",
   "author": "SandySearch Team",
-  "homepage": "https://github.com/mkobar/sandy-search#readme",
+  "homepage": "https://devpost.com/software/sandy-search",
   "private": true,
   "repository": {
     "type": "git",
