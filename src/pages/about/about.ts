@@ -31,5 +31,8 @@ export class AboutPage {
 
   sendFeedback () {
     console.log('sendFeedback AboutPage')
+    let Link="mailto:feedback@lwlabs.com?subject=Feedback%20from%20SandySearch";
+    window.open(Link, "_system");
+    
   }
 }
