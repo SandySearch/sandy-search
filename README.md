@@ -10,7 +10,7 @@
 
 Entry for The Global Call for Code Hackathon, 28 September 2018
 
-<img align="right" height="200" src="https://raw.githubusercontent.com/mkobar/essr-aoc/master/resources/logo.png">
+<img align="right" height="200" src="https://raw.githubusercontent.com/mkobar/essr-aoc/master/resources/logo2.jpg">
 
 ### The Idea
 
@@ -72,11 +72,11 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 - [ ] rate limit votes and disputed to 1 an hour with local storage
 - [ ] add spinner for list and map
 - [ ] change markers by serviceType
-- [ ] iOS build and App Store upload - just need my Mac.
+- [ ] iOS build and App Store upload - just need my Mac
 - [ ] Google Play Store upload
 - [x] ~~host admin interface on GitHub~~
-- [ ] add reports (timeline maps by createDate, updateDate and votes)
 - [x] ~~host admin user interface on IBM Cloud (Docker and Kubernetes)~~
+- [ ] add reports (timeline maps by createDate, updateDate and votes)
 - [ ] export usage data in csv format
 - [ ] add Watson ML for heatmap generation
 - [ ] process usage with Watson to predict optimal locations for future services
