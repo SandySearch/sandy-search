@@ -61,6 +61,7 @@ export class GeoProvider {
 	  distance: miles,
           serviceType: '',
           name: '',
+          owner: '',
           address: '',
           phone: 0,
           notes: '',
