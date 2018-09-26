@@ -27,10 +27,10 @@ export class MyApp {
       const authListener = afAuth.authState.subscribe(user => {
         if (user) {
           //this.rootPage = OldHomePage;
-	  //this.rootPage = 'LandingPage'
+	  this.rootPage = 'LandingPage'
           authListener.unsubscribe()
         } else {
-          //this.rootPage = 'LandingPage'
+          this.rootPage = 'LandingPage'
           authListener.unsubscribe()
         }
       })
