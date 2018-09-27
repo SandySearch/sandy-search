@@ -19,6 +19,8 @@ During the disaster, we had a very hard time discovering what services (gasoline
 
 The idea for this service is to use the power of crowdsourcing (think "Waze for Services, after a disaster").  It currently allows anyone (without a login) to search and report on services available in their area.
 
+All users who do not login will be **anonymous** and **not** logged.
+
 Verified users (pre-registered, think Red Cross, National Guard, and business owners/managers) can leave "verified" status updates, at no cost.
 
 I think the service could be used as a branding expense for emergency services.  The majority of the expense would be the manual verification of "verified" users, and minimal hosting of the back-end service.
@@ -40,7 +42,7 @@ Currently generating Android app and will provide iOS app from same code base.
 
 Maps and geocoding is pulled from Google APIs.  I plan to do reverse geocoding from Google too.
 
-Admin user interface is all Node and Angular.  And hosted in a Docker container in Kubernetes cluster on the IBM cloud.  Need to add reports and maps to admin interface.
+Admin user interface is all Node and Angular.  And hosted in a Docker container in Kubernetes cluster on the IBM Cloud.  Need to add reports and maps to admin interface.
 
 Want to use Watson services to post-process all user request data and create heatmaps for the optimal locations for services and food distribution.
 
@@ -52,9 +54,13 @@ All built with a Vim editor and a cmd window (and git).
 Live web app version of SandyService can be found here:  https://plu.sh/sandys 
 
 And the Android APK is available on GitHub here:
-  https://github.com/mkobar/sandysearch/releases/tag/0.0.6
+  https://github.com/mkobar/sandysearch/releases/tag/0.0.7
+  
+And on Google Play (as a beta) here:  https://play.google.com/apps/testing/io.ionic.sandysearch
 
 Live web app version of SandyServiceAdmin can be found here:  https://plu.sh/sandyadmin 
+
+Live web app running on IBM Cloud Kubernetes can be found here:  http://173.193.99.198:30471
 
 The original GitHub repository for the web app is here: https://github.com/mkobar/essr-aot
 
@@ -73,7 +79,7 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 - [ ] add spinner for list and map
 - [ ] change markers by serviceType
 - [ ] iOS build and App Store upload - just need my Mac
-- [ ] Google Play Store upload
+- [x] ~~Google Play Store upload~~
 - [x] ~~host admin interface on GitHub~~
 - [x] ~~host admin user interface on IBM Cloud (Docker and Kubernetes)~~
 - [ ] add reports (timeline maps by createDate, updateDate and votes)
