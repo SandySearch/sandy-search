@@ -29,6 +29,14 @@ export class AboutPage {
     this.navCtrl.setRoot('IntroPage')
   }
 
+  // from https://stackoverflow.com/a/44388295
+  //
+  // future:
+  // http://masteringionic.com/blog/2017-10-09-adding-email-functionality-to-an-ionic-application/
+  // https://stackoverflow.com/questions/50848393/send-email-with-emailcomposer-ionic-with-html-and-hyperlinks
+  // https://stackoverflow.com/questions/32873174/how-to-send-email-with-ionic-framework-using-the-native-email-app
+  // https://stackoverflow.com/questions/34764076/how-to-send-email-using-angular-js-and-ionic-framework
+  // https://devdactic.com/sending-emails-with-images-in-ionic-cordova/
   sendFeedback () {
     console.log('sendFeedback AboutPage')
     let Link="mailto:feedback@lwlabs.com?subject=Feedback%20from%20SandySearch";
