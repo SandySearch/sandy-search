@@ -10,6 +10,8 @@
 
 Entry for The Global Call for Code Hackathon, 28 September 2018
 
+Note: This is a **single person** team.
+
 <img align="right" height="200" src="https://raw.githubusercontent.com/mkobar/essr-aoc/master/resources/logo2.jpg">
 
 ### The Idea
