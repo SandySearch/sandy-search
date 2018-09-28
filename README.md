@@ -10,7 +10,7 @@
 
 Entry for The Global Call for Code Hackathon, 28 September 2018
 
-Note: This is a **single person** team.
+Note: This is a **single person** project (team of one).
 
 <img align="right" height="200" src="https://raw.githubusercontent.com/mkobar/essr-aoc/master/resources/logo2.jpg">
 
@@ -67,7 +67,8 @@ All built with a Vim editor and a cmd window (and git).
 - Internationalization
 - Watson ML to predict where services will be needed based on past experience
 
-
+### See Also
+The SAndy Search Admin User Interface on GitHub:  https://github.com/mkobar/sandy-search-admin
 ### Live Demos
 
 Live web app version of SandyService can be found here:  https://plu.sh/sandys 
