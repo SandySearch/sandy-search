@@ -68,7 +68,8 @@ All built with a Vim editor and a cmd window (and git).
 - Watson ML to predict where services will be needed based on past experience
 
 ### See Also
-The SAndy Search Admin User Interface on GitHub:  https://github.com/mkobar/sandy-search-admin
+The Sandy Search Admin User Interface on GitHub:  https://github.com/mkobar/sandy-search-admin
+
 ### Live Demos
 
 Live web app version of SandyService can be found here:  https://plu.sh/sandys 
