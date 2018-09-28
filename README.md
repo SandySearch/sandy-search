@@ -48,6 +48,23 @@ Want to use Watson services to post-process all user request data and create hea
 
 All built with a Vim editor and a cmd window (and git).
 
+### What I Learned from this Hackathon
+
+- Angular 4 and Ionic 3 and typescript (I had build the previous prototype in Angular.JS and Ionic 1)
+- Firebase Database with Observables
+- GeoFire for geolocation
+- Angular 2 and NodeJs
+- Dockerizing an Angular 2 / NodeJs application
+- Storing Docker images in the IBM Container Registery
+- Running Apps in Kubernetes in the IBM Cloud (on the free tier)
+
+### Next Steps for SandySearch
+
+- Add reports
+- Dockerizing an Ionic 3 app
+- Internationalization
+- Watson ML to predict where services will be needed based on past experience
+
 
 ### Live Demos
 
@@ -62,7 +79,15 @@ Live web app version of SandyServiceAdmin can be found here:  https://plu.sh/san
 
 Live web app running on IBM Cloud Kubernetes can be found here:  http://173.193.99.198:30471
 
-The original GitHub repository for the web app is here: https://github.com/mkobar/essr-aot
+The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
+
+### Videos Demos
+
+SandySearch Submission Video - First attempt https://youtu.be/83FHRSM3CQM
+
+SandySearch Submission Video - Second attempt https://youtu.be/Vj61wD86HyA
+
+SandySearch Submission Video - Third attempt https://youtu.be/kELeIpW1EdA
 
 ## Things left to do:
 
@@ -86,11 +111,13 @@ The original GitHub repository for the web app is here: https://github.com/mkoba
 - [ ] export usage data in csv format
 - [ ] add Watson ML for heatmap generation
 - [ ] process usage with Watson to predict optimal locations for future services
-- [ ] need a video of both app usage and reporting
+- [x] ~~need a video of both app usage and reporting~~
 - [x] ~~need better logo  ;^}~~
 
 
 Please do contact me directly if you can use or add to this project.
+
+Thanks to Dick Tator of Fayetteville, NC, USA for the original logo.
 
 ## License
 
