@@ -1,0 +1,33 @@
+Solution Roadmap For SandySearch (app and Admin user interface)
+
+Add reports
+
+- timeline maps by createDate
+- timeline maps by updateDate
+- timeline maps by votes
+
+Dockerizing an Ionic 3 app
+
+Internationalization
+
+- ES
+- Others
+
+Watson ML to predict where services will be needed based on past experience
+
+- Export usage data in csv format
+- Add Watson ML for heatmap generation
+- Process usage with Watson to predict optimal locations for future services
+
+Rate limit votes and disputed to 1 an hour with local storage
+
+Add spinner for list and map
+
+Change map markers by serviceType
+
+iOS build and App Store upload - just need my Mac and a day
+
+
+
+
+
