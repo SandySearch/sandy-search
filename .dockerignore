@@ -1,0 +1,13 @@
+# dependencies
+/.firebase
+/.git
+/node_modules
+/screenshots
+/resources/android
+/resources/ios
+
+.firebaserc
+.gitignore
+*~
+database.rules.json
+
