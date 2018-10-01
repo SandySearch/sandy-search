@@ -38,15 +38,15 @@ Nothing fancy but it will work, much like the way Zello was used after Hurricane
 
 ### How It Was Built
 
-This mobile application was built with the **sweet** [Ionic 3 Framework](http://ionicframework.com/) (Angular5/TypeScript/CSS/HTML5) and uses the Google [FireBase](https://firebase.google.com/) services for authentication, realtime database and cloud hosting of the web app (currently on a free spark plan).
+This mobile application was built with the **sweet** [Ionic 3 Framework](http://ionicframework.com/) (Angular5/TypeScript/CSS/HTML5) and uses the **Google** [FireBase](https://firebase.google.com/) services for authentication, realtime database and cloud hosting of the web app (currently on a free spark plan).
 
 Currently generating Android app and will provide iOS app from same code base.
 
-Maps and geocoding is pulled from Google APIs.  I plan to do reverse geocoding from Google too.
+Maps and geocoding is pulled from **Google APIs**.  I plan to do reverse geocoding from Google too.
 
-Admin user interface is all Node and Angular.  And hosted in a Docker container in Kubernetes cluster on the IBM Cloud.  Need to add reports and maps to admin interface.
+Admin user interface is all Node and Angular.  And hosted in a **Docker** container (stored in the **IBM Cloud Container Registery**) in Kubernetes cluster on the **IBM Cloud Kubernetes Service**.  Need to add reports and maps to admin user interface.
 
-Want to use Watson services to post-process all user request data and create heatmaps for the optimal locations for services and food distribution.
+Want to use **IBM Watson** services to post-process all user request data and create heatmaps for the optimal locations for services and food distribution.
 
 All built with a Vim editor and a cmd window (and git).
 
@@ -57,8 +57,10 @@ All built with a Vim editor and a cmd window (and git).
 - GeoFire for geolocation
 - Angular 2 and NodeJs
 - Dockerizing an Angular 2 / NodeJs application
-- Storing Docker images in the IBM Container Registery
-- Running Apps in Kubernetes in the IBM Cloud (on the free tier)
+- Autobuilding a Docker image from a GitHub checkin with Docker Cloud
+- Storing Docker images in the **IBM Cloud Container Registery**
+- Running Apps in Kubernetes in the **IBM Cloud Kubernetes Service** (on the free tier) with NodePort networking
+- Fixing vulnerabilities discovered by the **IBM Cloud Container Registry Vulnerability Advisor**
 
 ### Next Steps for SandySearch
 
