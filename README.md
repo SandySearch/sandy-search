@@ -2,7 +2,7 @@
 
 ## Sandy Search (was Emergency Services - Search and Reporting) Mobile and Web App
 
-[![License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](https://github.com/mkobar/sandy-search/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-COMMERCIAL-red.svg?style=flat-square)](https://github.com/mkobar/sandy-search/blob/master/LICENSE)
 ![Platform](https://img.shields.io/badge/platform-Android-brightgreen.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Web-orange.svg)
@@ -21,7 +21,7 @@ During the disaster, we had a very hard time discovering what services (gasoline
 
 The idea for this service is to use the power of crowdsourcing (think "Waze for Services, after a disaster").  It currently allows anyone (without a login) to search and report on services available in their area.
 
-All users who do not login will be **anonymous** and **not** logged.
+All users who do not log in to the app will be **anonymous** and **not** logged.
 
 Verified users (pre-registered, think Red Cross, National Guard, and business owners/managers) can leave "verified" status updates, at no cost.
 
@@ -32,9 +32,10 @@ I think the service could be used as a branding expense for emergency services. 
 ### How It Works
 
 So this service uses geolocation and a standard crowdsourcing format to collect information from people in the field.  And share it with anyone who needs it.
+
 One of the driving forces in the design was simplicity.  "2 clicks to get to the answer", exactly like the Palo Alto Police Chief said in [this video](https://youtu.be/oojRzM55i08)
 
-Nothing fancy but it will work, much like the way Zello was used after Hurricane Harvey in Houston:  https://wgntv.com/2017/08/29/civilians-and-cajun-navy-bring-their-own-boats-to-rescue-harvey-victims/
+Nothing fancy but it will work, much like the way **Zello** was used after Hurricane Harvey in Houston:  https://wgntv.com/2017/08/29/civilians-and-cajun-navy-bring-their-own-boats-to-rescue-harvey-victims/
 
 ### How It Was Built
 
@@ -53,23 +54,24 @@ All built with a Vim editor and a cmd window (and git).
 ### What I Learned from this Hackathon
 
 - Angular 4 and Ionic 3 and typescript (I had build the previous prototype in Angular.JS and Ionic 1)
-- Firebase Database with Observables
+- **Google Firebase** Realtime Database with Observables
 - GeoFire for geolocation
 - Angular 2 and NodeJs
 - Dockerizing an Angular 2 / NodeJs application
-- Autobuilding a Docker image from a GitHub checkin with Docker Cloud
+- Autobuilding a Docker image from a **GitHub** checkin with **Docker Cloud**
 - Storing Docker images in the **IBM Cloud Container Registery**
 - Running Apps in Kubernetes in the **IBM Cloud Kubernetes Service** (on the free tier) with NodePort networking
 - Fixing vulnerabilities discovered by the **IBM Cloud Container Registry Vulnerability Advisor**
 
 ### Next Steps for SandySearch
 
-- Add reports
+- Add reports to the Admin user interface
 - Dockerizing an Ionic 3 app
 - Internationalization
-- Watson ML to predict where services will be needed based on past experience
+- **IBM Watson ML** to predict where services will be needed based on past experience
 
 ### See Also
+
 The Sandy Search Admin User Interface on GitHub:  https://github.com/mkobar/sandy-search-admin
 
 ### Live Demos
@@ -79,7 +81,7 @@ Live web app version of SandyService can be found here:  https://plu.sh/sandys
 And the Android APK is available on GitHub here:
   https://github.com/mkobar/sandysearch/releases/tag/0.0.7
   
-And on Google Play (as a beta) here:  https://play.google.com/apps/testing/io.ionic.sandysearch
+And on **Google Play** (as a beta) here:  https://play.google.com/apps/testing/io.ionic.sandysearch
 
 Live web app version of SandyServiceAdmin can be found here:  https://plu.sh/sandyadmin 
 
@@ -117,8 +119,8 @@ SandySearch Admin User Interface Demo - https://youtu.be/hGE8ubJQGMg
 - [x] ~~host admin user interface on IBM Cloud (Docker and Kubernetes)~~
 - [ ] add reports (timeline maps by createDate, updateDate and votes)
 - [ ] export usage data in csv format
-- [ ] add Watson ML for heatmap generation
-- [ ] process usage with Watson to predict optimal locations for future services
+- [ ] add IBM Watson ML for heatmap generation
+- [ ] process usage with IBM Watson to predict optimal locations for future services
 - [x] ~~need a video of both app usage and reporting~~
 - [x] ~~need better logo  ;^}~~
 
