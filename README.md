@@ -131,5 +131,5 @@ Thanks to Dick Tator of Fayetteville, NC, USA for the original logo.
 
 ## License
 
-Copyright @ 2018 [RKOSecurity](http://www.rkosecurity.com)
+Copyright @ 2018 [RKO Security](http://www.rkosecurity.com)
 
