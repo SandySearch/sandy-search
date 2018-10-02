@@ -44,7 +44,7 @@ Currently generating Android app and will provide iOS app from same code base.
 
 Maps and geocoding is pulled from **Google APIs**.  I plan to do reverse geocoding from Google too.
 
-Admin user interface is all Node and Angular.  And hosted in a **Docker** container (stored in the **IBM Cloud Container Registery**) in Kubernetes cluster on the **IBM Cloud Kubernetes Service**.  Need to add reports and maps to admin user interface.
+Admin user interface is all Node and Angular.  And hosted in a **Docker** container (stored in the **IBM Cloud Container Registry**) in Kubernetes cluster on the **IBM Cloud Kubernetes Service**.  Need to add reports and maps to admin user interface.
 
 Want to use **IBM Watson** services to post-process all user request data and create heatmaps for the optimal locations for services and food distribution.
 
@@ -83,17 +83,19 @@ And on Google Play (as a beta) here:  https://play.google.com/apps/testing/io.io
 
 Live web app version of SandyServiceAdmin can be found here:  https://plu.sh/sandyadmin 
 
-Live web app running on IBM Cloud Kubernetes can be found here:  http://173.193.99.198:30471
+Live web app running on **IBM Cloud Kubernetes** can be found here:  http://173.193.99.198:30471
 
 The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
 
 ### Videos Demos
 
-SandySearch Submission Video - First attempt https://youtu.be/83FHRSM3CQM
+SandySearch Submission Video - First attempt - https://youtu.be/83FHRSM3CQM
 
-SandySearch Submission Video - Second attempt https://youtu.be/Vj61wD86HyA
+SandySearch Submission Video - Second attempt - https://youtu.be/Vj61wD86HyA
 
-SandySearch Submission Video - Third attempt https://youtu.be/kELeIpW1EdA
+SandySearch Submission Video - Third attempt - https://youtu.be/kELeIpW1EdA
+
+SandySearch Admin User Interface Demo - https://youtu.be/hGE8ubJQGMg
 
 ## Things left to do:
 
