@@ -59,14 +59,15 @@ All built with a Vim editor and a cmd window (and git).
 - Angular 2 and NodeJs
 - Dockerizing an Angular 2 / NodeJs application
 - Autobuilding a Docker image from a **GitHub** checkin with **Docker Cloud**
-- Storing Docker images in the **IBM Cloud Container Registery**
+- Storing and updating Docker images in the **IBM Cloud Container Registery**
 - Running Apps in Kubernetes in the **IBM Cloud Kubernetes Service** (on the free tier) with NodePort networking
 - Fixing vulnerabilities discovered by the **IBM Cloud Container Registry Vulnerability Advisor**
+- Upgraded running Docker containers with new images
+- Upgraded running Docker containers in Kubernetes in the **IBM Cloud Kubernetes Service** with new images
 
 ### Next Steps for SandySearch
 
 - Add reports to the Admin user interface
-- Dockerizing an Ionic 3 app
 - Internationalization
 - **IBM Watson ML** to predict where services will be needed based on past experience
 
@@ -85,9 +86,19 @@ And on **Google Play** (as a beta) here:  https://play.google.com/apps/testing/i
 
 Live web app version of SandyServiceAdmin can be found here:  https://plu.sh/sandyadmin 
 
-Live web app running on **IBM Cloud Kubernetes** can be found here:  http://173.193.99.198:30471
+Live web app running on **IBM Cloud Kubernetes Service** can be found here:  http://173.193.99.198:30471
 
 The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
+
+### Docker Images
+
+Sandy Search Docker image on **Docker Cloud**:  mkobar/sandy-search **[private]**
+
+Sandy Search Docker image on **IBM Cloud Kubernetes Service**:  registry.ng.bluemix.net/call4code/sandysearch
+
+Sandy Search Admin Docker image on **Docker Cloud**:  mkobar/sandysearchadmin
+
+Sandy Search Admin Docker image on **IBM Cloud Kubernetes Service**:  registry.ng.bluemix.net/call4code/sandysearchadmin
 
 ### Videos Demos
 
@@ -114,6 +125,7 @@ SandySearch Admin User Interface Demo - https://youtu.be/hGE8ubJQGMg
 - [ ] add spinner for list and map
 - [ ] change markers by serviceType
 - [ ] iOS build and App Store upload - just need my Mac
+- [x] ~~Dockerizing an Ionic 3 app~~
 - [x] ~~Google Play Store upload~~
 - [x] ~~host admin interface on GitHub~~
 - [x] ~~host admin user interface on IBM Cloud (Docker and Kubernetes)~~
