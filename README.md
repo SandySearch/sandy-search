@@ -94,11 +94,11 @@ The original GitHub repository for the Ionic v1 web app is here: https://github.
 
 Sandy Search Docker image on **Docker Cloud**:  mkobar/sandy-search **[private]**
 
-Sandy Search Docker image on **IBM Cloud Kubernetes Service**:  registry.ng.bluemix.net/call4code/sandysearch
+Sandy Search Docker image on **IBM Cloud Container Registry**:  registry.ng.bluemix.net/call4code/sandysearch
 
 Sandy Search Admin Docker image on **Docker Cloud**:  mkobar/sandysearchadmin
 
-Sandy Search Admin Docker image on **IBM Cloud Kubernetes Service**:  registry.ng.bluemix.net/call4code/sandysearchadmin
+Sandy Search Admin Docker image on **IBM Cloud Container Registry**:  registry.ng.bluemix.net/call4code/sandysearchadmin
 
 ### Videos Demos
 
