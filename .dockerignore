@@ -1,11 +1,14 @@
-# dependencies
+# dependencies to ignore in docker
 /.firebase
 /.git
+/android-certs
 /node_modules
-/screenshots
+/platforms
 /resources/android
 /resources/ios
+/screenshots
 
+*.mp4
 .firebaserc
 .gitignore
 *~
