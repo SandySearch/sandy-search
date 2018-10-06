@@ -37,11 +37,11 @@ EXPOSE 8100
 
 # start app
 # start with "docker run -it image"
-CMD ["bash"]
+#CMD ["bash"]
 
 # start with "docker run -d -p 80:8100 --name name image"
 #CMD ["ionic", "serve", "-c", "-s", "-b"]
-#CMD ["ionic", "serve", "-c", "-s", "-b", "--nolivereload"]
+CMD ["node_modules/.bin/ionic", "serve", "-c", "-s", "-b", "--no-livereload"]
 
 # https://lightsonsoftware.com/developing-ionic-apps-docker-style/
 # https://hub.docker.com/r/agileek/ionic-framework/
