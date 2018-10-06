@@ -1,16 +1,19 @@
 # dependencies to ignore in docker
 /.firebase
 /.git
-/android-certs
+android-certs/
 /node_modules
 /platforms
 /resources/android
 /resources/ios
-/screenshots
+resources/old
+screenshots/*
+src/assets/img/old
 
 *.mp4
 .firebaserc
 .gitignore
-*~
+**/*.xcf
+**/*~
 database.rules.json
 
