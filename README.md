@@ -77,6 +77,8 @@ The Sandy Search Admin User Interface on GitHub:  https://github.com/mkobar/sand
 
 ### Live Demos
 
+#### Sandy Search Mobile/Web app
+
 Live web app version of SandyService can be found here:  https://plu.sh/sandys 
 
 And the Android APK is available on GitHub here:
@@ -84,11 +86,17 @@ And the Android APK is available on GitHub here:
   
 And on **Google Play** (as a beta) here:  https://play.google.com/apps/testing/io.ionic.sandysearch
 
-Live web app version of SandyServiceAdmin can be found here:  https://plu.sh/sandyadmin 
-
-Live web app running on **IBM Cloud Kubernetes Service** can be found here:  http://173.193.99.198:30471
-
 The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
+
+
+#### Sandy Search Admin User Interface
+
+Live web app version of SandyServiceAdmin (v0.0.1) can be found here:  https://plu.sh/sandyadmin 
+
+Live web app (v0.0.2) running on **IBM Cloud Kubernetes Service** can be found here:  http://173.193.99.198:30471
+
+Live web app (v0.0.3) running on **IBM Cloud Kubernetes Service** can be found here:  http://173.193.99.198:30433
+
 
 ### Docker Images
 
