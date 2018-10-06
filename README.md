@@ -6,6 +6,8 @@
 ![Platform](https://img.shields.io/badge/platform-Android-brightgreen.svg)
 ![Platform](https://img.shields.io/badge/platform-iOS-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Web-orange.svg)
+[![Container](https://img.shields.io/badge/container-Docker-purple.svg?style=flat-square)](https://github.com/mkobar/sandy-search/blob/master/Dockerfile)
+[![Container](https://img.shields.io/badge/container-Kubernetes-gold.svg?style=flat-square)](https://github.com/mkobar/sandy-search/blob/master/Dockerfile)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 Entry for The Global Call for Code Hackathon, 28 September 2018
@@ -81,10 +83,19 @@ The Sandy Search Admin User Interface on GitHub:  https://github.com/mkobar/sand
 
 Live web app version of SandyService can be found here:  https://plu.sh/sandys 
 
+Live SandyService web app hosted on **IBM Cloud Kubernetes Service** can be found here:  http://173.193.99.198:32705
+
+**Note**: to run this in a chrome browser (and have geolocation work on an insecure URL) use the following:
+```
+chrome.exe --unsafely-treat-insecure-origin-as-secure="http://173.193.99.198:32705"
+```
+
+
 And the Android APK is available on GitHub here:
   https://github.com/mkobar/sandysearch/releases/tag/0.0.7
   
 And on **Google Play** (as a beta) here:  https://play.google.com/apps/testing/io.ionic.sandysearch
+
 
 The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
 
