@@ -30,7 +30,7 @@ WORKDIR /app
 RUN npm install
 
 #RUN npm install geofire - DOES NOT WORK in Container?!
-COPY ./node_modules/geofire/ /app/node_modules/geofire/
+COPY ./geofire/ /app/node_modules/geofire/
 
 # Specify port
 EXPOSE 8100
@@ -38,6 +38,8 @@ EXPOSE 8100
 # start app
 # start with "docker run -it image"
 CMD ["bash"]
+
+# start with "docker run -d -p 80:8100 --name name image"
 #CMD ["ionic", "serve", "-c", "-s", "-b"]
 #CMD ["ionic", "serve", "-c", "-s", "-b", "--nolivereload"]
 
