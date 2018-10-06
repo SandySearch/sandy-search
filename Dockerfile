@@ -27,7 +27,7 @@ WORKDIR /app
 # install and cache app dependencies
 #COPY package*.json /usr/src/app/
 #ADD package.json /usr/src/app/package.json
-RUN npm install && npm cache clean
+RUN npm install
 
 #RUN npm install geofire - DOES NOT WORK in Container?!
 COPY ./node_modules/geofire/ /app/node_modules/geofire/
