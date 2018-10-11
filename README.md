@@ -94,7 +94,7 @@ chrome.exe --unsafely-treat-insecure-origin-as-secure="http://173.193.99.198:327
 And the Android APK is available on GitHub here:
   https://github.com/mkobar/sandysearch/releases/tag/0.0.7
   
-And on **Google Play** (as a beta) here:  https://play.google.com/apps/testing/io.ionic.sandysearch
+And on **Google Play** here:  https://play.google.com/store/apps/details?id=io.ionic.sandysearch
 
 
 The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
