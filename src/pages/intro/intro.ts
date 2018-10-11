@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core' // eslint-disable-line no-unused-vars
+import { IonicPage, NavController, NavParams } from 'ionic-angular' // eslint-disable-line no-unused-vars
 
 /**
  * Generated class for the IntroPage page.
@@ -11,18 +11,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 @Component({
   selector: 'page-intro',
   templateUrl: 'intro.html',
-})
+  })
 export class IntroPage {
+  constructor (public navCtrl: NavController, public navParams: NavParams) { } // eslint-disable-line no-useless-constructor
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  ionViewDidLoad () {
+    console.log('ionViewDidLoad IntroPage')
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad IntroPage');
+  goToHome () {
+    this.navCtrl.setRoot('LandingPage')
   }
-
-  goToHome(){
-    this.navCtrl.setRoot('LandingPage');
-  }
-  
 }

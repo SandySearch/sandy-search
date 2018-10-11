@@ -1,22 +1,22 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component } from '@angular/core' // eslint-disable-line no-unused-vars
 import {
-  IonicPage,          // eslint-disable-line no-unused-vars
-  NavController,      // eslint-disable-line no-unused-vars
-  //Loading,            // eslint-disable-line no-unused-vars
-  LoadingController,  // eslint-disable-line no-unused-vars
-  //Alert,              // eslint-disable-line no-unused-vars
-  AlertController     // eslint-disable-line no-unused-vars
+  IonicPage, // eslint-disable-line no-unused-vars
+  NavController, // eslint-disable-line no-unused-vars
+  // Loading,            // eslint-disable-line no-unused-vars
+  LoadingController, // eslint-disable-line no-unused-vars
+  // Alert,              // eslint-disable-line no-unused-vars
+  AlertController // eslint-disable-line no-unused-vars
 } from 'ionic-angular'
-//import { OldHomePage } from '../oldhome/oldhome'
-import { AuthProvider } from '../../providers/auth/auth'  // eslint-disable-line no-unused-vars
+// import { OldHomePage } from '../oldhome/oldhome'
+import { AuthProvider } from '../../providers/auth/auth' // eslint-disable-line no-unused-vars
 
 @IonicPage()
 @Component({
   selector: 'page-landing',
   templateUrl: 'landing.html',
-})
+  })
 export class LandingPage {
-  constructor (  // eslint-disable-line no-useless-constructor
+  constructor ( // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,

@@ -1,31 +1,31 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component } from '@angular/core' // eslint-disable-line no-unused-vars
 import {
-  IonicPage,             // eslint-disable-line no-unused-vars
-  NavController,         // eslint-disable-line no-unused-vars
-  NavParams,             // eslint-disable-line no-unused-vars
-  ActionSheet,           // eslint-disable-line no-unused-vars
+  IonicPage, // eslint-disable-line no-unused-vars
+  NavController, // eslint-disable-line no-unused-vars
+  NavParams, // eslint-disable-line no-unused-vars
+  ActionSheet, // eslint-disable-line no-unused-vars
   ActionSheetController, // eslint-disable-line no-unused-vars
-  Platform,              // eslint-disable-line no-unused-vars
-  //Alert,
-  AlertController        // eslint-disable-line no-unused-vars
+  Platform, // eslint-disable-line no-unused-vars
+  // Alert,
+  AlertController // eslint-disable-line no-unused-vars
 } from 'ionic-angular'
-import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
-import { AuthProvider } from '../../providers/auth/auth'     // eslint-disable-line no-unused-vars
-//import { Camera } from '@ionic-native/camera'
+import { EntryProvider } from '../../providers/entry/entry' // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../../providers/auth/auth' // eslint-disable-line no-unused-vars
+// import { Camera } from '@ionic-native/camera'
 
 @IonicPage({
   segment: 'entry/:entryId'
-})
+  })
 @Component({
   selector: 'page-entry-detail',
   templateUrl: 'entry-detail.html'
-})
+  })
 export class EntryDetailPage {
-  public entry: {};       // eslint-disable-line no-undef
+  public entry: {}; // eslint-disable-line no-undef
   public entryId: string; // eslint-disable-line no-undef
-  //public placeholderPicture = 'assets/img/collect.jpg';
+  // public placeholderPicture = 'assets/img/collect.jpg';
 
-  constructor (  // eslint-disable-line no-useless-constructor
+  constructor ( // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
     public navParams: NavParams,
     public actionCtrl: ActionSheetController,
@@ -33,7 +33,7 @@ export class EntryDetailPage {
     public alertCtrl: AlertController,
     public entryProvider: EntryProvider,
     public authProvider: AuthProvider
-    //public cameraPlugin: Camera
+    // public cameraPlugin: Camera
   ) { }
 
   ionViewDidEnter () {

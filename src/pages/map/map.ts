@@ -1,8 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
+import { Component, OnDestroy } from '@angular/core' // eslint-disable-line no-unused-vars
+import { IonicPage, NavController, NavParams } from 'ionic-angular' // eslint-disable-line no-unused-vars
+import { GeoProvider } from '../../providers/geo/geo' // eslint-disable-line no-unused-vars
 
-import {BehaviorSubject} from 'rxjs/BehaviorSubject'
+import {BehaviorSubject} from 'rxjs/BehaviorSubject' // eslint-disable-line no-unused-vars
 
 /**
  * Generated class for the MapPage page.
@@ -24,86 +24,85 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject'
        height: 300px;
      }
   `],
-  //styleUrls: ['./map.scss']
-})
-//export class MapPage implements OnInit {
+  // styleUrls: ['./map.scss']
+  })
+// export class MapPage implements OnInit {
 export class MapPage implements OnDestroy {
-    lat: number
-    lng: number
-    rangeKm: number = 25
+  lat: number // eslint-disable-line no-undef
+  lng: number // eslint-disable-line no-undef
+  rangeKm: number = 25 // eslint-disable-line no-undef
 
-    markers: any;
-    subscription: any;
-  
-    serviceType: string
-    title: string
-  
-    constructor( // eslint-disable-line no-useless-constructor
-      public navCtrl: NavController, 
+  markers: any // eslint-disable-line no-undef
+  subscription: any // eslint-disable-line no-undef
+
+  serviceType: string // eslint-disable-line no-undef
+  title: string // eslint-disable-line no-undef
+
+  constructor ( // eslint-disable-line no-useless-constructor
+      public navCtrl: NavController,
       public navParams: NavParams,
       private geo: GeoProvider
-    ) { }
+  ) { }
 
-    ionViewDidLoad() {
-      console.log('ionViewDidLoad MapPage')
-      this.geo.hits = new BehaviorSubject([])  // force to empty - every time we enter
-      
-      this.serviceType = this.navParams.get('serviceType')
-      console.log("found serviceType = "+this.serviceType)
-      
-      this.getUserLocation()  // was in ngOnInit()
-      this.subscription = this.geo.hits
-        //.subscribe(hits => this.markers = hits)
-          .subscribe(hits => {
-          this.markers = hits
-            .filter(x => {
-              return (x.serviceType === this.serviceType) && (x.disputed < 3)
-            })
-        })
-      
+  ionViewDidLoad () {
+    console.log('ionViewDidLoad MapPage')
+    this.geo.hits = new BehaviorSubject([]) // force to empty - every time we enter
+
+    this.serviceType = this.navParams.get('serviceType')
+    console.log('found serviceType = ' + this.serviceType)
+
+    this.getUserLocation() // was in ngOnInit()
+    this.subscription = this.geo.hits
+      // .subscribe(hits => this.markers = hits)
+      .subscribe(hits => {
+        this.markers = hits
+          .filter(x => {
+            return (x.serviceType === this.serviceType) && (x.disputed < 3)
+          })
+      })
 
     // now load title with serviceType
-   if (this.serviceType === "ESNY") {
-     this.title = "Emergency Shelters"
-   } else if (this.serviceType === "EFW") {
-     this.title = "Emergency Food and Water"
-   } else if (this.serviceType === "GS") {
-     this.title = "Gas Stations (with Gas & Power)"
-   } else if (this.serviceType === "CS") {
-     this.title = "Charging Locations"
-   } else if (this.serviceType === "OFS") {
-     this.title = "Open Food Stores"
-   } else if (this.serviceType === "WATM") {
-     this.title = "Working ATMs"
-   } else if (this.serviceType === "Other") {
-     this.title = "Other Services"
-   }
+    if (this.serviceType === 'ESNY') {
+      this.title = 'Emergency Shelters'
+    } else if (this.serviceType === 'EFW') {
+      this.title = 'Emergency Food and Water'
+    } else if (this.serviceType === 'GS') {
+      this.title = 'Gas Stations (with Gas & Power)'
+    } else if (this.serviceType === 'CS') {
+      this.title = 'Charging Locations'
+    } else if (this.serviceType === 'OFS') {
+      this.title = 'Open Food Stores'
+    } else if (this.serviceType === 'WATM') {
+      this.title = 'Working ATMs'
+    } else if (this.serviceType === 'Other') {
+      this.title = 'Other Services'
     }
-  
-    ngOnDestroy() {
-      if (this.subscription) {
-        this.subscription.unsubscribe()
-      }
+  }
+
+  ngOnDestroy () {
+    if (this.subscription) {
+      this.subscription.unsubscribe()
     }
-  
-    private getUserLocation() {
-     // locate the user
-     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-         this.lat = position.coords.latitude
-         this.lng = position.coords.longitude
-         console.log("this.lat/this.lng 1= "+this.lat+'/'+this.lng)
-         // get service locations
-         this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
-       });
-     } else {
-       this.lat = 51.678418
-       this.lng = -73.809007
-       console.log("this.lat/this.lng 2= "+this.lat+'/'+this.lng)
-       // get service locations
-       this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
-     }
-     //console.log("this.lat/this.lng = "+this.lat+'/'+this.lng)
-     //this.geo.getLocations(100, [this.lat, this.lng])
-   }
- }
+  }
+
+  private getUserLocation () {
+    // locate the user
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude
+        this.lng = position.coords.longitude
+        console.log('this.lat/this.lng 1= ' + this.lat + '/' + this.lng)
+        // get service locations
+        this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
+      })
+    } else {
+      this.lat = 51.678418
+      this.lng = -73.809007
+      console.log('this.lat/this.lng 2= ' + this.lat + '/' + this.lng)
+      // get service locations
+      this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
+    }
+    // console.log("this.lat/this.lng = "+this.lat+'/'+this.lng)
+    // this.geo.getLocations(100, [this.lat, this.lng])
+  }
+}

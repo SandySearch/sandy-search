@@ -1,20 +1,20 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component } from '@angular/core' // eslint-disable-line no-unused-vars
 import {
-  IonicPage,         // eslint-disable-line no-unused-vars
-  NavController,     // eslint-disable-line no-unused-vars
-  Alert,             // eslint-disable-line no-unused-vars
-  AlertController    // eslint-disable-line no-unused-vars
+  IonicPage, // eslint-disable-line no-unused-vars
+  NavController, // eslint-disable-line no-unused-vars
+  Alert, // eslint-disable-line no-unused-vars
+  AlertController // eslint-disable-line no-unused-vars
 } from 'ionic-angular'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'  // eslint-disable-line no-unused-vars
-import { AuthProvider } from '../../providers/auth/auth'             // eslint-disable-line no-unused-vars
+import { FormBuilder, FormGroup, Validators } from '@angular/forms' // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../../providers/auth/auth' // eslint-disable-line no-unused-vars
 
 @IonicPage()
 @Component({
   selector: 'page-reset-password',
   templateUrl: 'reset-password.html'
-})
+  })
 export class ResetPasswordPage {
-  public resetPasswordForm: FormGroup;  // eslint-disable-line no-undef
+  public resetPasswordForm: FormGroup; // eslint-disable-line no-undef
 
   constructor (
     public navCtrl: NavController,
