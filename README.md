@@ -96,6 +96,9 @@ And the Android APK is available on GitHub here:
   
 And on **Google Play** here:  https://play.google.com/store/apps/details?id=io.ionic.sandysearch
 
+SandySearch is now on the **Apple App Store** too: https://itunes.apple.com/us/app/sandysearch/id1438425201?ls=1&mt=8
+
+
 
 The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
 
@@ -144,7 +147,7 @@ SandySearch Admin User Interface Demo - https://youtu.be/hGE8ubJQGMg
 - [ ] rate limit votes and disputed to 1 an hour with local storage
 - [ ] add spinner for list and map
 - [ ] change markers by serviceType
-- [ ] iOS build and App Store upload - just need my Mac
+- [x] ~~iOS build and App Store upload - just need my Mac~~
 - [x] ~~Dockerizing an Ionic 3 app~~
 - [x] ~~Google Play Store upload~~
 - [x] ~~host admin interface on GitHub~~
