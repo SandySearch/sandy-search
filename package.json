@@ -125,7 +125,7 @@
     "semantic-release": "^12.4.1",
     "semantic-release-cli": "^3.6.2",
     "snazzy": "^7.0.0",
-    "standard": "^10.0.3",
+    "standard": "^11.0.1",
     "systemjs": "^0.20.19",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
@@ -156,13 +156,18 @@
   },
   "cordova": {
     "plugins": {
-      "cordova-plugin-camera": {},
+      "cordova-plugin-camera": {
+        "CAMERA_USAGE_DESCRIPTION": "We are using the Camera for profile pictures",
+        "PHOTOLIBRARY_USAGE_DESCRIPTION": "We are using the Photo Library for profile pictures"
+      },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-geolocation": {},
+      "cordova-plugin-geolocation": {
+        "GEOLOCATION_USAGE_DESCRIPTION": "To support search"
+      },
       "cordova-sqlite-storage": {}
     },
     "platforms": [
