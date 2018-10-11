@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {Injectable} from '@angular/core' // eslint-disable-line no-unused-vars
+import {AngularFireDatabase} from 'angularfire2/database' // eslint-disable-line no-unused-vars
 
-//import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
+// import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
 
-//import * as GeoFire from "geofire"
+// import * as GeoFire from "geofire"
 import {GeoFire} from 'geofire'
-import {Observable} from 'rxjs/Observable'
+import {Observable} from 'rxjs/Observable' // eslint-disable-line no-unused-vars
 import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 
 /*
@@ -16,30 +16,29 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 */
 @Injectable()
 export class GeoProvider {
+  dbRef: any // eslint-disable-line no-undef
+  geoFire: any // eslint-disable-line no-undef
+  // entry: any;
+  // public entry: any;       // eslint-disable-line no-undef
 
-  dbRef: any;
-  geoFire: any;
-  //entry: any;
-  //public entry: any;       // eslint-disable-line no-undef
+  hits = new BehaviorSubject([]) // eslint-disable-line no-undef
 
-  hits = new BehaviorSubject([])
-
-  constructor(
-    private db: AngularFireDatabase,
-    //private entryProvider: EntryProvider
+  constructor (
+    private db: AngularFireDatabase
+    // private entryProvider: EntryProvider
   ) {
     // Reference database location for GeoFire
-    this.dbRef = this.db.list('/locations');
+    this.dbRef = this.db.list('/locations')
 
-    //this.entryList = this.db.list('/serviceList')
+    // this.entryList = this.db.list('/serviceList')
 
     // this.geoFire = new GeoFire(this.dbRef.$ref); // <= old
-    //this.geoFire = new GeoFire(this.dbRef); // <= changed
-    this.geoFire = new GeoFire(this.dbRef.query.ref);
+    // this.geoFire = new GeoFire(this.dbRef); // <= changed
+    this.geoFire = new GeoFire(this.dbRef.query.ref)
   }
 
   // Adds GeoFire data to database
-  setLocation(key: string, coords: Array<number>) {
+  setLocation (key: string, coords: Array<number>) {
     this.geoFire.set(key, coords)
       .then(_ => console.log('location updated'))
       .catch(err => console.log(err))
@@ -47,7 +46,7 @@ export class GeoProvider {
 
   // Queries database for nearby locations
   // Maps results to the hits BehaviorSubject
-  getLocations(radius: number, coords: Array<number>) {
+  getLocations (radius: number, coords: Array<number>) {
     this.geoFire.query({
       center: coords,
       radius: radius
@@ -57,8 +56,8 @@ export class GeoProvider {
         console.log(miles)
         let hit = {
           location: location,
-	  //distance: distance * 0.62137, // https://www.metric-conversions.org/length/kilometers-to-miles.htm
-	  distance: miles,
+          // distance: distance * 0.62137, // https://www.metric-conversions.org/length/kilometers-to-miles.htm
+          distance: miles,
           serviceType: '',
           name: '',
           owner: '',
@@ -73,18 +72,18 @@ export class GeoProvider {
           verified: false,
           votes: 0,
           createDate: '',
-	  archive: false,
-	  dupe: 0,
+          archive: false,
+          dupe: 0,
           id: ''
         }
 
         let currentHits = this.hits.value
-         console.log("key = ", key)
+        console.log('key = ', key)
         const listingsSubscription = this.getEntryData(key).subscribe(
           (entry) => {
-	    //newName = location.name
-	    console.log("entry = ", JSON.stringify(entry, null, 4) )
-	    if (entry) {
+            // newName = location.name
+            console.log('entry = ', JSON.stringify(entry, null, 4))
+            if (entry) {
               hit.name = entry.name
               hit.serviceType = entry.serviceType
               hit.owner = entry.owner
@@ -103,20 +102,20 @@ export class GeoProvider {
               hit.dupe = entry.dupe
               hit.id = entry.id
 
-              console.log("key2 = ", key)
-              currentHits.push(hit);
-	      this.hits.next(currentHits);
-	    }
-	    // else just skip null
-	  },
-	  err => console.log('Error Getting Service: ', err),
-	  () => console.log('Getting Locations complete')
-        );
+              console.log('key2 = ', key)
+              currentHits.push(hit)
+              this.hits.next(currentHits)
+            }
+            // else just skip null
+          },
+          err => console.log('Error Getting Service: ', err),
+          () => console.log('Getting Locations complete')
+        )
 
-	// Stop listening for listings after 5 seconds
-	setTimeout(() => { listingsSubscription.unsubscribe(); }, 5000);
+        // Stop listening for listings after 5 seconds
+        setTimeout(() => { listingsSubscription.unsubscribe() }, 5000)
 
-	/***
+        /***
         this.entryProvider
         .getEntry(key)
         .valueChanges()
@@ -131,14 +130,10 @@ export class GeoProvider {
             this.hits.next(currentHits);
          })
                    ***/
-
-
       })
   }
-  
-  getEntryData(entryId: string): Observable<any> {
-    return this.db.object('/serviceList/' + entryId).valueChanges();
-    }
- 
-}
 
+  getEntryData (entryId: string): Observable<any> {
+    return this.db.object('/serviceList/' + entryId).valueChanges()
+  }
+}

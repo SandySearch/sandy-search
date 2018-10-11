@@ -1,25 +1,25 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component } from '@angular/core' // eslint-disable-line no-unused-vars
 import {
-  IonicPage,          // eslint-disable-line no-unused-vars
-  NavController,      // eslint-disable-line no-unused-vars
-  Loading,            // eslint-disable-line no-unused-vars
-  LoadingController,  // eslint-disable-line no-unused-vars
-  Alert,              // eslint-disable-line no-unused-vars
-  AlertController     // eslint-disable-line no-unused-vars
+  IonicPage, // eslint-disable-line no-unused-vars
+  NavController, // eslint-disable-line no-unused-vars
+  Loading, // eslint-disable-line no-unused-vars
+  LoadingController, // eslint-disable-line no-unused-vars
+  Alert, // eslint-disable-line no-unused-vars
+  AlertController // eslint-disable-line no-unused-vars
 } from 'ionic-angular'
 import { OldHomePage } from '../oldhome/oldhome'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'  // eslint-disable-line no-unused-vars
-import { AuthProvider } from '../../providers/auth/auth'             // eslint-disable-line no-unused-vars
-//import { EmailValidator } from '../../validators/email';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms' // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../../providers/auth/auth' // eslint-disable-line no-unused-vars
+// import { EmailValidator } from '../../validators/email';
 
 @IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
-})
+  })
 export class LoginPage {
-  public loginForm: FormGroup;  // eslint-disable-line no-undef
-  public loading: Loading;      // eslint-disable-line no-undef
+  public loginForm: FormGroup; // eslint-disable-line no-undef
+  public loading: Loading; // eslint-disable-line no-undef
 
   constructor (
     public navCtrl: NavController,

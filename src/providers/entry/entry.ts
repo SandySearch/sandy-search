@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core'  // eslint-disable-line no-unused-vars
-import {AngularFireAuth} from 'angularfire2/auth'  // eslint-disable-line no-unused-vars
+import {Injectable} from '@angular/core' // eslint-disable-line no-unused-vars
+import {AngularFireAuth} from 'angularfire2/auth' // eslint-disable-line no-unused-vars
 import {
-  AngularFireDatabase,  // eslint-disable-line no-unused-vars
-  AngularFireObject,  // eslint-disable-line no-unused-vars
-  AngularFireList  // eslint-disable-line no-unused-vars
+  AngularFireDatabase, // eslint-disable-line no-unused-vars
+  AngularFireObject, // eslint-disable-line no-unused-vars
+  AngularFireList // eslint-disable-line no-unused-vars
 } from 'angularfire2/database'
 
-import firebase from 'firebase/app'  // eslint-disable-line no-unused-vars
-import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
+import firebase from 'firebase/app' // eslint-disable-line no-unused-vars
+import { GeoProvider } from '../../providers/geo/geo' // eslint-disable-line no-unused-vars
 import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
 
@@ -22,7 +22,7 @@ export class EntryProvider {
     public afDatabase: AngularFireDatabase,
     private geo: GeoProvider
   ) {
-    //const dbUrl = `/userProfile/${user.uid}`;
+    // const dbUrl = `/userProfile/${user.uid}`;
     const dbUrl = `/serviceList`
 
     this.afAuth.authState.subscribe(user => {
@@ -36,42 +36,42 @@ export class EntryProvider {
   }
 
   getEntryList (): AngularFireList<any> {
-    //getEntryList (): Observable<any> {
+    // getEntryList (): Observable<any> {
     return this.entryList
-    //return this.entryList.filter(it => it.serviceType === "GS")
-    //this.entryList$ = this.entryList
-    //return this.entryList$.map(it => it.serviceType === "GS")
+    // return this.entryList.filter(it => it.serviceType === "GS")
+    // this.entryList$ = this.entryList
+    // return this.entryList$.map(it => it.serviceType === "GS")
   }
 
   getEntry (entryId: string): AngularFireObject<any> {
     const dbUrl = `/serviceList`
     return this.afDatabase.object(
-          dbUrl + `/${entryId}`
-        )
+      dbUrl + `/${entryId}`
+    )
   }
 
   createEntry (
-        serviceType: string = 'GS',
-	name: string,
-	//owner: string = this.userId,
-	owner: string = 'anon',
-        address: string,
-        phone: number,
-        notes: string,
-        lat: number = 9,
-        lon: number = 99,
-        here: false,
-        updatedDate: string = new Date().toLocaleString(),
-        disputed: number = 0,
-        verified: boolean = false,
-        votes: number = 0,
-        createDate: string = new Date().toLocaleString(),
-	archive: boolean = false,
-	dupe: number = 0
-      ): Promise<any> {
+    serviceType: string = 'GS',
+    name: string,
+    // owner: string = this.userId,
+    owner: string = 'anon',
+    address: string,
+    phone: number,
+    notes: string,
+    lat: number = 9,
+    lon: number = 99,
+    here: false,
+    updatedDate: string = new Date().toLocaleString(),
+    disputed: number = 0,
+    verified: boolean = false,
+    votes: number = 0,
+    createDate: string = new Date().toLocaleString(),
+    archive: boolean = false,
+    dupe: number = 0
+  ): Promise<any> {
     const newEntryRef: firebase.database.ThenableReference = this.entryList.push(
-          {}
-        )
+      {}
+    )
     // set geohash here?
     this.geo.setLocation(newEntryRef.key, [lat, lon])
     return newEntryRef.set({
@@ -104,7 +104,7 @@ export class EntryProvider {
   // and
   // https://stackoverflow.com/questions/42596866/angularfire2-best-way-to-increment-a-value
   incrementVote (entryId: string) {
-        /**
+    /**
         this.afDatabase.object('serviceList/${entryId}/votes').query.ref.transaction(votes => {
           //if ( (votes === null) || (votes === 0 ) ) {
           if (votes === null) {
@@ -114,15 +114,15 @@ export class EntryProvider {
           }
         });
         **/
-    //this.afDatabase.object('serviceList/'+entryId+'/votes').query.ref.transaction(votes => { votes ? ++votes : 1; return votes });
+    // this.afDatabase.object('serviceList/'+entryId+'/votes').query.ref.transaction(votes => { votes ? ++votes : 1; return votes });
     this.afDatabase.object('serviceList/' + entryId + '/votes').query.ref.transaction(votes => votes ? ++votes : 1)
   }
 
   updateEntry (entryId: string): Promise<any> {
     let nowTime = new Date().toLocaleString()
-    //const newVotes: number = this.incrementVote(entryId);
+    // const newVotes: number = this.incrementVote(entryId);
     this.incrementVote(entryId)
-    //return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
+    // return this.entryList.update(entryId, { updatedDate: nowTime, votes: newVotes });
     return this.entryList.update(entryId, {updatedDate: nowTime})
   }
 
@@ -131,8 +131,8 @@ export class EntryProvider {
   }
 
   disputeEntry (entryId: string): Promise<any> {
-    //const dis: number = 4;
-    //return this.entryList.update(entryId, { disputed: dis });
+    // const dis: number = 4;
+    // return this.entryList.update(entryId, { disputed: dis });
     return this.afDatabase.object('serviceList/' + entryId + '/disputed').query.ref.transaction(disputed => disputed ? ++disputed : 1)
   }
 
@@ -143,7 +143,7 @@ export class EntryProvider {
   }
 
   archiveEntry (entryId: string): Promise<any> {
-        // need to add transactions?
+    // need to add transactions?
     return this.entryList.update(entryId, {archive: true})
   }
 

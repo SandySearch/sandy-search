@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { IntroPage } from './intro';
+import { NgModule } from '@angular/core' // eslint-disable-line no-unused-vars
+import { IonicPageModule } from 'ionic-angular' // eslint-disable-line no-unused-vars
+import { IntroPage } from './intro' // eslint-disable-line no-unused-vars
 
 @NgModule({
   declarations: [
-    IntroPage,
+  IntroPage,
   ],
   imports: [
-    IonicPageModule.forChild(IntroPage),
+  IonicPageModule.forChild(IntroPage),
   ],
-})
+  })
 export class IntroPageModule {}

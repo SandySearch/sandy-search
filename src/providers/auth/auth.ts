@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core'  // eslint-disable-line no-unused-vars
-import { AngularFireAuth } from 'angularfire2/auth'  // eslint-disable-line no-unused-vars
-import { AngularFireDatabase } from 'angularfire2/database'  // eslint-disable-line no-unused-vars
-import * as firebase from 'firebase/app'  // eslint-disable-line no-unused-vars
-//import firebase from 'firebase/app';
+import { Injectable } from '@angular/core' // eslint-disable-line no-unused-vars
+import { AngularFireAuth } from 'angularfire2/auth' // eslint-disable-line no-unused-vars
+import { AngularFireDatabase } from 'angularfire2/database' // eslint-disable-line no-unused-vars
+import * as firebase from 'firebase/app' // eslint-disable-line no-unused-vars
+// import firebase from 'firebase/app';
 
 @Injectable()
 export class AuthProvider {
@@ -64,7 +64,7 @@ export class AuthProvider {
         // then send email verification here
         // https://github.com/angular/angularfire2/issues/904
         //
-        //let user:any = firebase.auth().currentUser
+        // let user:any = firebase.auth().currentUser
         user.sendEmailVerification().then(
           (success) => {
             console.log('please verify your email')
@@ -72,7 +72,7 @@ export class AuthProvider {
           }
         ).catch(
           error => {
-            //this.error = err;
+            // this.error = err;
             console.log('There was an error sending verification email to this account', error)
           }
         )

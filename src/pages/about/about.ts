@@ -1,5 +1,5 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
-import { IonicPage, NavController, NavParams } from 'ionic-angular'  // eslint-disable-line no-unused-vars
+import { Component } from '@angular/core' // eslint-disable-line no-unused-vars
+import { IonicPage, NavController, NavParams } from 'ionic-angular' // eslint-disable-line no-unused-vars
 import { appVersion } from '../../app/credentials'
 /**
  * Generated class for the AboutPage page.
@@ -12,13 +12,12 @@ import { appVersion } from '../../app/credentials'
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html',
-})
+  })
 export class AboutPage {
-  //version = "0.0.4"
-  version = appVersion
-  
-  constructor (public navCtrl: NavController, public navParams: NavParams) {  // eslint-disable-line no-useless-constructor
-  }
+  // version = "0.0.4"
+  version = appVersion // eslint-disable-line no-undef
+
+  constructor (public navCtrl: NavController, public navParams: NavParams) { } // eslint-disable-line no-useless-constructor
 
   ionViewDidLoad () {
     console.log('ionViewDidLoad AboutPage')
@@ -39,8 +38,7 @@ export class AboutPage {
   // https://devdactic.com/sending-emails-with-images-in-ionic-cordova/
   sendFeedback () {
     console.log('sendFeedback AboutPage')
-    let Link="mailto:feedback@lwlabs.com?subject=Feedback%20from%20SandySearch";
-    window.open(Link, "_system");
-    
+    let Link = 'mailto:feedback@lwlabs.com?subject=Feedback%20from%20SandySearch'
+    window.open(Link, '_system')
   }
 }

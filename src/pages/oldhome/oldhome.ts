@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component, OnInit } from '@angular/core' // eslint-disable-line no-unused-vars
 import {
-  NavController,          // eslint-disable-line no-unused-vars
-  NavParams,              // eslint-disable-line no-unused-vars
-  ActionSheet,            // eslint-disable-line no-unused-vars
-  ActionSheetController,  // eslint-disable-line no-unused-vars
-  Loading,                // eslint-disable-line no-unused-vars
-  LoadingController,      // eslint-disable-line no-unused-vars
-  Platform                // eslint-disable-line no-unused-vars
+  NavController, // eslint-disable-line no-unused-vars
+  NavParams, // eslint-disable-line no-unused-vars
+  ActionSheet, // eslint-disable-line no-unused-vars
+  ActionSheetController, // eslint-disable-line no-unused-vars
+  Loading, // eslint-disable-line no-unused-vars
+  LoadingController, // eslint-disable-line no-unused-vars
+  Platform // eslint-disable-line no-unused-vars
 } from 'ionic-angular'
 import { Observable } from 'rxjs/Observable'
 import { LandingPage } from '../landing/landing'
-import { EntryProvider } from '../../providers/entry/entry'  // eslint-disable-line no-unused-vars
-import { AuthProvider } from '../../providers/auth/auth'     // eslint-disable-line no-unused-vars
-import { GeoProvider } from '../../providers/geo/geo'        // eslint-disable-line no-unused-vars
+import { EntryProvider } from '../../providers/entry/entry' // eslint-disable-line no-unused-vars
+import { AuthProvider } from '../../providers/auth/auth' // eslint-disable-line no-unused-vars
+import { GeoProvider } from '../../providers/geo/geo' // eslint-disable-line no-unused-vars
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/filter'
 import {BehaviorSubject} from 'rxjs/BehaviorSubject'
@@ -20,25 +20,25 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject'
 @Component({
   selector: 'page-oldhome/:serviceType',
   templateUrl: 'oldhome.html',
-    styles: [`
+  styles: [`
     .ion-list { margin-bottom: 64px !important; }
   `],
-})
-//export class OldHomePage implements OnInit {
+  })
+// export class OldHomePage implements OnInit {
 export class OldHomePage {
-  public entryList$: Observable<any>;  // eslint-disable-line no-undef
-  //public filteredEntryList$: Observable<entry[]>;  // eslint-disable-line no-undef
-  public filteredEntryList$: Observable<any>;  // eslint-disable-line no-undef
-  lat: number
-  lng: number
-  serviceType: string
-  title: string
-  rangeKm: number = 25
+  public entryList$: Observable<any>; // eslint-disable-line no-undef
+  // public filteredEntryList$: Observable<entry[]>;  // eslint-disable-line no-undef
+  public filteredEntryList$: Observable<any>; // eslint-disable-line no-undef
+  lat: number // eslint-disable-line no-undef
+  lng: number // eslint-disable-line no-undef
+  serviceType: string // eslint-disable-line no-undef
+  title: string // eslint-disable-line no-undef
+  rangeKm: number = 25 // eslint-disable-line no-undef
 
-  markers: any;
-  subscription: any;
+  markers: any // eslint-disable-line no-undef
+  subscription: any // eslint-disable-line no-undef
 
-  constructor (  // eslint-disable-line no-useless-constructor
+  constructor ( // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
     public navParams: NavParams,
     public actionCtrl: ActionSheetController,
@@ -49,64 +49,63 @@ export class OldHomePage {
     private geo: GeoProvider
   ) { }
 
-  ngOnInit() {
-    //this.seedDatabase()  // only need to do this once
-    
+  ngOnInit () {
+    // this.seedDatabase()  // only need to do this once
+
   }
-  
-  private seedDatabase() {
-  let dummyPoints = [
-    [41.9, -73.1],
-    [41.7, -73.2],
-    [41.1, -73.3],
-    [41.3, -73.0],
-    [40.7, -73.1]
-  ]
 
-  dummyPoints.forEach((val, idx) => {
-    let name = `dummy-location2-${idx}`
-    console.log(idx)
-    this.geo.setLocation(name, val)
-  })
-}
-  
+  private seedDatabase () {
+    let dummyPoints = [
+      [41.9, -73.1],
+      [41.7, -73.2],
+      [41.1, -73.3],
+      [41.3, -73.0],
+      [40.7, -73.1]
+    ]
+
+    dummyPoints.forEach((val, idx) => {
+      let name = `dummy-location2-${idx}`
+      console.log(idx)
+      this.geo.setLocation(name, val)
+    })
+  }
+
   ionViewDidLoad () {
-      this.serviceType = this.navParams.get('serviceType')
-      console.log("found serviceType = "+this.serviceType)
-    
-      this.markers = []  // empty this
-      this.geo.hits = new BehaviorSubject([])  // force to empty - every time we enter
-      console.log("this.markers=", this.markers)
-      console.log("this.geo.hits=", this.geo.hits)
+    this.serviceType = this.navParams.get('serviceType')
+    console.log('found serviceType = ' + this.serviceType)
 
-      this.getUserLocation()
-      this.subscription = this.geo.hits
-        .subscribe(hits => {
-          this.markers = hits
-            .filter(x => {
-	    return (x.serviceType === this.serviceType) &&
-	    (x.disputed < 3) && (x.dupe < 5)
-            })
-        })
+    this.markers = [] // empty this
+    this.geo.hits = new BehaviorSubject([]) // force to empty - every time we enter
+    console.log('this.markers=', this.markers)
+    console.log('this.geo.hits=', this.geo.hits)
 
+    this.getUserLocation()
+    this.subscription = this.geo.hits
+      .subscribe(hits => {
+        this.markers = hits
+          .filter(x => {
+            return (x.serviceType === this.serviceType) &&
+    (x.disputed < 3) && (x.dupe < 5)
+          })
+      })
 
     // now load title with serviceType
-   if (this.serviceType === "ESNY") {
-     this.title = "Emergency Shelters"
-   } else if (this.serviceType === "EFW") {
-     this.title = "Emergency Food and Water"
-   } else if (this.serviceType === "GS") {
-     this.title = "Gas Stations (with Gas & Power)"
-   } else if (this.serviceType === "CS") {
-     this.title = "Charging Locations"
-   } else if (this.serviceType === "OFS") {
-     this.title = "Open Food Stores"
-   } else if (this.serviceType === "WATM") {
-     this.title = "Working ATMs"
-   } else if (this.serviceType === "Other") {
-     this.title = "Other Services"
-   }
-/***  Read entire list without location/distance
+    if (this.serviceType === 'ESNY') {
+      this.title = 'Emergency Shelters'
+    } else if (this.serviceType === 'EFW') {
+      this.title = 'Emergency Food and Water'
+    } else if (this.serviceType === 'GS') {
+      this.title = 'Gas Stations (with Gas & Power)'
+    } else if (this.serviceType === 'CS') {
+      this.title = 'Charging Locations'
+    } else if (this.serviceType === 'OFS') {
+      this.title = 'Open Food Stores'
+    } else if (this.serviceType === 'WATM') {
+      this.title = 'Working ATMs'
+    } else if (this.serviceType === 'Other') {
+      this.title = 'Other Services'
+    }
+    /** *  Read entire list without location/distance
    //if (user) {
    this.entryList$ = this.entryProvider.getEntryList().valueChanges()
 
@@ -117,7 +116,7 @@ export class OldHomePage {
      //.do(x => console.log("serviceType2 =",x[serviceType]))
      .do(x => console.log("serviceType3 =",x['serviceType']))
      .do(x => console.log("serviceType3 =",x[5].serviceType))
-     //.filter(entry[] => 
+     //.filter(entry[] =>
      //entry.serviceType == "GS")
        //})
    this.entryList$.subscribe(x => {
@@ -131,34 +130,34 @@ export class OldHomePage {
 ***/
   }
 
-  ngOnDestroy() {
-      console.log("do we get to here?")
-      //console.log(this.subscription.lenth)
-      if (this.subscription) {
-        this.subscription.unsubscribe()
-      }
+  ngOnDestroy () {
+    console.log('do we get to here?')
+    // console.log(this.subscription.lenth)
+    if (this.subscription) {
+      this.subscription.unsubscribe()
     }
-  
-    private getUserLocation() {
-     // locate the user
-     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-         this.lat = position.coords.latitude
-         this.lng = position.coords.longitude
-         console.log("this.lat/this.lng 1= "+this.lat+'/'+this.lng)
-         // get service locations
-         this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
-       });
-     } else {
-       this.lat = 51.678418
-       this.lng = -73.809007
-       console.log("this.lat/this.lng 2= "+this.lat+'/'+this.lng)
-       // get service locations
-       this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
-     }
-     //console.log("this.lat/this.lng = "+this.lat+'/'+this.lng)
-     //this.geo.getLocations(100, [this.lat, this.lng])
-   }
+  }
+
+  private getUserLocation () {
+    // locate the user
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude
+        this.lng = position.coords.longitude
+        console.log('this.lat/this.lng 1= ' + this.lat + '/' + this.lng)
+        // get service locations
+        this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
+      })
+    } else {
+      this.lat = 51.678418
+      this.lng = -73.809007
+      console.log('this.lat/this.lng 2= ' + this.lat + '/' + this.lng)
+      // get service locations
+      this.geo.getLocations(this.rangeKm, [this.lat, this.lng])
+    }
+    // console.log("this.lat/this.lng = "+this.lat+'/'+this.lng)
+    // this.geo.getLocations(100, [this.lat, this.lng])
+  }
 
   /**
   transform(items: any[], field: string, value: string): any[] {
@@ -168,7 +167,7 @@ export class OldHomePage {
     return items.filter(it => it[field] === value)
   }
   **/
-  
+
   /**
   filter(entry : <any>) : boolean{
     // Return true if don't want this job in the results.
@@ -179,7 +178,7 @@ export class OldHomePage {
     return false
   }
   **/
-  
+
   createEntry (): void {
     this.navCtrl.push('EntryCreatePage')
   }
@@ -191,12 +190,12 @@ export class OldHomePage {
   showMap (): void {
     this.navCtrl.push('MapPage', { serviceType: this.serviceType })
   }
-  
+
   moreEntryOptions (entryId): void {
     let action: ActionSheet = this.actionCtrl.create({
       title: 'Update Service Listing',
       buttons: [
-      /*** no delete/edit by users
+      /** * no delete/edit by users
         {
           text: 'Delete',
           role: 'destructive',
@@ -255,11 +254,11 @@ export class OldHomePage {
   }
 
   logoutNow (): void {
-    /*** breaks flow of app - after logout cannot use anon ***/
-    //this.authProvider.logoutUser().then(newUser => {
+    /** * breaks flow of app - after logout cannot use anon ***/
+    // this.authProvider.logoutUser().then(newUser => {
     this.authProvider.logoutUser().then(() => {
-    //this.authProvider.logoutUser().then({
-    //this.authProvider.logoutUser().then( user => {
+    // this.authProvider.logoutUser().then({
+    // this.authProvider.logoutUser().then( user => {
       loading.dismiss().then(() => {
         this.navCtrl.setRoot(LandingPage)
       })
@@ -271,8 +270,8 @@ export class OldHomePage {
 
     const loading: Loading = this.loadingCtrl.create()
     loading.present()
-    /*** ***/
+    /** * ***/
 
-    //this.navCtrl.push('LandingPage'); // cannot push as shows back arrow
+    // this.navCtrl.push('LandingPage'); // cannot push as shows back arrow
   }
 }

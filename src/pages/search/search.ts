@@ -1,9 +1,9 @@
-import { Component } from '@angular/core'  // eslint-disable-line no-unused-vars
+import { Component } from '@angular/core' // eslint-disable-line no-unused-vars
 import {
-  IonicPage,      // eslint-disable-line no-unused-vars
-  NavController,  // eslint-disable-line no-unused-vars
-  //Loading,
-  LoadingController  // eslint-disable-line no-unused-vars
+  IonicPage, // eslint-disable-line no-unused-vars
+  NavController, // eslint-disable-line no-unused-vars
+  // Loading,
+  LoadingController // eslint-disable-line no-unused-vars
 } from 'ionic-angular'
 import { OldHomePage } from '../oldhome/oldhome'
 
@@ -18,18 +18,18 @@ import { OldHomePage } from '../oldhome/oldhome'
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
-})
+  })
 export class SearchPage {
-  constructor (  // eslint-disable-line no-useless-constructor
+  constructor ( // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
     public loadingCtrl: LoadingController
   ) { }
 
-  searchList (search: string): void { 
-    console.log("search = ", search)
-    //this.navCtrl.setRoot(OldHomePage, { serviceType: search } ) 
-    //this.navCtrl.push('OldHomePage', { serviceType: search } )
-    this.navCtrl.push(OldHomePage, { serviceType: search } )
+  searchList (search: string): void {
+    console.log('search = ', search)
+    // this.navCtrl.setRoot(OldHomePage, { serviceType: search } )
+    // this.navCtrl.push('OldHomePage', { serviceType: search } )
+    this.navCtrl.push(OldHomePage, { serviceType: search })
   }
 
   ionViewDidLoad () {
