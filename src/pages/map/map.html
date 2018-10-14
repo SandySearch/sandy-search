@@ -16,8 +16,7 @@
 
 <div *ngIf="lat && lng">
 
-  <agm-map [latitude]="lat" [longitude]="lng">
-
+  <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
     <agm-marker [latitude]="lat" [longitude]="lng">
 
       <agm-info-window>
@@ -26,6 +25,10 @@
       </agm-info-window>
 
     </agm-marker>
+    <agm-circle [latitude]="lat" [longitude]="lng" [radius]="rangeKm*1000" [fillOpacity]=0.20 [fillColor]="'#00A19A'" [circleDraggable]="false" [editable]="false"></agm-circle>
+    <!--
+    <agm-circle [latitude]="lat" [longitude]="lng" [radius]="25000" [fillOpacity]="0.50" [fillColor]="'#00A19A'" [circleDraggable]=false [editable]=false></agm-circle>
+    -->
     
     <!--
     [iconUrl]="'https://cdn1.iconfinder.com/data/icons/designer-s-tools-1/512/Coffee-64.png'">
