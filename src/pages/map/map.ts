@@ -18,10 +18,10 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject' // eslint-disable-line no-u
   templateUrl: 'map.html',
   styles: [`
     .sebm-google-map-container {
-       height: 300px;
+       height: 500px;
      }
      .agm-map {
-       height: 300px;
+       height: 500px;
      }
   `],
   // styleUrls: ['./map.scss']
@@ -30,6 +30,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject' // eslint-disable-line no-u
 export class MapPage implements OnDestroy {
   lat: number // eslint-disable-line no-undef
   lng: number // eslint-disable-line no-undef
+  zoom: number = 10 // eslint-disable-line no-undef
   rangeKm: number = 25 // eslint-disable-line no-undef
 
   markers: any // eslint-disable-line no-undef
