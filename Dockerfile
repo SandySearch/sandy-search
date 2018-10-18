@@ -1,22 +1,37 @@
+# how to build tiny production image from:
+# https://blog.hasura.io/an-exhaustive-guide-to-writing-dockerfiles-for-node-js-web-apps-bbee6bd2f3c4
+#
 # base image
 #FROM node:9.4
-FROM beevelop/ionic:latest
+#FROM beevelop/ionic:latest
+FROM node:8.9-alpine
+
+# Set one or more individual labels
+LABEL org.sandysearch.name="SandySearch Mobile/Web App"
+LABEL org.sandysearch.version="0.0.7-beta"
+LABEL org.sandysearch.release-date="2018-10-18"
+LABEL org.sandysearch.version.is-production=""
+LABEL org.sandysearch.hackathon="Call For Code 2018"
+
+# add git for pull
+RUN apk add git -U
 
 # add required libsecret-1-dev, needed by keytar, needed by geofire
 #RUN apt-get -V install -y libsecret-1-dev
 
 # add updates for security issues
-RUN apt-get update && apt-get -V install -y \
-   gnupg \
-   gpgv \
-   libgcrypt20 \
-   openssl \
-   procps \
-   libtomcat8-java \
-   libprocps4 \
-   libssl1.0.0 \
-   libsecret-1-dev \
-   && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get -V install -y \
+#   --no-install-recommends \   
+#   gnupg \
+#   gpgv \
+#   libgcrypt20 \
+#   openssl \
+#   procps \
+#   libtomcat8-java \
+#   libprocps4 \
+#   libssl1.0.0 \
+#   libsecret-1-dev \
+#   && rm -rf /var/lib/apt/lists/*
 
 # Bundle app source
 COPY . /app
