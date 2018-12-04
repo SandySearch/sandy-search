@@ -1,7 +1,7 @@
 # how to build tiny production image from:
 # https://blog.hasura.io/an-exhaustive-guide-to-writing-dockerfiles-for-node-js-web-apps-bbee6bd2f3c4
 #
-# base image
+# base image (from 3.99 GB to 657 MB) yay Alpine!
 #FROM node:9.4
 #FROM beevelop/ionic:latest
 FROM node:8.9-alpine
