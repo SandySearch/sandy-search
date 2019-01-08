@@ -14,24 +14,43 @@ import { AuthProvider } from '../../providers/auth/auth' // eslint-disable-line 
 @Component({
   selector: 'page-landing',
   templateUrl: 'landing.html',
-  })
+})
 export class LandingPage {
-  constructor ( // eslint-disable-line no-useless-constructor
+  lat: number // eslint-disable-line no-undef
+  lng: number // eslint-disable-line no-undef
+
+  constructor( // eslint-disable-line no-useless-constructor
     public navCtrl: NavController,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public authProvider: AuthProvider
   ) { }
 
-  goToLogin (): void { this.navCtrl.push('LoginPage') }
+  ionViewDidLoad() {
+    // trigger gps usages OK prompt from Android/iOS
 
-  goToSignup (): void { this.navCtrl.push('SignupPage') }
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude
+        this.lng = position.coords.longitude
+        console.log('this.lat/this.lng 1= ' + this.lat + '/' + this.lng)
+      })
+    } else {
+      this.lat = 51.678418
+      this.lng = -73.809007
+      console.log('this.lat/this.lng 2= ' + this.lat + '/' + this.lng)
+    }
+  }
 
-  goToSearch (): void { this.navCtrl.push('SearchPage') }
+  goToLogin(): void { this.navCtrl.push('LoginPage') }
 
-  goToAbout (): void { this.navCtrl.push('AboutPage') }
+  goToSignup(): void { this.navCtrl.push('SignupPage') }
 
-  goToCreateEntry (): void {
+  goToSearch(): void { this.navCtrl.push('SearchPage') }
+
+  goToAbout(): void { this.navCtrl.push('AboutPage') }
+
+  goToCreateEntry(): void {
     this.navCtrl.push('EntryCreatePage')
   }
 
