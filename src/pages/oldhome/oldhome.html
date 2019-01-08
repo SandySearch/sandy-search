@@ -32,69 +32,68 @@
     <!-- 
     [hidden]="entry.serviceType != serviceType" 
     -->
-    <ion-item *ngFor="let entry of markers" 
-    (click)="moreEntryOptions(entry.id)" >
-    <!--
+    <ion-item *ngFor="let entry of markers" (click)="moreEntryOptions(entry.id)">
+      <!--
     [class.hide]="entry.disputed >= 3">
     -->
-    
-<div class="item ">
-      <div class="row">
-	<div class="col col-70 balanced" *ngIf="entry.verified">
-	   <button ion-button outline small color="secondary">verified</button>
-	</div>
-	<div class="col col-70 " *ngIf="!entry.verified">
-	   <button ion-button outline small color="danger">un-verified</button>
-	</div>
-        <div class="col col-30 ">{{entry.distance}} miles away</div>
-      </div>
-      <div class="row">
-	<div class="col item item-icon-left col-15">
-	<!--
+
+      <div class="item ">
+        <div class="row">
+          <div class="col col-70 balanced" *ngIf="entry.verified">
+            <button ion-button outline small color="secondary">verified</button>
+          </div>
+          <div class="col col-70 " *ngIf="!entry.verified">
+            <button ion-button outline small color="danger">un-verified</button>
+          </div>
+          <div class="col col-30 ">{{entry.distance}} miles away</div>
+        </div>
+        <div class="row">
+          <div class="col item item-icon-left col-15">
+            <!--
 	<div class="col ">
 	-->
-<!--
+            <!--
           <ion-icon name="car" color="danger" item-left></ion-icon>
 -->
-          <ion-icon *ngIf="entry.serviceType=='ESNY'" name="home" color="danger"></ion-icon>
-          <ion-icon *ngIf="entry.serviceType=='EFW'" name="water" color="danger"></ion-icon>
-          <ion-icon *ngIf="entry.serviceType=='GS'" name="car" ></ion-icon>
-          <ion-icon *ngIf="entry.serviceType=='CS'" name="battery-charging" ></ion-icon>
-          <ion-icon *ngIf="entry.serviceType=='OFS'" name="cart" ></ion-icon>
-          <ion-icon *ngIf="entry.serviceType=='WATM'" name="card" ></ion-icon>
-          <ion-icon *ngIf="entry.serviceType=='Other'" name="question" ></ion-icon>
-          <strong>&nbsp;&nbsp;&nbsp;{{entry.name}}</strong>
-       </div>
-  <!--
+            <ion-icon *ngIf="entry.serviceType=='ESNY'" name="home" color="danger"></ion-icon>
+            <ion-icon *ngIf="entry.serviceType=='EFW'" name="water" color="danger"></ion-icon>
+            <ion-icon *ngIf="entry.serviceType=='GS'" name="car"></ion-icon>
+            <ion-icon *ngIf="entry.serviceType=='CS'" name="battery-charging"></ion-icon>
+            <ion-icon *ngIf="entry.serviceType=='OFS'" name="cart"></ion-icon>
+            <ion-icon *ngIf="entry.serviceType=='WATM'" name="card"></ion-icon>
+            <ion-icon *ngIf="entry.serviceType=='Other'" name="question"></ion-icon>
+            <strong>&nbsp;&nbsp;&nbsp;{{entry.name}}</strong>
+          </div>
+          <!--
         <div class="col col-85">
           <strong>{{entry.name}}</strong>
   </div>
   -->
-      </div>
-      <div class="row">
-	<div class="col ">
-          <p>{{entry.address}}</p>
-          <p>{{entry.notes}}</p>
-          <p>Last confirmed:
-            <strong>{{entry.updatedDate}}&nbsp;&nbsp;&nbsp; </strong>
-	      <ion-icon name="checkmark"></ion-icon>
+        </div>
+        <div class="row">
+          <div class="col ">
+            <p>{{entry.address}}</p>
+            <p>{{entry.notes}}</p>
+            <p>Last confirmed:
+              <strong>{{entry.updatedDate}}&nbsp;&nbsp;&nbsp; </strong>
+              <ion-icon name="checkmark"></ion-icon>
               <strong> {{entry.votes}}</strong>
-	    </p>
+            </p>
+          </div>
         </div>
       </div>
-  </div>
       <!--
       <ion-icon name="home" color="danger" item-left></ion-icon>
       -->
-      
+
     </ion-item>
 
-    <ion-item *ngIf='markers?.length === 0' >No Results near you</ion-item >
+    <ion-item *ngIf='markers?.length === 0'>No Results near you</ion-item>
 
   </ion-list>
 
-  
-<!--
+
+  <!--
   <ion-list>
     <ion-list-header>
       Paid Entries
