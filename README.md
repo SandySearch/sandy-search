@@ -166,7 +166,7 @@ Thanks to Dick Tator of Fayetteville, NC, USA for the original logo.
 
 ## License
 
-Copyright @ 2018 [RKO Security](http://www.rkosecurity.com)
+Copyright @ 2018-2020 [RKO Security](http://www.rkosecurity.com)
 
 [SandySearch Privacy Policy](https://mkobar.github.io/sandy-search-privacy/sandy-search-privacy-policy-EN-100.html)
 
