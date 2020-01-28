@@ -38,3 +38,4 @@ UserInterfaceState.xcuserstate
 *.cache
 android-certs/rko-release-key.keystore
 *.apk
+node_modules-OLD/
