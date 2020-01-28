@@ -75,7 +75,7 @@ All built with a Vim editor and a cmd window (and git).
 
 ### See Also
 
-The Sandy Search Admin User Interface on GitHub:  https://github.com/mkobar/sandy-search-admin
+The Sandy Search Admin User Interface on GitHub:  https://github.com/sandysearch/sandy-search-admin
 
 ### Live Demos
 
@@ -100,7 +100,7 @@ SandySearch is now on the **Apple App Store** too: https://itunes.apple.com/us/a
 
 
 
-The original GitHub repository for the Ionic v1 web app is here: https://github.com/mkobar/essr-aot
+The original GitHub repository for the Ionic v1 web app is here: https://github.com/sandysearch/essr-aot
 
 
 #### Sandy Search Admin User Interface
