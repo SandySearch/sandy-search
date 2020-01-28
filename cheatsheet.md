@@ -2,12 +2,12 @@
 
 # How to build & Run
 
-Due to grpc limitations, Node 8.11.1 must be used (with npm 5.x)
+Due to grpc limitations, Node 8.11.2 must be used (with npm 5.x)
 
 ```
-nvm use 8.11.1
+nvm use 8.11.2
 npm install
-npm serve
+npm run ionic:serve
 ```
 ## Other actions
 
@@ -29,8 +29,6 @@ available via `npm run-script`:
     ionic-app-scripts build
   ionic:serve
     ionic-app-scripts serve
-  ng
-    ng
   build-demo
     firebase use sandy-demo && ng build --env=dev
   build-prod
@@ -91,4 +89,12 @@ available via `npm run-script`:
     firebase use ssearch-prod
 ```
 
+## Links
 
+https://github.com/firebase/geofire-js/issues/173
+
+https://github.com/angular/angular-cli/issues/7329
+
+https://stackoverflow.com/questions/50348643/typeerror-object-is-not-a-function
+
+https://stackoverflow.com/questions/50374194/error-typeerror-object-is-not-a-function-using-angularfirestore-and-fire
