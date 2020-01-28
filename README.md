@@ -100,12 +100,12 @@ SandySearch is now on the **Apple App Store** too: https://itunes.apple.com/us/a
 
 
 
-The original GitHub repository for the Ionic v1 web app is here: https://github.com/sandysearch/essr-aot
+The original GitHub repository for the Ionic v1 web app is here: https://github.com/sandysearch/essr-aoc
 
 
 #### Sandy Search Admin User Interface
 
-Live web app version of SandyServiceAdmin (v0.0.4) can be found here:  https://plu.sh/sandyadmin 
+Live web app version of SandyServiceAdmin (v0.0.4) can be found here:  https://plu.sh/sandyadmin2 
 
 Live web app (v0.0.2) running on **IBM Cloud Kubernetes Service** can be found here:  http://173.193.99.198:30471
 
