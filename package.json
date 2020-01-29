@@ -7,7 +7,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/mkobar/sandy-search.git"
+    "url": "https://github.com/sandysearch/sandy-search.git"
   },
   "publishConfig": {
     "access": "restricted"
@@ -21,7 +21,7 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/mkobar/sandy-search/issues"
+    "url": "https://github.com/sandysearch/sandy-search/issues"
   },
   "scripts": {
     "clean2": "ionic-app-scripts clean",
