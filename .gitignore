@@ -40,3 +40,4 @@ android-certs/rko-release-key.keystore
 *.apk
 node_modules-OLD/
 *.map
+src/**/*.js
