@@ -39,3 +39,4 @@ UserInterfaceState.xcuserstate
 android-certs/rko-release-key.keystore
 *.apk
 node_modules-OLD/
+*.map
