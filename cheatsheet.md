@@ -1,6 +1,6 @@
 ## Cheatsheet for Sandy-Search
 
-# How to build & Run
+### How to Build & Run (for web)
 
 Due to grpc limitations, Node 8.11.2 must be used (with npm 5.x)
 
@@ -9,7 +9,49 @@ nvm use 8.11.2
 npm install
 npm run ionic:serve
 ```
-## Other actions
+
+### How to run on Android emulator (debug)
+
+```
+npx ionic cordova run android --emulator
+```
+
+### How to run on Android via USB (debug)
+
+```
+npx ionic cordova run android --device
+```
+
+### How to build for Android (debug)
+
+```
+npx ionic cordova build android
+```
+or
+```
+
+```
+
+This will leave the target APK at platforms\android\app\build\outputs\apk\debug
+
+### How to build for Android (production/release)
+
+```
+npx ionic cordova build android --prod --release
+```
+or
+```
+
+```
+
+This will leave the target APK at platforms\android\app\build\outputs\apk\release
+
+This will then need to be jarsign-ed and zipalign-ed before being uploaded to the Google Play Store.
+
+### How to build for iOS
+TBD
+
+### Other actions
 
 ```
 Lifecycle scripts included in SandySearch:
@@ -98,3 +140,5 @@ https://github.com/angular/angular-cli/issues/7329
 https://stackoverflow.com/questions/50348643/typeerror-object-is-not-a-function
 
 https://stackoverflow.com/questions/50374194/error-typeerror-object-is-not-a-function-using-angularfirestore-and-fire
+
+https://github.com/angular/angular-cli/issues/10019
