@@ -28,6 +28,9 @@
     "build": "firebase use sandy-search && ng build --env=dev",
     "lint2": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
+    "ionic:build2": "ionic-app-scripts build -- --prod",
+    "ionic:buildand": "ionic-app-scripts build -- --platform android --target cordova",
+    "ionic:buildand2": "ionic-app-scripts build -- --prod android cordova",
     "ionic:serve": "ionic-app-scripts serve",
     "ng": "ng",
     "start": "ng serve",
@@ -102,6 +105,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
+    "@angular-devkit/build-optimizer": "0.5.2",
     "@ionic/app-scripts": "3.1.9",
     "codelyzer": "^4.4.2",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
