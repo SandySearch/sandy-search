@@ -1,5 +1,13 @@
 ## Cheatsheet for Sandy-Search
 
+NOTE: Currently using:
+  @angular/core@5.2.10
+  ionic@3.20.0
+  ionic-angular@3.9.2
+  cordova@8.1.0
+  cordova-android@7.1.4 (Android target: android-27)
+  no cordova-ios yet
+
 ### How to Build & Run (for web)
 
 Due to grpc limitations, Node 8.11.2 must be used (with npm 5.x)
@@ -12,14 +20,42 @@ npm run ionic:serve
 
 ### How to run on Android emulator (debug)
 
+May need to rm/add android first
 ```
+npx ionic cordova platform rm android
+npx ionic cordova platform add android
+```
+
+View list of emulators available
+```
+npx ionic cordova run android --list --emulator
+```
+or
+```
+npx ionic cordova emulate --list
+```
+
+Check requirements for Android
+```
+npx ionic cordova requirements
+```
+
+```
+npx ionic cordova emulate android --target Android27-x86
 npx ionic cordova run android --emulator
 ```
 
 ### How to run on Android via USB (debug)
 
+View list of Devices available (enable MTP)
 ```
-npx ionic cordova run android --device
+npx ionic cordova run android --list --target
+```
+
+```
+npx ionic cordova run android --target
+or
+npx ionic cordova run android --device=DEVICE
 ```
 
 ### How to build for Android (debug)
