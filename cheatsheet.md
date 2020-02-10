@@ -8,11 +8,11 @@ Ionic:
  - @ionic/app-scripts : 3.1.9
 
 Cordova:
- - Cordova CLI       : 8.1.2  - 9.0.0 has module loading issue
- - Cordova Platforms : android 7.1.4
+ - Cordova CLI       : 8.1.2 (cordova-lib@8.1.1) - Note: 9.0.0 has module loading issue
+ - Cordova Platforms : android 8.1.0
  - no cordova-ios yet
- - Cordova Plugins   : cordova-plugin-ionic-keyboard 2.1.2, cordova-plugin-ionic-webview 1.2.1, (and 6 other plugins)
- - cordova-res : 0.6.0 - Note: 0.9.0 install fails
+ - Cordova Plugins   : cordova-plugin-ionic-keyboard 2.2.0, cordova-plugin-ionic-webview 2.2.0, (and 6 other plugins)
+ - cordova-res : 0.8.1 - Note: 0.9.0 install fails
  - native-run  : 0.3.0
 
 System:
