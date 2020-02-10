@@ -41,3 +41,5 @@ android-certs/rko-release-key.keystore
 node_modules-OLD/
 *.map
 src/**/*.js
+bfg-1.13.0.jar
+src/**/credentials.ts
