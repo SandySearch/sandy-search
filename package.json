@@ -1,6 +1,6 @@
 {
   "name": "SandySearch",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Waze for services after a disaster - use the power of crowdsourcing for good",
   "author": "SandySearch Team",
   "homepage": "https://devpost.com/software/sandy-search",
@@ -86,7 +86,7 @@
     "@types/googlemaps": "^3.30.12",
     "angularfire2": "5.0.0-rc.6",
     "cordova": "8.1.0",
-    "cordova-android": "8.0.0",
+    "cordova-android": "7.1.4",
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-geolocation": "^4.0.1",
@@ -97,9 +97,10 @@
     "cordova-sqlite-storage": "^2.4.0",
     "firebase": "4.12.1",
     "geofire": "5.0.1",
-    "ionic": "3.20.0",
+    "ionic": "^5.4.16",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
+    "native-run": "^0.3.0",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26"

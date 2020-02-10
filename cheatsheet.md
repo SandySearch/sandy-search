@@ -1,12 +1,25 @@
 ## Cheatsheet for Sandy-Search
+as of 10 Feb 2020
 
-NOTE: Currently using:
-  @angular/core@5.2.10
-  ionic@3.20.0
-  ionic-angular@3.9.2
-  cordova@8.1.0
-  cordova-android@7.1.4 (Android target: android-27)
-  no cordova-ios yet
+NOTE: Currently using (and working with):
+Ionic:
+ - Ionic CLI          : 5.4.16
+ - Ionic Framework    : ionic-angular 3.9.2
+ - @ionic/app-scripts : 3.1.9
+
+Cordova:
+ - Cordova CLI       : 8.1.0
+ - Cordova Platforms : android 7.1.4
+ - no cordova-ios yet
+ - Cordova Plugins   : cordova-plugin-ionic-keyboard 2.1.2, cordova-plugin-ionic-webview 1.2.1, (and 6 other plugins)
+ - cordova-res : not installed - install fails
+ - native-run  : 0.3.0
+
+System:
+ - Android SDK Tools : 26.1.1 (C:\Users\dbadmin\AppData\Local\Android\Sdk)
+ - NodeJS            : v8.11.2 (C:\Program Files\nodejs\node.exe)
+ - npm               : 5.10.0
+ - OS                : Windows 10
 
 ### How to Build & Run (for web)
 
@@ -18,7 +31,7 @@ npm install
 npm run ionic:serve
 ```
 
-### How to run on Android emulator (debug)
+### How to build for Android (debug)
 
 May need to rm/add android first
 ```
@@ -26,13 +39,17 @@ npx ionic cordova platform rm android
 npx ionic cordova platform add android
 ```
 
+```
+npx ionic cordova build android
+```
+
+This will leave the target APK at platforms\android\app\build\outputs\apk\debug
+
+### How to run on Android emulator (debug)
+
 View list of emulators available
 ```
 npx ionic cordova run android --list --emulator
-```
-or
-```
-npx ionic cordova emulate --list
 ```
 
 Check requirements for Android
@@ -41,9 +58,14 @@ npx ionic cordova requirements
 ```
 
 ```
-npx ionic cordova emulate android --target Android27-x86
+npx ionic cordova emulate android
+```
+or
+```
 npx ionic cordova run android --emulator
 ```
+
+Currently emulator runs OK, but either network or location is wrong
 
 ### How to run on Android via USB (debug)
 
@@ -58,26 +80,11 @@ or
 npx ionic cordova run android --device=DEVICE
 ```
 
-### How to build for Android (debug)
-
-```
-npx ionic cordova build android
-```
-or
-```
-
-```
-
-This will leave the target APK at platforms\android\app\build\outputs\apk\debug
 
 ### How to build for Android (production/release)
 
 ```
 npx ionic cordova build android --prod --release
-```
-or
-```
-
 ```
 
 This will leave the target APK at platforms\android\app\build\outputs\apk\release
