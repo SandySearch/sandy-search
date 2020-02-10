@@ -65,7 +65,11 @@ or
 npx ionic cordova run android --emulator
 ```
 
-Currently emulator runs OK, but either network or location is wrong
+Currently emulator runs OK, but needs location to be set manually
+- set point to Norwalk, CT
+- set location mode to high accuracy
+- set location scan to wifi: on
+- be sure to enable location for app
 
 ### How to run on Android via USB (debug)
 
