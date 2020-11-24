@@ -116,7 +116,7 @@
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.26",
-    "snyk": "^1.369.3"
+    "snyk": "^1.425.4"
   },
   "devDependencies": {
     "@angular-devkit/build-optimizer": "0.5.2",
