@@ -1,5 +1,5 @@
 # Dockerfile
-# how to use: docker build -t sandysearch:0.0.9-beta .
+# how to use: docker build -t mkobar/sandy-search:0.0.9-beta .
 
 # how to build tiny production image from:
 # https://blog.hasura.io/an-exhaustive-guide-to-writing-dockerfiles-for-node-js-web-apps-bbee6bd2f3c4
@@ -65,7 +65,7 @@ EXPOSE 8100
 #CMD ["sh"]
 
 # start with "docker run -d -p 80:8100 --name name image"
-# start with "docker run -d -p 80:8100 --name sandy sandysearch:0.0.9-beta"
+# start with "docker run -d -p 80:8100 --name sandy mkobar/sandy-search:0.0.9-beta"
 #CMD ["ionic", "serve", "-c", "-s", "-b"]
 CMD ["node_modules/.bin/ionic", "serve", "-c", "-s", "-b", "--no-livereload"]
 
