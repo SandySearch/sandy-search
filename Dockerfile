@@ -1,5 +1,5 @@
 # Dockerfile
-# how to use: docker build -t mkobar/sandy-search:0.0.91 .
+# how to use: docker build -t mkobar/sandy-search:0.0.81 .
 
 # how to build tiny production image from:
 # https://blog.hasura.io/an-exhaustive-guide-to-writing-dockerfiles-for-node-js-web-apps-bbee6bd2f3c4
@@ -11,7 +11,7 @@ FROM node:8.9-alpine
 
 # Set one or more individual labels
 LABEL org.sandysearch.name="SandySearch Mobile/Web App"
-LABEL org.sandysearch.version="0.0.91"
+LABEL org.sandysearch.version="0.0.81"
 LABEL org.sandysearch.release-date="2022-02-18"
 LABEL org.sandysearch.version.is-production=""
 LABEL org.sandysearch.hackathon="Call For Code 2018"
@@ -65,7 +65,7 @@ EXPOSE 8100
 #CMD ["sh"]
 
 # start with "docker run -d -p 80:8100 --name name image"
-# start with "docker run -d -p 80:8100 --name sandy mkobar/sandy-search:0.0.91"
+# start with "docker run -d -p 80:8100 --name sandy mkobar/sandy-search:0.0.81"
 #CMD ["ionic", "serve", "-c", "-s", "-b"]
 CMD ["node_modules/.bin/ionic", "serve", "-c", "-s", "-b", "--no-livereload"]
 
