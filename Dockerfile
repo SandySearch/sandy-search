@@ -16,12 +16,13 @@ LABEL org.sandysearch.release-date="2022-02-18"
 LABEL org.sandysearch.version.is-production=""
 LABEL org.sandysearch.hackathon="Call For Code 2018"
 
-# add git for pull
+# add git for pull - for npm package
 RUN apk add git -U
 
 # required for image build
 #RUN apk add python -U
 RUN apk add make gcc g++ musl-dev -U
+#RUN apk add make g++ musl-dev -U still adds gcc so no savings
 
 # add required libsecret-1-dev, needed by keytar, needed by geofire
 #RUN apt-get -V install -y libsecret-1-dev
