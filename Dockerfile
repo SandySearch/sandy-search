@@ -1,3 +1,6 @@
+# Dockerfile
+# how to use: docker build -t sandysearch:0.0.9 .
+
 # how to build tiny production image from:
 # https://blog.hasura.io/an-exhaustive-guide-to-writing-dockerfiles-for-node-js-web-apps-bbee6bd2f3c4
 #
@@ -8,13 +11,17 @@ FROM node:8.9-alpine
 
 # Set one or more individual labels
 LABEL org.sandysearch.name="SandySearch Mobile/Web App"
-LABEL org.sandysearch.version="0.0.7-beta"
-LABEL org.sandysearch.release-date="2018-10-18"
+LABEL org.sandysearch.version="0.0.9"
+LABEL org.sandysearch.release-date="2022-02-18"
 LABEL org.sandysearch.version.is-production=""
 LABEL org.sandysearch.hackathon="Call For Code 2018"
 
 # add git for pull
 RUN apk add git -U
+
+# required for image build
+#RUN apk add python -U
+RUN apk add make gcc g++ musl-dev -U
 
 # add required libsecret-1-dev, needed by keytar, needed by geofire
 #RUN apt-get -V install -y libsecret-1-dev
@@ -33,16 +40,17 @@ RUN apk add git -U
 #   libsecret-1-dev \
 #   && rm -rf /var/lib/apt/lists/*
 
-# Bundle app source
-COPY . /app
-
 # set working directory
 WORKDIR /app
 
 # install and cache app dependencies
 #COPY package*.json /usr/src/app/
+COPY package*.json /app
 #ADD package.json /usr/src/app/package.json
 RUN npm install
+
+# Bundle app source
+COPY . /app
 
 #RUN npm install geofire - DOES NOT WORK in Container?!
 COPY ./geofire/ /app/node_modules/geofire/
@@ -52,9 +60,11 @@ EXPOSE 8100
 
 # start app
 # start with "docker run -it image"
-#CMD ["bash"]
+#CMD ["bash"] but alpine has no bash
+#CMD ["sh"]
 
 # start with "docker run -d -p 80:8100 --name name image"
+# start with "docker run -d -p 80:8100 --name sandy sandysearch:0.0.9"
 #CMD ["ionic", "serve", "-c", "-s", "-b"]
 CMD ["node_modules/.bin/ionic", "serve", "-c", "-s", "-b", "--no-livereload"]
 
