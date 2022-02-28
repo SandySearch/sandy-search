@@ -7,8 +7,29 @@
 # base image (from 3.99 GB to 657 MB) yay Alpine!
 #FROM node:9.4
 #FROM beevelop/ionic:latest
-#FROM node:8.9-alpine
-FROM node:12.22-alpine
+#FROM node:8.9-alpine worked in 2019!
+#FROM node:8.17.0-alpine - compile fails during build
+#FROM node:8.16-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.15-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.14-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.13-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.12-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.11-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.10-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.9-alpine - compiles but fails during run on events.d.ts
+#
+#FROM node:17-alpine
+#FROM node:16-alpine - compiles but fails during npm install on karma - only goes to 8
+#FROM node:16.14.0-alpine - still get ERR_SOCKET_TIMEOUT? from npm?
+#FROM node:15-alpine - compile fails during build 15.14.0
+#FROM node:14-alpine - compile fails during build 14.19.0
+#FROM node:13-alpine - compile fails during build
+#FROM node:12.22-alpine
+#FROM node:12-alpine - compile fails during build 12.22.10
+#FROM node:11-alpine - compile fails during build
+FROM node:10-alpine
+#FROM node:10.18-alpine - compiles but fails during run on events.d.ts
+#FROM node:9-alpine - compiles but fails during run on events.d.ts
 
 # Set one or more individual labels
 LABEL org.sandysearch.name="SandySearch Mobile/Web App"
@@ -21,7 +42,7 @@ LABEL org.sandysearch.hackathon="Call For Code 2018"
 RUN apk add git -U
 
 # required for image build
-RUN apk add python3 -U
+RUN apk add python2 -U
 RUN apk add make gcc g++ musl-dev -U
 #RUN apk add make g++ musl-dev -U still adds gcc so no savings
 
@@ -46,12 +67,14 @@ RUN apk add make gcc g++ musl-dev -U
 WORKDIR /app
 
 # install and cache app dependencies
-#COPY package*.json /usr/src/app/
 COPY package*.json /app
-#ADD package.json /usr/src/app/package.json
+
 RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
 # Bundle app source
+#COPY . . should be explicit!
 COPY . /app
 
 #RUN npm install geofire - DOES NOT WORK in Container?!
@@ -61,8 +84,7 @@ COPY ./geofire/ /app/node_modules/geofire/
 EXPOSE 8100
 
 # start app
-# start with "docker run -it image"
-#CMD ["bash"] but alpine has no bash
+# start with "docker run -it image sh"
 #CMD ["sh"]
 
 # start with "docker run -d -p 80:8100 --name name image"
