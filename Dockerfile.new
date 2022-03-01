@@ -8,15 +8,6 @@
 #FROM node:9.4
 #FROM beevelop/ionic:latest
 #FROM node:8.9-alpine worked in 2019!
-#FROM node:8.17.0-alpine - compile fails during build
-#FROM node:8.16-alpine - compiles but fails during run on events.d.ts
-#FROM node:8.15-alpine - compiles but fails during run on events.d.ts
-#FROM node:8.14-alpine - compiles but fails during run on events.d.ts
-#FROM node:8.13-alpine - compiles but fails during run on events.d.ts
-#FROM node:8.12-alpine - compiles but fails during run on events.d.ts
-#FROM node:8.11-alpine - compiles but fails during run on events.d.ts
-#FROM node:8.10-alpine - compiles but fails during run on events.d.ts
-#FROM node:8.9-alpine - compiles but fails during run on events.d.ts
 #
 #FROM node:17-alpine
 #FROM node:16-alpine - compiles but fails during npm install on karma - only goes to 8
@@ -27,9 +18,20 @@
 #FROM node:12.22-alpine
 #FROM node:12-alpine - compile fails during build 12.22.10
 #FROM node:11-alpine - compile fails during build
-FROM node:10-alpine
+#FROM node:10-alpine
 #FROM node:10.18-alpine - compiles but fails during run on events.d.ts
 #FROM node:9-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.17.0-alpine - compile fails during build
+#FROM node:8.16-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.15-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.14-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.13-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.12-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.11-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.11.2-alpine - compiles but fails during run on events.d.ts
+FROM node:8.11.1-alpine
+#FROM node:8.10-alpine - compiles but fails during run on events.d.ts
+#FROM node:8.9-alpine - compiles but fails during run on events.d.ts
 
 # Set one or more individual labels
 LABEL org.sandysearch.name="SandySearch Mobile/Web App"
@@ -42,9 +44,11 @@ LABEL org.sandysearch.hackathon="Call For Code 2018"
 RUN apk add git -U
 
 # required for image build
-RUN apk add python2 -U
+#RUN apk add python2 -U
 RUN apk add make gcc g++ musl-dev -U
 #RUN apk add make g++ musl-dev -U still adds gcc so no savings
+RUN apk add libsecret-dev -U
+#needed by geofire in 8.11.2 and 8.11.1
 
 # add required libsecret-1-dev, needed by keytar, needed by geofire
 #RUN apt-get -V install -y libsecret-1-dev
@@ -90,7 +94,8 @@ EXPOSE 8100
 # start with "docker run -d -p 80:8100 --name name image"
 # start with "docker run -d -p 80:8100 --name sandy mkobar/sandy-search:0.0.9"
 #CMD ["ionic", "serve", "-c", "-s", "-b"]
-CMD ["node_modules/.bin/ionic", "serve", "-c", "-s", "-b", "--no-livereload"]
+#CMD ["node_modules/.bin/ionic", "serve", "-c", "-s", "-b", "--no-livereload"]
+CMD ["node_modules/.bin/ionic-app-scripts", "serve", "-c", "-s", "-b", "--no-livereload"]
 
 # https://lightsonsoftware.com/developing-ionic-apps-docker-style/
 # https://hub.docker.com/r/agileek/ionic-framework/
