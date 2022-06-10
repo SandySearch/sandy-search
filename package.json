@@ -141,7 +141,7 @@
     "remap-istanbul": "^0.10.1",
     "retire": "^1.4.0",
     "rimraf": "^2.6.2",
-    "semantic-release": "^17.2.3",
+    "semantic-release": "^19.0.3",
     "semantic-release-cli": "^3.6.2",
     "snazzy": "^7.0.0",
     "standard": "^11.0.1",
