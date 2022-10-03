@@ -120,7 +120,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-optimizer": "0.5.2",
-    "@ionic/app-scripts": "3.1.9",
+    "@ionic/app-scripts": "3.2.4",
     "codelyzer": "^4.4.2",
     "cpr": "^3.0.1",
     "eslint-plugin-markdown": "^1.0.0-beta.6",
@@ -142,7 +142,7 @@
     "retire": "^1.4.0",
     "rimraf": "^2.6.2",
     "semantic-release": "^19.0.3",
-    "semantic-release-cli": "^3.6.2",
+    "semantic-release-cli": "^5.4.4",
     "snazzy": "^7.0.0",
     "standard": "^11.0.1",
     "systemjs": "^0.20.19",
